@@ -25,8 +25,6 @@ src/bsp/startup \
 src/common/core \
 src/hw/driver \
 src/hw \
-src/lib/cube_f411/Core/Src \
-src/lib/cube_f411/Core/Startup \
-src/lib/cube_f411/Drivers/STM32F4xx_HAL_Driver/Src \
+src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src \
 src \
 
