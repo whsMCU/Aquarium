@@ -18,4 +18,6 @@ void hwInit(void)
 
 //  cliInit();
   ledInit();
+  buttonInit();
+  gpioInit();
 }

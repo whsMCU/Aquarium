@@ -30,7 +30,9 @@ src/ap/ap.o: ../src/ap/ap.c ../src/ap/ap.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/led.h \
  D:/3.\ Project/Aquarium/src/hw/hw_def.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/cli.h
+ D:/3.\ Project/Aquarium/src/common/hw/include/cli.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/button.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h
 
 ../src/ap/ap.h:
 
@@ -97,3 +99,7 @@ D:/3.\ Project/Aquarium/src/common/hw/include/led.h:
 D:/3.\ Project/Aquarium/src/hw/hw_def.h:
 
 D:/3.\ Project/Aquarium/src/common/hw/include/cli.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/button.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h:

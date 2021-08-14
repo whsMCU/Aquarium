@@ -30,7 +30,12 @@ void apMain(void)
     if (millis()-pre_time >= 500)
     {
       pre_time = millis();
-      ledToggle(_DEF_LED1);
+      //ledToggle(_DEF_LED1);
+    }
+
+    if(buttonGetPressed(_DEF_BUTTON1))
+    {
+    	ledToggle(_DEF_LED1);
     }
 
 //    cliMain();

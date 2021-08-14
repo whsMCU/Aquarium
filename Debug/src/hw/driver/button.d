@@ -1,6 +1,5 @@
-src/bsp/stm32f4xx_it.o: ../src/bsp/stm32f4xx_it.c \
- D:/3.\ Project/Aquarium/src/main.h D:/3.\ Project/Aquarium/src/ap/ap.h \
- D:/3.\ Project/Aquarium/src/hw/hw.h \
+src/hw/driver/button.o: ../src/hw/driver/button.c \
+ D:/3.\ Project/Aquarium/src/common/hw/include/button.h \
  D:/3.\ Project/Aquarium/src/hw/hw_def.h \
  D:/3.\ Project/Aquarium/src/common/def.h \
  D:/3.\ Project/Aquarium/src/bsp/bsp.h \
@@ -29,18 +28,9 @@ src/bsp/stm32f4xx_it.o: ../src/bsp/stm32f4xx_it.c \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/led.h \
- D:/3.\ Project/Aquarium/src/hw/hw_def.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/cli.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/button.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h \
- ../src/bsp/stm32f4xx_it.h
+ D:/3.\ Project/Aquarium/src/common/hw/include/cli.h
 
-D:/3.\ Project/Aquarium/src/main.h:
-
-D:/3.\ Project/Aquarium/src/ap/ap.h:
-
-D:/3.\ Project/Aquarium/src/hw/hw.h:
+D:/3.\ Project/Aquarium/src/common/hw/include/button.h:
 
 D:/3.\ Project/Aquarium/src/hw/hw_def.h:
 
@@ -98,14 +88,4 @@ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 
-D:/3.\ Project/Aquarium/src/common/hw/include/led.h:
-
-D:/3.\ Project/Aquarium/src/hw/hw_def.h:
-
 D:/3.\ Project/Aquarium/src/common/hw/include/cli.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/button.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h:
-
-../src/bsp/stm32f4xx_it.h:
