@@ -10,19 +10,29 @@
 #include "cli.h"
 
 
-
+enum
+{
+	BUTTON_IDLE,
+	BUTTON_Pressed,
+	BUTTON_LONG_Pressed,
+};
 
 typedef struct
 {
   GPIO_TypeDef *port;
   uint32_t      pin;
   GPIO_PinState on_state;
+  GPIO_PinState PinState;
+  GPIO_PinState LastPinState;
+  uint8_t		State;
+  uint32_t 		lastDebounceTime;
+  uint32_t 		debounceDelay;
 } button_tbl_t;
 
 
 button_tbl_t button_tbl[BUTTON_MAX_CH] =
     {
-        {GPIOA, GPIO_PIN_0, GPIO_PIN_RESET},
+        {GPIOA, GPIO_PIN_0, GPIO_PIN_RESET, 0, 0, BUTTON_IDLE, 0, 10,},
     };
 
 
@@ -59,17 +69,46 @@ bool buttonInit(void)
 bool buttonGetPressed(uint8_t ch)
 {
   bool ret = false;
+  button_tbl_t *button;
+  button = &button_tbl[ch];
 
   if (ch >= BUTTON_MAX_CH)
   {
     return false;
   }
 
-  if (HAL_GPIO_ReadPin(button_tbl[ch].port, button_tbl[ch].pin) == button_tbl[ch].on_state)
+  switch(button->State)
   {
-    ret = true;
-  }
+  	  case BUTTON_IDLE:
+  		  if(HAL_GPIO_ReadPin(button->port, button->pin) == button->on_state)
+  		  {
+  			  button->State = BUTTON_Pressed;
+  			  button->PinState = GPIO_PIN_SET;
+  		  }
+  		  break;
 
+  	  case BUTTON_Pressed:
+		  if(button->PinState != button->LastPinState)
+		  {
+			  button->lastDebounceTime = millis();
+		  }
+		  if ((millis() - button->lastDebounceTime) > button->debounceDelay)
+		  {
+			  if(HAL_GPIO_ReadPin(button->port, button->pin) == button->on_state)
+	  		  {
+				  button->PinState = GPIO_PIN_SET;
+				  ret = button->PinState;
+	  		  }
+			  else
+			  {
+				  button->State = BUTTON_IDLE;
+				  button->PinState = GPIO_PIN_RESET;
+				  ret = button->PinState;
+			  }
+		  }
+		  button->LastPinState = button->PinState;
+		  break;
+  }
   return ret;
 }
 

@@ -35,7 +35,11 @@ void apMain(void)
 
     if(buttonGetPressed(_DEF_BUTTON1))
     {
-    	ledToggle(_DEF_LED1);
+    	ledOn(_DEF_LED1);
+    }
+    else
+    {
+    	ledOff(_DEF_LED1);
     }
 
 //    cliMain();
