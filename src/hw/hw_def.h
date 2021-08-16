@@ -22,7 +22,10 @@
 #define      HW_BUTTON_MAX_CH       1
 
 #define _USE_HW_GPIO
-#define      HW_GPIO_MAX_CH         7
+#define      HW_GPIO_MAX_CH         8
+
+#define _USE_HW_ONEWIRE
+#define		 HW_ONEWIRE_MAX_CH      1
 
 
 #endif /* SRC_HW_HW_DEF_H_ */

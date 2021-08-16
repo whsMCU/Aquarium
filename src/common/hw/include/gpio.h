@@ -16,6 +16,18 @@
 
 #define GPIO_MAX_CH     HW_GPIO_MAX_CH
 
+enum
+{
+	SD_CD,
+	LCD_BKL,
+	LCD_CS,
+	LCD_DC,
+	MCP2515_CS,
+	MCP2515_INT,
+	SPK_EN,
+	DS18B20_DATA,
+};
+
 
 bool gpioInit(void);
 bool gpioPinMode(uint8_t ch, uint8_t mode);

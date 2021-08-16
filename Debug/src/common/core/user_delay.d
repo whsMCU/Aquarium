@@ -1,6 +1,5 @@
-src/ap/ap.o: ../src/ap/ap.c ../src/ap/ap.h \
- D:/3.\ Project/Aquarium/src/hw/hw.h \
- D:/3.\ Project/Aquarium/src/hw/hw_def.h \
+src/common/core/user_delay.o: ../src/common/core/user_delay.c \
+ ../src/common/core/user_delay.h D:/3.\ Project/Aquarium/src/hw/hw_def.h \
  D:/3.\ Project/Aquarium/src/common/def.h \
  D:/3.\ Project/Aquarium/src/bsp/bsp.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
@@ -27,18 +26,9 @@ src/ap/ap.o: ../src/ap/ap.c ../src/ap/ap.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
- D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/led.h \
- D:/3.\ Project/Aquarium/src/hw/hw_def.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/cli.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/button.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h \
- D:/3.\ Project/Aquarium/src/common/core/user_delay.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h
+ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 
-../src/ap/ap.h:
-
-D:/3.\ Project/Aquarium/src/hw/hw.h:
+../src/common/core/user_delay.h:
 
 D:/3.\ Project/Aquarium/src/hw/hw_def.h:
 
@@ -95,17 +85,3 @@ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/led.h:
-
-D:/3.\ Project/Aquarium/src/hw/hw_def.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/cli.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/button.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h:
-
-D:/3.\ Project/Aquarium/src/common/core/user_delay.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h:

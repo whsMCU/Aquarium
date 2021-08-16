@@ -17,7 +17,9 @@ void hwInit(void)
   bspInit();
 
 //  cliInit();
+  DWT_Delay_Init();
   ledInit();
   buttonInit();
   gpioInit();
+  onewireInit();
 }

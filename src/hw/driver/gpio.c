@@ -32,8 +32,8 @@ const gpio_tbl_t gpio_tbl[GPIO_MAX_CH] =
         {GPIOA, GPIO_PIN_15, _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, _DEF_HIGH},  // 4. MCP2515 CS
         {GPIOB, GPIO_PIN_2,  _DEF_INPUT_PULLUP, GPIO_PIN_RESET, GPIO_PIN_SET,   true},       // 5. MCP2515 INT
         {GPIOB, GPIO_PIN_12, _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, false},      // 6. SPK_EN
+		{GPIOB, GPIO_PIN_0,	 _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, false},		 // 7. DS18B20 DATA
     };
-
 
 
 #ifdef _USE_HW_CLI

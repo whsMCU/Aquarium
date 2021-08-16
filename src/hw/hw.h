@@ -16,6 +16,8 @@
 #include "cli.h"
 #include "button.h"
 #include "gpio.h"
+#include "user_delay.h"
+#include "onewire.h"
 
 
 void hwInit(void);
