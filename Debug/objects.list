@@ -10,6 +10,7 @@
 "src/common/core/user_delay.o"
 "src/hw/driver/button.o"
 "src/hw/driver/cli.o"
+"src/hw/driver/ds18b20.o"
 "src/hw/driver/gpio.o"
 "src/hw/driver/led.o"
 "src/hw/driver/onewire.o"

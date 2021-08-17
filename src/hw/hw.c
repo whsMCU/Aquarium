@@ -21,5 +21,5 @@ void hwInit(void)
   ledInit();
   buttonInit();
   gpioInit();
-  onewireInit();
+  Ds18b20_Init();
 }

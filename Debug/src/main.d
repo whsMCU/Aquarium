@@ -34,6 +34,8 @@ src/main.o: ../src/main.c ../src/main.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/button.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h \
  D:/3.\ Project/Aquarium/src/common/core/user_delay.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/ds18b20.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h
 
 ../src/main.h:
@@ -109,5 +111,9 @@ D:/3.\ Project/Aquarium/src/common/hw/include/button.h:
 D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h:
 
 D:/3.\ Project/Aquarium/src/common/core/user_delay.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/ds18b20.h:
 
 D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h:

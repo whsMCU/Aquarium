@@ -18,6 +18,7 @@
 #include "gpio.h"
 #include "user_delay.h"
 #include "onewire.h"
+#include "ds18b20.h"
 
 
 void hwInit(void);
