@@ -1,2 +1,3 @@
 button.c:44:6:buttonInit	40	static
 button.c:69:6:buttonGetPressed	24	static
+button.c:119:6:cliButton	24	static

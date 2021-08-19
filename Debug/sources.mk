@@ -24,6 +24,8 @@ src/bsp \
 src/bsp/startup \
 src/common/core \
 src/hw/driver \
+src/hw/driver/hangul \
+src/hw/driver/lcd \
 src/hw \
 src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src \
 src \

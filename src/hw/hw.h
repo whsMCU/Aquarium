@@ -13,9 +13,11 @@
 
 
 #include "led.h"
+#include "uart.h"
 #include "cli.h"
 #include "button.h"
 #include "gpio.h"
+#include "clcd.h"
 #include "user_delay.h"
 #include "onewire.h"
 #include "ds18b20.h"
