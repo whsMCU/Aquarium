@@ -15,8 +15,8 @@
 void hwInit(void)
 {
   bspInit();
-
-//  cliInit();
+  cliInit();
+  uartInit();
   DWT_Delay_Init();
   ledInit();
   buttonInit();

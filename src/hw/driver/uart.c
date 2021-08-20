@@ -46,7 +46,6 @@ bool uartOpen(uint8_t ch, uint32_t baud)
 {
   bool ret = false;
 
-
   switch(ch)
   {
     case _DEF_UART1:
@@ -73,7 +72,6 @@ bool uartOpen(uint8_t ch, uint32_t baud)
         /* DMA2_Stream7_IRQn interrupt configuration */
         HAL_NVIC_SetPriority(DMA2_Stream7_IRQn, 0, 0);
         HAL_NVIC_EnableIRQ(DMA2_Stream7_IRQn);
-
 
         if (HAL_UART_Init(&huart1) != HAL_OK)
         {
@@ -170,7 +168,7 @@ uint8_t uartRead(uint8_t ch)
   switch(ch)
   {
     case _DEF_UART1:
-      qbufferRead(&qbuffer[_DEF_UART2], &ret, 1);
+      qbufferRead(&qbuffer[_DEF_UART1], &ret, 1);
       break;
 
     case _DEF_UART2:
@@ -185,16 +183,6 @@ uint32_t uartWrite(uint8_t ch, uint8_t *p_data, uint32_t length)
 {
   uint32_t ret = 0;
   HAL_StatusTypeDef status;  /* DMA controller clock enable */
-  __HAL_RCC_DMA2_CLK_ENABLE();
-
-  /* DMA interrupt init */
-  /* DMA2_Stream2_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
-  /* DMA2_Stream7_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream7_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA2_Stream7_IRQn);
-
 
   switch(ch)
   {
