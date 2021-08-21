@@ -22,7 +22,7 @@
 #define      HW_BUTTON_MAX_CH       1
 
 #define _USE_HW_GPIO
-#define      HW_GPIO_MAX_CH         15
+#define      HW_GPIO_MAX_CH         16
 
 #define _USE_HW_UART
 #define      HW_UART_MAX_CH         1
@@ -38,6 +38,9 @@
 
 #define _USE_HW_ONEWIRE
 #define		 HW_ONEWIRE_MAX_CH      1
+
+#define _USE_HW_SONAR
+#define      HW_SONAR_MAX_CH		1
 
 #define _USE_HW_DS18B20
 #define		 HW_DS18B20_MAX_CH     			1

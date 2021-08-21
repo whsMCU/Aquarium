@@ -157,7 +157,7 @@ void lcdprint_uint32(uint32_t v) {
 void output_TEMP(float temp)
 {
 	static char line[5] = "---.-";
-    //                      01234
+    //                     01234
 	if(temp < 0)
 	{
 		line[0] = '-';
@@ -166,6 +166,18 @@ void output_TEMP(float temp)
 		line[0] = ' ';
 	}
 
+	line[1] = digit100(temp);
+	line[2] = digit10(temp);
+    line[4] = digit1(temp);
+	LCD_PUTS(line);
+}
+
+void output_DISTANCE(uint16_t temp)
+{
+	static char line[7] = "---.-cm";
+    //                     01234
+
+	line[0] = digit1000(temp);
 	line[1] = digit100(temp);
 	line[2] = digit10(temp);
     line[4] = digit1(temp);

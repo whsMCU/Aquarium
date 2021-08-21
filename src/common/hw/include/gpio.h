@@ -26,6 +26,7 @@ enum
 	MCP2515_INT,
 	SPK_EN,
 	DS18B20_DATA,
+	SONAR_DATA = 15,
 };
 
 

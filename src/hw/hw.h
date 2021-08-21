@@ -21,6 +21,7 @@
 #include "user_delay.h"
 #include "onewire.h"
 #include "ds18b20.h"
+#include "ultrasonic.h"
 
 
 void hwInit(void);

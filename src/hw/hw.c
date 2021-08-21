@@ -22,5 +22,6 @@ void hwInit(void)
   buttonInit();
   gpioInit();
   Ds18b20_Init();
+  sonarInit();
   LCD_INIT();
 }

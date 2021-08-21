@@ -1,6 +1,6 @@
-gpio.c:50:6:gpioInit	24	static
-gpio.c:71:6:gpioPinMode	40	static
-gpio.c:121:6:gpioPinWrite	24	static
-gpio.c:138:6:gpioPinRead	24	static
-gpio.c:155:6:gpioPinToggle	16	static
-gpio.c:170:6:cliGpio	40	static
+gpio.c:51:6:gpioInit	24	static
+gpio.c:72:6:gpioPinMode	40	static
+gpio.c:129:6:gpioPinWrite	24	static
+gpio.c:146:6:gpioPinRead	24	static
+gpio.c:163:6:gpioPinToggle	16	static
+gpio.c:178:6:cliGpio	40	static

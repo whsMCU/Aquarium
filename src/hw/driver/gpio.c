@@ -38,6 +38,7 @@ const gpio_tbl_t gpio_tbl[GPIO_MAX_CH] =
 		{GPIOB, GPIO_PIN_13, _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, false},		 // 12. CLCD_D5
 		{GPIOB, GPIO_PIN_14, _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, false},		 // 13. CLCD_D6
 		{GPIOB, GPIO_PIN_15, _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, false},		 // 14. CLCD_D7
+		{GPIOB, GPIO_PIN_1,  _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, false},		 // 15. SONAR_PIN
     };
 
 
@@ -109,6 +110,13 @@ bool gpioPinMode(uint8_t ch, uint8_t mode)
     case _DEF_OUTPUT_PULLDOWN:
       GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
       GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+      break;
+
+    case _DEF_INPUT_AF_PP:
+      GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+      GPIO_InitStruct.Pull = GPIO_NOPULL;
+      GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+      GPIO_InitStruct.Alternate = GPIO_AF2_TIM3;
       break;
   }
 

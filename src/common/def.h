@@ -51,6 +51,7 @@
 #define _DEF_OUTPUT           3
 #define _DEF_OUTPUT_PULLUP    4
 #define _DEF_OUTPUT_PULLDOWN  5
+#define _DEF_INPUT_AF_PP      6
 
 
 #define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))

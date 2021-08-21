@@ -1,5 +1,8 @@
-src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o: \
- ../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c \
+src/hw/driver/ultrasonic.o: ../src/hw/driver/ultrasonic.c \
+ D:/3.\ Project/Aquarium/src/common/hw/include/ultrasonic.h \
+ D:/3.\ Project/Aquarium/src/hw/hw_def.h \
+ D:/3.\ Project/Aquarium/src/common/def.h \
+ D:/3.\ Project/Aquarium/src/bsp/bsp.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  D:/3.\ Project/Aquarium/src/bsp/stm32f4xx_hal_conf.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -28,7 +31,17 @@ src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o: \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h \
+ D:/3.\ Project/Aquarium/src/common/core/user_delay.h
+
+D:/3.\ Project/Aquarium/src/common/hw/include/ultrasonic.h:
+
+D:/3.\ Project/Aquarium/src/hw/hw_def.h:
+
+D:/3.\ Project/Aquarium/src/common/def.h:
+
+D:/3.\ Project/Aquarium/src/bsp/bsp.h:
 
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
@@ -87,3 +100,7 @@ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h:
+
+D:/3.\ Project/Aquarium/src/common/core/user_delay.h:

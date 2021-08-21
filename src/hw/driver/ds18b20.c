@@ -122,6 +122,7 @@ bool Ds18b20_ManualConvert(void)
 			  break;
 	  }
 	#endif
+	  return true;
 }
 //###########################################################################################
 #if (_DS18B20_USE_FREERTOS==1)

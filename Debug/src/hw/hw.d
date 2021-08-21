@@ -27,6 +27,8 @@ src/hw/hw.o: ../src/hw/hw.c ../src/hw/hw.h ../src/hw/hw_def.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
+ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
+ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/led.h \
  D:/3.\ Project/Aquarium/src/hw/hw_def.h \
@@ -38,7 +40,8 @@ src/hw/hw.o: ../src/hw/hw.c ../src/hw/hw.h ../src/hw/hw_def.h \
  D:/3.\ Project/Aquarium/src/common/core/user_delay.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/ds18b20.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h
+ D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/ultrasonic.h
 
 ../src/hw/hw.h:
 
@@ -100,6 +103,10 @@ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 
+D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
+
+D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
+
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 
 D:/3.\ Project/Aquarium/src/common/hw/include/led.h:
@@ -123,3 +130,5 @@ D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h:
 D:/3.\ Project/Aquarium/src/common/hw/include/ds18b20.h:
 
 D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/ultrasonic.h:

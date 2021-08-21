@@ -34,9 +34,14 @@ void apMain(void)
 
     }
     Ds18b20_ManualConvert();
-    LCD_XY(1, 1); LCD_PUTS((char *)"Water_Temp : ");
-    LCD_XY(13, 1); output_TEMP(ds18b20[0].Temperature*10);
-    LCD_XY(18, 1); LCD_print_SC(223);
+
+    measure();
+
+    LCD_XY(1, 1); LCD_PUTS((char *)"WTR_T : ");
+    LCD_XY(8, 1); output_TEMP(ds18b20[0].Temperature*10);
+    LCD_XY(13, 1); LCD_print_SC(223);
+    LCD_XY(1, 2); LCD_PUTS((char *)"WTR_L : ");
+    LCD_XY(9, 2); output_DISTANCE(sonar_tbl[0].filter_distance_cm);
     LCD_XY(4, 3); LCD_PUTS((char *)"I LOVE YUJIN");
     //LCD_CMD(0x18);
 
