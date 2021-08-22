@@ -5,8 +5,8 @@
  *      Author: WANG
  */
 
-#ifndef SRC_COMMON_HW_INCLUDE_ULTRASONIC_H_
-#define SRC_COMMON_HW_INCLUDE_ULTRASONIC_H_
+#ifndef SRC_COMMON_HW_INCLUDE_SONAR_H_
+#define SRC_COMMON_HW_INCLUDE_SONAR_H_
 
 #include "hw_def.h"
 
@@ -20,9 +20,9 @@ typedef struct
     uint8_t       state;
     uint32_t	  rising_time;
     uint32_t      falling_time;
-    uint16_t	  duty_time;
-    uint16_t      distance_cm;
-    uint16_t      filter_distance_cm;
+    uint32_t	  duty_time;
+    uint32_t      distance_cm;
+    uint32_t      filter_distance_cm;
 } sonar_tbl_t;
 
 extern sonar_tbl_t sonar_tbl[HW_SONAR_MAX_CH];
@@ -30,4 +30,4 @@ extern sonar_tbl_t sonar_tbl[HW_SONAR_MAX_CH];
 bool     sonarInit(void);
 bool	 measure(void);
 
-#endif /* SRC_COMMON_HW_INCLUDE_ULTRASONIC_H_ */
+#endif /* SRC_COMMON_HW_INCLUDE_SONAR_H_ */

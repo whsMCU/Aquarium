@@ -9,6 +9,7 @@
 #define SRC_HW_HW_H_
 
 
+#include <sonar.h>
 #include "hw_def.h"
 
 
@@ -21,7 +22,7 @@
 #include "user_delay.h"
 #include "onewire.h"
 #include "ds18b20.h"
-#include "ultrasonic.h"
+#include "sonar.h"
 
 
 void hwInit(void);

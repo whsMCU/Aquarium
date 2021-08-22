@@ -1,5 +1,5 @@
-src/hw/driver/ultrasonic.o: ../src/hw/driver/ultrasonic.c \
- D:/3.\ Project/Aquarium/src/common/hw/include/ultrasonic.h \
+src/hw/driver/sonar.o: ../src/hw/driver/sonar.c \
+ D:/3.\ Project/Aquarium/src/common/hw/include/sonar.h \
  D:/3.\ Project/Aquarium/src/hw/hw_def.h \
  D:/3.\ Project/Aquarium/src/common/def.h \
  D:/3.\ Project/Aquarium/src/bsp/bsp.h \
@@ -35,7 +35,7 @@ src/hw/driver/ultrasonic.o: ../src/hw/driver/ultrasonic.c \
  D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h \
  D:/3.\ Project/Aquarium/src/common/core/user_delay.h
 
-D:/3.\ Project/Aquarium/src/common/hw/include/ultrasonic.h:
+D:/3.\ Project/Aquarium/src/common/hw/include/sonar.h:
 
 D:/3.\ Project/Aquarium/src/hw/hw_def.h:
 

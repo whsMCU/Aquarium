@@ -172,7 +172,7 @@ void output_TEMP(float temp)
 	LCD_PUTS(line);
 }
 
-void output_DISTANCE(uint16_t temp)
+void output_DISTANCE(uint32_t temp)
 {
 	static char line[7] = "---.-cm";
     //                     01234

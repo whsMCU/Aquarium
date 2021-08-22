@@ -5,7 +5,7 @@
  *      Author: WANG
  */
 
-#include "ultrasonic.h"
+#include <sonar.h>
 #include "gpio.h"
 #include "user_delay.h"
 
@@ -73,7 +73,7 @@ bool measure(void)
 
 	static int16_t sonarHistTab[11];
 	static int sonarHistIdx = 0;
-	static uint16_t sonarDistanceSum = 0;
+	static uint32_t sonarDistanceSum = 0;
 
 	switch(sonar_tbl[0].state)
 	{
