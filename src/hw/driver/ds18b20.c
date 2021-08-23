@@ -104,7 +104,6 @@ bool Ds18b20_ManualConvert(void)
 	  				  {
 	  					for (uint8_t i = 0; i < TempSensorCount; i++)
 	  					{
-	  						//HAL_Delay(100);
 	  						ds18b20[i].DataIsValid = DS18B20_Read(&OneWire, ds18b20[i].Address, &ds18b20[i].Temperature);
 	  						state = 0;
 	  					}

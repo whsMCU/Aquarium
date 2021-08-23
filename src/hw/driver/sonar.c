@@ -16,7 +16,7 @@ TIM_HandleTypeDef htim3;
 
 sonar_tbl_t sonar_tbl[HW_SONAR_MAX_CH] =
     {
-        {0, 0, 0, 0, 0, 0, 0}
+        {0, 0, 0, 0, 0, 0, 0, 0}
     };
 
 bool sonarInit(void)
@@ -66,7 +66,7 @@ bool sonarInit(void)
 	return ret;
 }
 
-bool measure(void)
+bool Sonar_measure(void)
 {
 	bool ret = false;
 	static uint32_t pre_time;
@@ -91,7 +91,15 @@ bool measure(void)
 		case 1:
 			if(sonar_tbl[0].wait_flag == false)
 			{
-				sonar_tbl[0].duty_time = sonar_tbl[0].falling_time - sonar_tbl[0].rising_time;
+				if(sonar_tbl[0].falling_time > sonar_tbl[0].rising_time)
+				{
+					sonar_tbl[0].duty_time = sonar_tbl[0].falling_time - sonar_tbl[0].rising_time;
+				}
+				else if(sonar_tbl[0].falling_time < sonar_tbl[0].rising_time)
+				{
+					sonar_tbl[0].duty_time = 65536 - sonar_tbl[0].rising_time + sonar_tbl[0].falling_time;
+				}
+
 				sonar_tbl[0].distance_cm = (sonar_tbl[0].duty_time * 10) * 0.0172;
 
 				uint8_t indexplus1 = (sonarHistIdx + 1);
@@ -109,8 +117,10 @@ bool measure(void)
 			{
 				if(millis()-pre_time >= 25)
 				{
+					sonar_tbl[0].time_out_cnt++;
 					sonar_tbl[0].wait_flag = false;
 					sonar_tbl[0].state = 0;
+					ret = false;
 				}
 			}
 			break;
@@ -183,7 +193,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim->Channel == HAL_TIM_ACTIVE_CHANNEL_4 && htim->Instance == TIM3 && sonar_tbl[0].wait_flag == true)
 	{
-		if(Ch1_PIN)
+		if(Ch1_PIN) //(TIM3->CCER & TIM_CCER_CC4P) == 0
 		{  // Timer2 Ch1 pin(PA0) is High
 			TIM3->CCR4 = 0;
 			sonar_tbl[0].rising_time = TIM3->CCR4; // read capture data

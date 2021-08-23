@@ -49,6 +49,7 @@ void LCD_CLEAR(void);
 void LCD_PUTS(char *str);
 void output_TEMP(float temp);
 void output_DISTANCE(uint32_t temp);
+void output_time_out(uint32_t temp);
 void LCDprintInt16(int16_t v);
 void lcdprint_uint32(uint32_t v);
 

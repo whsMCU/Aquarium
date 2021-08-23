@@ -21,3 +21,4 @@ clcd.c:123:6:LCDprintInt16	32	static
 clcd.c:141:6:lcdprint_uint32	16	static
 clcd.c:157:6:output_TEMP	16	static
 clcd.c:175:6:output_DISTANCE	16	static
+clcd.c:187:6:output_time_out	16	static

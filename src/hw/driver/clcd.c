@@ -184,4 +184,16 @@ void output_DISTANCE(uint32_t temp)
 	LCD_PUTS(line);
 }
 
+void output_time_out(uint32_t temp)
+{
+	static char line[7] = "----";
+    //                     0123
+
+	line[0] = digit1000(temp);
+	line[1] = digit100(temp);
+	line[2] = digit10(temp);
+    line[3] = digit1(temp);
+	LCD_PUTS(line);
+}
+
 

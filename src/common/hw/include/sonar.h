@@ -21,6 +21,7 @@ typedef struct
     uint32_t	  rising_time;
     uint32_t      falling_time;
     uint32_t	  duty_time;
+    uint32_t	  time_out_cnt;
     uint32_t      distance_cm;
     uint32_t      filter_distance_cm;
 } sonar_tbl_t;
@@ -28,6 +29,6 @@ typedef struct
 extern sonar_tbl_t sonar_tbl[HW_SONAR_MAX_CH];
 
 bool     sonarInit(void);
-bool	 measure(void);
+bool	 Sonar_measure(void);
 
 #endif /* SRC_COMMON_HW_INCLUDE_SONAR_H_ */

@@ -83,7 +83,6 @@ bool buttonGetPressed(uint8_t ch)
   		  {
   			  button->lastDebounceTime = millis();
   			  button->State = BUTTON_Pressed;
-  			  button->PinState = GPIO_PIN_SET;
   		  }
   		  break;
 

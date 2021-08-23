@@ -1,6 +1,6 @@
 user_delay.h:19:22:DWT_Delay_us	24	static
 sonar.c:22:6:sonarInit	56	static
-sonar.c:69:6:measure	24	static
-sonar.c:122:6:HAL_TIM_Base_MspInit	48	static
-sonar.c:154:6:HAL_TIM_Base_MspDeInit	16	static
-sonar.c:182:6:HAL_TIM_IC_CaptureCallback	16	static
+sonar.c:69:6:Sonar_measure	24	static
+sonar.c:132:6:HAL_TIM_Base_MspInit	48	static
+sonar.c:164:6:HAL_TIM_Base_MspDeInit	16	static
+sonar.c:192:6:HAL_TIM_IC_CaptureCallback	16	static
