@@ -103,7 +103,7 @@ bool st7735Reset(void)
   st7735InitRegs();
 
 
-  st7735SetRotation(3);
+  st7735SetRotation(1);
   st7735FillRect(0, 0, HW_LCD_WIDTH, HW_LCD_HEIGHT, black);
   gpioPinWrite(_PIN_DEF_BKT, _DEF_LOW);
   return true;

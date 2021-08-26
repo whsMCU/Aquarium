@@ -74,9 +74,13 @@ bool spiBegin(uint8_t ch)
       hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
       hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
       hspi1.Init.CRCPolynomial = 10;
-      if (HAL_SPI_Init(&hspi1) != HAL_OK)
+
+      HAL_SPI_DeInit(&hspi1);
+
+      if (HAL_SPI_Init(&hspi1) == HAL_OK)
       {
-        Error_Handler();
+        p_spi->is_open = true;
+        ret = true;
       }
       break;
 
@@ -321,7 +325,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
 	  if(spiHandle->Instance==SPI1)
 	  {
 	  /* USER CODE BEGIN SPI1_MspInit 0 */
-
+		  __HAL_RCC_DMA2_CLK_ENABLE();
 	  /* USER CODE END SPI1_MspInit 0 */
 	    /* SPI1 clock enable */
 	    __HAL_RCC_SPI1_CLK_ENABLE();
@@ -345,8 +349,8 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
 	    hdma_spi1_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
 	    hdma_spi1_tx.Init.PeriphInc = DMA_PINC_DISABLE;
 	    hdma_spi1_tx.Init.MemInc = DMA_MINC_ENABLE;
-	    hdma_spi1_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
-	    hdma_spi1_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+	    hdma_spi1_tx.Init.PeriphDataAlignment = DMA_MDATAALIGN_HALFWORD;
+	    hdma_spi1_tx.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
 	    hdma_spi1_tx.Init.Mode = DMA_NORMAL;
 	    hdma_spi1_tx.Init.Priority = DMA_PRIORITY_LOW;
 	    hdma_spi1_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
@@ -361,7 +365,9 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
 	    HAL_NVIC_SetPriority(SPI1_IRQn, 0, 0);
 	    HAL_NVIC_EnableIRQ(SPI1_IRQn);
 	  /* USER CODE BEGIN SPI1_MspInit 1 */
-
+	    /* DMA2_Stream3_IRQn interrupt configuration */
+	    HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+	    HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
 	  /* USER CODE END SPI1_MspInit 1 */
   }
 }

@@ -56,7 +56,7 @@ void apMain(void)
     }
 
     cliMain();
-    //lcdMain();
+    lcdMain();
   }
 }
 
@@ -72,8 +72,8 @@ void lcdMain(void)
   if (lcdDrawAvailable() == true)
   {
       lcdClearBuffer(black);
-
-      lcdPrintf(25,16*0, green, "[LCD 테스트]");
+      lcdSetFont(LCD_FONT_HAN);
+      lcdPrintf(10,16*0, green, "[테스트]");
 
       lcdPrintf(0,16*1, white, "%d fps", lcdGetFps());
       lcdPrintf(0,16*2, white, "%d ms" , lcdGetFpsTime());
