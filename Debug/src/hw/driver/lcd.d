@@ -32,7 +32,12 @@ src/hw/driver/lcd.o: ../src/hw/driver/lcd.c \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/cli.h
+ D:/3.\ Project/Aquarium/src/common/hw/include/cli.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h \
+ ../src/hw/driver/hangul/han.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/lcd/lcd_fonts.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/lcd/st7735.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/lcd/st7735_regs.h
 
 D:/3.\ Project/Aquarium/src/common/hw/include/lcd.h:
 
@@ -101,3 +106,13 @@ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 
 D:/3.\ Project/Aquarium/src/common/hw/include/cli.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h:
+
+../src/hw/driver/hangul/han.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/lcd/lcd_fonts.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/lcd/st7735.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/lcd/st7735_regs.h:

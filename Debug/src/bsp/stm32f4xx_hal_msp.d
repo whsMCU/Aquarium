@@ -37,6 +37,8 @@ src/bsp/stm32f4xx_hal_msp.o: ../src/bsp/stm32f4xx_hal_msp.c \
  D:/3.\ Project/Aquarium/src/hw/hw_def.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/led.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/uart.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/spi.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/lcd.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/cli.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/button.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h \
@@ -123,6 +125,10 @@ D:/3.\ Project/Aquarium/src/hw/hw_def.h:
 D:/3.\ Project/Aquarium/src/common/hw/include/led.h:
 
 D:/3.\ Project/Aquarium/src/common/hw/include/uart.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/spi.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/lcd.h:
 
 D:/3.\ Project/Aquarium/src/common/hw/include/cli.h:
 

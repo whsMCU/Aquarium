@@ -56,5 +56,33 @@ void apMain(void)
     }
 
     cliMain();
+    //lcdMain();
+  }
+}
+
+
+void lcdMain(void)
+{
+  if (lcdIsInit() != true)
+  {
+    return;
+  }
+
+
+  if (lcdDrawAvailable() == true)
+  {
+      lcdClearBuffer(black);
+
+      lcdPrintf(25,16*0, green, "[LCD 테스트]");
+
+      lcdPrintf(0,16*1, white, "%d fps", lcdGetFps());
+      lcdPrintf(0,16*2, white, "%d ms" , lcdGetFpsTime());
+      lcdPrintf(0,16*3, white, "%d ms" , millis());
+
+      lcdDrawFillRect( 0, 70, 10, 10, red);
+      lcdDrawFillRect(10, 70, 10, 10, green);
+      lcdDrawFillRect(20, 70, 10, 10, blue);
+
+      lcdRequestDraw();
   }
 }

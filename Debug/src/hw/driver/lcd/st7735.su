@@ -1,0 +1,14 @@
+st7735.c:55:13:TransferDoneISR	8	static
+st7735.c:70:6:st7735Init	16	static
+st7735.c:79:6:st7735InitDriver	16	static
+st7735.c:91:6:st7735Reset	16	static
+st7735.c:112:10:st7735GetWidth	4	static
+st7735.c:117:10:st7735GetHeight	4	static
+st7735.c:122:6:writecommand	16	static
+st7735.c:132:6:writedata	16	static
+st7735.c:142:6:st7735InitRegs	8	static
+st7735.c:226:6:st7735SetRotation	16	static
+st7735.c:250:6:st7735SetWindow	24	static
+st7735.c:269:6:st7735FillRect	56	dynamic
+st7735.c:305:6:st7735SendBuffer	24	static
+st7735.c:318:6:st7735SetCallBack	16	static

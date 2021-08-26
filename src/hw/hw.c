@@ -15,8 +15,10 @@
 void hwInit(void)
 {
   bspInit();
+
   cliInit();
   uartInit();
+  spiInit();
   DWT_Delay_Init();
   ledInit();
   buttonInit();
@@ -24,4 +26,5 @@ void hwInit(void)
   Ds18b20_Init();
   sonarInit();
   LCD_INIT();
+  lcdInit();
 }
