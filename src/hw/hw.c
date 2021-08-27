@@ -17,10 +17,10 @@ void hwInit(void)
   bspInit();
 
   cliInit();
+  ledInit();
   uartInit();
   spiInit();
   DWT_Delay_Init();
-  ledInit();
   buttonInit();
   gpioInit();
   Ds18b20_Init();

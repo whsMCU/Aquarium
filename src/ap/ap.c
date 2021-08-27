@@ -31,7 +31,6 @@ void apMain(void)
     if (millis()-pre_time >= 1000)
     {
       pre_time = millis();
-
     }
     Ds18b20_ManualConvert();
 
@@ -44,7 +43,6 @@ void apMain(void)
     LCD_XY(9, 2); output_DISTANCE(sonar_tbl[0].filter_distance_cm);
     LCD_XY(15, 0); output_time_out(sonar_tbl[0].time_out_cnt);
     LCD_XY(4, 3); LCD_PUTS((char *)"I LOVE YUJIN");
-    //LCD_CMD(0x18);
 
     if(buttonGetPressed(_DEF_BUTTON1))
     {
@@ -73,15 +71,18 @@ void lcdMain(void)
   {
       lcdClearBuffer(black);
       lcdSetFont(LCD_FONT_HAN);
-      lcdPrintf(10,16*0, green, "[테스트]");
+      lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움]");
 
       lcdPrintf(0,16*1, white, "%d fps", lcdGetFps());
       lcdPrintf(0,16*2, white, "%d ms" , lcdGetFpsTime());
       lcdPrintf(0,16*3, white, "%d ms" , millis());
 
-      lcdDrawFillRect( 0, 70, 10, 10, red);
-      lcdDrawFillRect(10, 70, 10, 10, green);
-      lcdDrawFillRect(20, 70, 10, 10, blue);
+      lcdPrintf(0,16*4, white, "물온도 : %3.1d 도" , ds18b20[0].Temperature);
+      lcdPrintf(0,16*5, white, "물높이 : %3d cm" , sonar_tbl[0].filter_distance_cm/10);
+
+      lcdDrawFillRect( 0, 100, 10, 10, red);
+      lcdDrawFillRect(10, 100, 10, 10, green);
+      lcdDrawFillRect(20, 100, 10, 10, blue);
 
       lcdRequestDraw();
   }
