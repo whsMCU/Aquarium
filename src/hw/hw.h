@@ -25,6 +25,7 @@
 #include "onewire.h"
 #include "ds18b20.h"
 #include "sonar.h"
+#include "tds.h"
 
 
 void hwInit(void);

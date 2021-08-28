@@ -63,6 +63,9 @@
 #define _USE_HW_SONAR
 #define      HW_SONAR_MAX_CH		1
 
+#define _USE_HW_TDS
+#define      HW_TDS_MAX_CH		1
+
 #define _USE_HW_DS18B20
 #define		 HW_DS18B20_MAX_CH     			1
 #define		 HW_DS18B20_GPIOX	  			GPIOB

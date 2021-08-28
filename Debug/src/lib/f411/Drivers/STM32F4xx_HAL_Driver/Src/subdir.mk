@@ -5,6 +5,8 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
+../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c \
+../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c \
 ../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c \
 ../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c \
 ../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c \
@@ -24,6 +26,8 @@ C_SRCS += \
 
 OBJS += \
 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o \
+./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o \
+./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.o \
 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o \
 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o \
 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o \
@@ -43,6 +47,8 @@ OBJS += \
 
 C_DEPS += \
 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d \
+./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.d \
+./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.d \
 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.d \
 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.d \
 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.d \
@@ -64,6 +70,10 @@ C_DEPS += \
 # Each subdirectory must supply rules for building sources it contributes
 src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o: ../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32 -DSTM32F411xE -DSTM32F4 -DSTM32F411CEUx -DDEBUG -c -I"D:/3. Project/Aquarium/src" -I"D:/3. Project/Aquarium/src/ap" -I"D:/3. Project/Aquarium/src/bsp" -I"D:/3. Project/Aquarium/src/common" -I"D:/3. Project/Aquarium/src/common/core" -I"D:/3. Project/Aquarium/src/common/hw/include/lcd" -I"D:/3. Project/Aquarium/src/hw" -I"D:/3. Project/Aquarium/src/common/hw/include" -I"D:/3. Project/Aquarium/src/hw/driver" -I"D:/3. Project/Aquarium/src/hw/driver/hangul" -I"D:/3. Project/Aquarium/src/lib" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/CMSIS/Include" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o: ../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32 -DSTM32F411xE -DSTM32F4 -DSTM32F411CEUx -DDEBUG -c -I"D:/3. Project/Aquarium/src" -I"D:/3. Project/Aquarium/src/ap" -I"D:/3. Project/Aquarium/src/bsp" -I"D:/3. Project/Aquarium/src/common" -I"D:/3. Project/Aquarium/src/common/core" -I"D:/3. Project/Aquarium/src/common/hw/include/lcd" -I"D:/3. Project/Aquarium/src/hw" -I"D:/3. Project/Aquarium/src/common/hw/include" -I"D:/3. Project/Aquarium/src/hw/driver" -I"D:/3. Project/Aquarium/src/hw/driver/hangul" -I"D:/3. Project/Aquarium/src/lib" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/CMSIS/Include" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.o: ../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32 -DSTM32F411xE -DSTM32F4 -DSTM32F411CEUx -DDEBUG -c -I"D:/3. Project/Aquarium/src" -I"D:/3. Project/Aquarium/src/ap" -I"D:/3. Project/Aquarium/src/bsp" -I"D:/3. Project/Aquarium/src/common" -I"D:/3. Project/Aquarium/src/common/core" -I"D:/3. Project/Aquarium/src/common/hw/include/lcd" -I"D:/3. Project/Aquarium/src/hw" -I"D:/3. Project/Aquarium/src/common/hw/include" -I"D:/3. Project/Aquarium/src/hw/driver" -I"D:/3. Project/Aquarium/src/hw/driver/hangul" -I"D:/3. Project/Aquarium/src/lib" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/CMSIS/Include" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o: ../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32 -DSTM32F411xE -DSTM32F4 -DSTM32F411CEUx -DDEBUG -c -I"D:/3. Project/Aquarium/src" -I"D:/3. Project/Aquarium/src/ap" -I"D:/3. Project/Aquarium/src/bsp" -I"D:/3. Project/Aquarium/src/common" -I"D:/3. Project/Aquarium/src/common/core" -I"D:/3. Project/Aquarium/src/common/hw/include/lcd" -I"D:/3. Project/Aquarium/src/hw" -I"D:/3. Project/Aquarium/src/common/hw/include" -I"D:/3. Project/Aquarium/src/hw/driver" -I"D:/3. Project/Aquarium/src/hw/driver/hangul" -I"D:/3. Project/Aquarium/src/lib" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/CMSIS/Include" -I"D:/3. Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o: ../src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c

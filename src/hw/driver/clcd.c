@@ -196,4 +196,12 @@ void output_time_out(uint32_t temp)
 	LCD_PUTS(line);
 }
 
+//    LCD_XY(1, 1); LCD_PUTS((char *)"WTR_T : ");
+//    LCD_XY(8, 1); output_TEMP(ds18b20[0].Temperature*10);
+//    LCD_XY(13, 1); LCD_print_SC(223);
+//    LCD_XY(1, 2); LCD_PUTS((char *)"WTR_L : ");
+//    LCD_XY(9, 2); output_DISTANCE(sonar_tbl[0].filter_distance_cm);
+//    LCD_XY(15, 0); output_time_out(sonar_tbl[0].time_out_cnt);
+//    LCD_XY(4, 3); LCD_PUTS((char *)"I LOVE YUJIN");
+
 
