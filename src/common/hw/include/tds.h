@@ -10,10 +10,20 @@
 
 #include "hw_def.h"
 
+#define TdsFactor 0.5  // tds = ec / 2
+
 typedef struct
 {
-	uint32_t	  rawdata;
-    uint32_t      voltage;
+	uint8_t		aref;
+	float		kValue;
+	float		temperature;
+	float		adcRange;
+	uint32_t	analogValue;
+	float   	voltage;
+	float 		ecValue;
+	float		ecValue25;
+	float		tdsValue;
+	float		filter_tdsValue;
 } tds_tbl_t;
 
 extern tds_tbl_t tds_tbl[HW_TDS_MAX_CH];

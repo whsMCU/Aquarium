@@ -35,6 +35,7 @@ void apMain(void)
     //Ds18b20_ManualConvert();
 
     Sonar_measure();
+    tds_measure();
 
     if(buttonGetPressed(_DEF_BUTTON1))
     {
@@ -70,11 +71,11 @@ void lcdMain(void)
 
       lcdPrintf(0,16*4, white, "물온도 : %3d 도" , (int32_t) ds18b20[0].Temperature);
       lcdPrintf(0,16*5, white, "물높이 : %3d cm" , sonar_tbl[0].filter_distance_cm/10);
-      lcdPrintf(0,16*6, white, "TDS : %4d ppm" , tds_tbl[0].rawdata);
+      lcdPrintf(0,16*6, white, "TDS : %4d ppm" , (int32_t) tds_tbl[0].filter_tdsValue);
 
-      lcdDrawFillRect( 0, 116, 10, 10, red);
-      lcdDrawFillRect(10, 116, 10, 10, green);
-      lcdDrawFillRect(20, 116, 10, 10, blue);
+      lcdDrawFillRect( 0, 118, 10, 10, red);
+      lcdDrawFillRect(10, 118, 10, 10, green);
+      lcdDrawFillRect(20, 118, 10, 10, blue);
 
       lcdRequestDraw();
   }
