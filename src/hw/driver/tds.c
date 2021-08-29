@@ -50,6 +50,8 @@ bool tdsInit(void)
 	    Error_Handler();
 	  }
 
+	  HAL_ADC_Start_DMA(&hadc1, &tds_tbl[0].rawdata, 1);
+
 	return ret;
 
 }
@@ -105,10 +107,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
 
   /* USER CODE BEGIN ADC1_MspInit 1 */
     /* DMA2_Stream0_IRQn interrupt configuration */
-    HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 7, 0);
     HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
-
-    HAL_ADC_Start_DMA(&hadc1, &tds_tbl[0].rawdata, 1);
   /* USER CODE END ADC1_MspInit 1 */
   }
 }

@@ -8,7 +8,7 @@
 
 #include "ap.h"
 
-
+extern ADC_HandleTypeDef hadc1;
 
 void lcdMain(void);
 
@@ -17,6 +17,7 @@ void lcdMain(void);
 void apInit(void)
 {
 	cliOpen(_DEF_UART1, 57600);
+	//HAL_ADC_Start_DMA(&hadc1, &tds_tbl[0].rawdata, 1);
 }
 
 void apMain(void)

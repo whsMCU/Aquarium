@@ -366,7 +366,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
 	    HAL_NVIC_EnableIRQ(SPI1_IRQn);
 	  /* USER CODE BEGIN SPI1_MspInit 1 */
 	    /* DMA2_Stream3_IRQn interrupt configuration */
-	    HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+	    HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 5, 0);
 	    HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
 	  /* USER CODE END SPI1_MspInit 1 */
   }
