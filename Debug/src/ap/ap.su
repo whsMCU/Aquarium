@@ -1,3 +1,3 @@
-ap.c:17:6:apInit	8	static
-ap.c:23:6:apMain	16	static
-ap.c:54:6:lcdMain	16	static
+ap.c:13:6:apInit	8	static
+ap.c:18:6:apMain	16	static
+ap.c:49:6:lcdMain	16	static

@@ -82,9 +82,7 @@ bool tds_measure(void)
 	tdsHistIdx = indexplus1;
 	tds->filter_tdsValue = tdsValueSum / 10;
 
-
 	return ret;
-
 }
 
 void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
