@@ -27,6 +27,7 @@ enum
 	SPK_EN,
 	DS18B20_DATA,
 	SONAR_DATA,
+	BUZZER,
 };
 
 

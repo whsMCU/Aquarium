@@ -32,6 +32,7 @@ const gpio_tbl_t gpio_tbl[GPIO_MAX_CH] =
         {GPIOB, GPIO_PIN_12, _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, false},      // 6. SPK_EN
 		{GPIOB, GPIO_PIN_0,	 _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, false},		 // 7. DS18B20 DATA
 		{GPIOB, GPIO_PIN_1,  _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, false},		 // 8. SONAR_PIN
+		{GPIOB, GPIO_PIN_14, _DEF_OUTPUT,       GPIO_PIN_SET,   GPIO_PIN_RESET, false},		 // 9. BUZZER
     };
 
 

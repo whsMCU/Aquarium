@@ -7,5 +7,5 @@ uart.c:209:10:uartPrintf	292	static
 uart.c:227:10:uartGetBaud	24	static
 uart.c:248:6:HAL_UART_ErrorCallback	16	static
 uart.c:255:6:HAL_UART_RxCpltCallback	16	static
-uart.c:267:6:HAL_UART_MspInit	48	static
-uart.c:337:6:HAL_UART_MspDeInit	16	static
+uart.c:265:6:HAL_UART_MspInit	48	static
+uart.c:343:6:HAL_UART_MspDeInit	16	static
