@@ -29,4 +29,6 @@ void hwInit(void)
   //LCD_INIT();
   lcdInit();
   tdsInit();
+
+  sdInit();
 }

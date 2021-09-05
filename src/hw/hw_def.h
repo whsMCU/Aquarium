@@ -12,7 +12,8 @@
 #include "def.h"
 #include "bsp.h"
 
-
+#define _USE_HW_SD
+#define _USE_HW_FATFS
 
 
 #define _USE_HW_LED
@@ -71,5 +72,7 @@
 #define		 HW_DS18B20_GPIOX	  			GPIOB
 #define      HW_DS18B20_PINX				GPIO_PIN_0
 #define      HW_DS18B20_CONVERT_TIMEOUT_MS  5000
+
+#define _PIN_GPIO_SDCARD_DETECT     0
 
 #endif /* SRC_HW_HW_DEF_H_ */

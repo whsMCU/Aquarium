@@ -344,7 +344,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
 
 	    /* SPI1 DMA Init */
 	    /* SPI1_TX Init */
-	    hdma_spi1_tx.Instance = DMA2_Stream3;
+	    hdma_spi1_tx.Instance = DMA2_Stream5;
 	    hdma_spi1_tx.Init.Channel = DMA_CHANNEL_3;
 	    hdma_spi1_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
 	    hdma_spi1_tx.Init.PeriphInc = DMA_PINC_DISABLE;
@@ -366,8 +366,8 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
 	    HAL_NVIC_EnableIRQ(SPI1_IRQn);
 	  /* USER CODE BEGIN SPI1_MspInit 1 */
 	    /* DMA2_Stream3_IRQn interrupt configuration */
-	    HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 5, 0);
-	    HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+	    HAL_NVIC_SetPriority(DMA2_Stream5_IRQn, 5, 0);
+	    HAL_NVIC_EnableIRQ(DMA2_Stream5_IRQn);
 	  /* USER CODE END SPI1_MspInit 1 */
   }
 }
