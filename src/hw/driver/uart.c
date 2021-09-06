@@ -67,10 +67,10 @@ bool uartOpen(uint8_t ch, uint32_t baud)
 
         /* DMA interrupt init */
         /* DMA2_Stream2_IRQn interrupt configuration */
-        HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 0, 0);
+        HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 4, 0);
         HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
         /* DMA2_Stream7_IRQn interrupt configuration */
-        HAL_NVIC_SetPriority(DMA2_Stream7_IRQn, 0, 0);
+        HAL_NVIC_SetPriority(DMA2_Stream7_IRQn, 4, 0);
         HAL_NVIC_EnableIRQ(DMA2_Stream7_IRQn);
 
         if (HAL_UART_Init(&huart1) != HAL_OK)
@@ -111,10 +111,10 @@ bool uartOpen(uint8_t ch, uint32_t baud)
 
       /* DMA interrupt init */
       /* DMA2_Stream2_IRQn interrupt configuration */
-      HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 0, 0);
+      HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 4, 0);
       HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
       /* DMA2_Stream7_IRQn interrupt configuration */
-      HAL_NVIC_SetPriority(DMA2_Stream7_IRQn, 0, 0);
+      HAL_NVIC_SetPriority(DMA2_Stream7_IRQn, 4, 0);
       HAL_NVIC_EnableIRQ(DMA2_Stream7_IRQn);
 
 
