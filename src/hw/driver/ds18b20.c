@@ -6,7 +6,13 @@
  */
 
 #include "ds18b20.h"
+#include "cli.h"
 
+#ifdef _USE_HW_DS18B20
+
+#ifdef _USE_HW_CLI
+static void cliDS18B20(cli_args_t *args);
+#endif
 
 //###################################################################################
 Ds18b20Sensor_t	ds18b20[HW_DS18B20_MAX_CH];
@@ -59,6 +65,11 @@ bool	Ds18b20_Init(void)
 		HAL_Delay(50);
 		DS18B20_DisableAlarmTemperature(&OneWire,  ds18b20[i].Address);
 	}
+
+	#ifdef _USE_HW_CLI
+	cliAdd("DS18B20", cliDS18B20);
+	#endif
+
 	return true;
 }
 #endif
@@ -621,3 +632,29 @@ uint8_t DS18B20_AllDone(OneWire_t* OneWire)
 	/* If read bit is low, then device is not finished yet with calculation temperature */
 	return OneWire_ReadBit(OneWire);
 }
+
+#ifdef _USE_HW_CLI
+void cliDS18B20(cli_args_t *args)
+{
+  bool ret = false;
+
+
+  if (args->argc == 1 && args->isStr(0, "test") == true)
+  {
+
+	  while(cliKeepLoop())
+	  {
+		  Ds18b20_ManualConvert();
+		  cliPrintf("DS18B20_Data : %0.1f\n", ds18b20[0].Temperature);
+	  }
+    ret = true;
+  }
+
+  if (ret != true)
+  {
+    cliPrintf("DS18B20 test\n");
+  }
+}
+#endif
+
+#endif
