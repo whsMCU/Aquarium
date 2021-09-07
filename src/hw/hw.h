@@ -26,6 +26,9 @@
 #include "ds18b20.h"
 #include "sonar.h"
 #include "tds.h"
+#include "sd.h"
+#include "fatfs.h"
+#include "files.h"
 
 
 void hwInit(void);

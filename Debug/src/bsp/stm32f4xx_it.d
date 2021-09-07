@@ -52,6 +52,9 @@ src/bsp/stm32f4xx_it.o: ../src/bsp/stm32f4xx_it.c \
  D:/3.\ Project/Aquarium/src/common/hw/include/ds18b20.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/tds.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/sd.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/fatfs.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/files.h \
  ../src/bsp/stm32f4xx_it.h
 
 D:/3.\ Project/Aquarium/src/main.h:
@@ -161,5 +164,11 @@ D:/3.\ Project/Aquarium/src/common/hw/include/ds18b20.h:
 D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h:
 
 D:/3.\ Project/Aquarium/src/common/hw/include/tds.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/sd.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/fatfs.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/files.h:
 
 ../src/bsp/stm32f4xx_it.h:

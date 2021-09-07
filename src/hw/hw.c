@@ -30,5 +30,8 @@ void hwInit(void)
   lcdInit();
   tdsInit();
 
-  sdInit();
+  if (sdInit() == true)
+  {
+    fatfsInit();
+  }
 }
