@@ -230,19 +230,19 @@ void st7735SetRotation(uint8_t mode)
   switch (mode)
   {
    case 0:
-     writedata(MADCTL_MX | MADCTL_MY | MADCTL_BGR);
+     writedata(MADCTL_MX | MADCTL_MY | MADCTL_RGB);
      break;
 
    case 1:
-     writedata(MADCTL_MY | MADCTL_MV | MADCTL_BGR);
+     writedata(MADCTL_MY | MADCTL_MV | MADCTL_RGB);
      break;
 
   case 2:
-    writedata(MADCTL_BGR);
+    writedata(MADCTL_RGB);
     break;
 
    case 3:
-     writedata(MADCTL_MX | MADCTL_MV | MADCTL_BGR);
+     writedata(MADCTL_MX | MADCTL_MV | MADCTL_RGB);
      break;
   }
 }

@@ -76,100 +76,100 @@ bool	Ds18b20_Init(void)
 //###########################################################################################
 bool Ds18b20_ManualConvert(void)
 {
-	#if (_DS18B20_USE_FREERTOS==1)
-	Ds18b20StartConvert=1;
-	while(Ds18b20StartConvert==1)
-		Ds18b20Delay(10);
-	if(Ds18b20Timeout==0)
-		return false;
-	else
-		return true;
-	#else
-	Ds18b20Timeout= HW_DS18B20_CONVERT_TIMEOUT_MS/10;
-	DS18B20_StartAll(&OneWire);
-	HAL_Delay(100);
-	while (!DS18B20_AllDone(&OneWire))
-	{
-		HAL_Delay(10);
-		Ds18b20Timeout-=1;
-		if(Ds18b20Timeout==0)
-			break;
-	}
-	if(Ds18b20Timeout>0)
-	{
-		for (uint8_t i = 0; i < TempSensorCount; i++)
-		{
-			HAL_Delay(100);
-			ds18b20[i].DataIsValid = DS18B20_Read(&OneWire, ds18b20[i].Address, &ds18b20[i].Temperature);
-		}
-	}
-	else
-	{
-		for (uint8_t i = 0; i < TempSensorCount; i++)
-			ds18b20[i].DataIsValid = false;
-	}
-	if(Ds18b20Timeout==0)
-		return false;
-	else
-		return true;
-	#endif
-//	static uint32_t pre_time;
-//	static uint8_t state = 0;
 //	#if (_DS18B20_USE_FREERTOS==1)
 //	Ds18b20StartConvert=1;
 //	while(Ds18b20StartConvert==1)
-//		HAL_Delay(10);
+//		Ds18b20Delay(10);
 //	if(Ds18b20Timeout==0)
 //		return false;
 //	else
 //		return true;
 //	#else
-//	  switch(state)
-//	  {
-//	  	  case 0:
-//	  		  Ds18b20Timeout = HW_DS18B20_CONVERT_TIMEOUT_MS/10;
-//	  		  DS18B20_StartAll(&OneWire);
-//	  		  pre_time = millis();
-//	  		  state++;
-//	  		  break;
-//
-//	  	  case 1:
-//	  		  if(millis() - pre_time >= 10)
-//	  		  {
-//	  			  if(!DS18B20_AllDone(&OneWire))
-//				  {
-//	  		  		pre_time = millis();
-//					Ds18b20Timeout-=1;
-//					if(Ds18b20Timeout==0)
-//					{
-//						state = 0;
-//						break;
-//					}
-//				  }
-//	  			  else
-//	  			  {
-//	  				  if(Ds18b20Timeout>0)
-//	  				  {
-//	  					for (uint8_t i = 0; i < TempSensorCount; i++)
-//	  					{
-//	  						ds18b20[i].DataIsValid = DS18B20_Read(&OneWire, ds18b20[i].Address, &ds18b20[i].Temperature);
-//	  						state = 0;
-//	  					}
-//	  				  }
-//	  				  else
-//	  				  {
-//	  					for (uint8_t i = 0; i < TempSensorCount; i++)
-//	  					{
-//	  						ds18b20[i].DataIsValid = false;
-//	  						state = 0;
-//	  					}
-//	  				  }
-//	  			  }
-//	  		  }
-//			  break;
-//	  }
+//	Ds18b20Timeout= HW_DS18B20_CONVERT_TIMEOUT_MS/10;
+//	DS18B20_StartAll(&OneWire);
+//	HAL_Delay(100);
+//	while (!DS18B20_AllDone(&OneWire))
+//	{
+//		HAL_Delay(10);
+//		Ds18b20Timeout-=1;
+//		if(Ds18b20Timeout==0)
+//			break;
+//	}
+//	if(Ds18b20Timeout>0)
+//	{
+//		for (uint8_t i = 0; i < TempSensorCount; i++)
+//		{
+//			HAL_Delay(100);
+//			ds18b20[i].DataIsValid = DS18B20_Read(&OneWire, ds18b20[i].Address, &ds18b20[i].Temperature);
+//		}
+//	}
+//	else
+//	{
+//		for (uint8_t i = 0; i < TempSensorCount; i++)
+//			ds18b20[i].DataIsValid = false;
+//	}
+//	if(Ds18b20Timeout==0)
+//		return false;
+//	else
+//		return true;
 //	#endif
-//	  return true;
+	static uint32_t pre_time;
+	static uint8_t state = 0;
+	#if (_DS18B20_USE_FREERTOS==1)
+	Ds18b20StartConvert=1;
+	while(Ds18b20StartConvert==1)
+		HAL_Delay(10);
+	if(Ds18b20Timeout==0)
+		return false;
+	else
+		return true;
+	#else
+	  switch(state)
+	  {
+	  	  case 0:
+	  		  Ds18b20Timeout = HW_DS18B20_CONVERT_TIMEOUT_MS/10;
+	  		  DS18B20_StartAll(&OneWire);
+	  		  pre_time = millis();
+	  		  state++;
+	  		  break;
+
+	  	  case 1:
+	  		  if(millis() - pre_time >= 10)
+	  		  {
+	  			  if(!DS18B20_AllDone(&OneWire))
+				  {
+	  		  		pre_time = millis();
+					Ds18b20Timeout-=1;
+					if(Ds18b20Timeout==0)
+					{
+						state = 0;
+						break;
+					}
+				  }
+	  			  else
+	  			  {
+	  				  if(Ds18b20Timeout>0)
+	  				  {
+	  					for (uint8_t i = 0; i < TempSensorCount; i++)
+	  					{
+	  						ds18b20[i].DataIsValid = DS18B20_Read(&OneWire, ds18b20[i].Address, &ds18b20[i].Temperature);
+	  						state = 0;
+	  					}
+	  				  }
+	  				  else
+	  				  {
+	  					for (uint8_t i = 0; i < TempSensorCount; i++)
+	  					{
+	  						ds18b20[i].DataIsValid = false;
+	  						state = 0;
+	  					}
+	  				  }
+	  			  }
+	  		  }
+			  break;
+	  }
+	#endif
+	  return true;
 }
 //###########################################################################################
 #if (_DS18B20_USE_FREERTOS==1)
