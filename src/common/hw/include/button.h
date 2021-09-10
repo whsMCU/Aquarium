@@ -15,6 +15,15 @@
 
 #define BUTTON_MAX_CH         HW_BUTTON_MAX_CH
 
+enum
+{
+	USER_BTN,
+	MENU_BTN,
+	UP_BTN,
+	DOWN_BTN,
+	SEL_BTN,
+};
+
 
 bool buttonInit(void);
 bool buttonGetPressed(uint8_t ch);

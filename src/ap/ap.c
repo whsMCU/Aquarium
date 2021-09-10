@@ -47,13 +47,22 @@ void sensorMain(void)
 
 void buttonMain(void)
 {
-	if(buttonGetPressed(_DEF_BUTTON1))
+	if(buttonGetPressed(USER_BTN)|buttonGetPressed(MENU_BTN)|buttonGetPressed(UP_BTN)|buttonGetPressed(DOWN_BTN)|buttonGetPressed(SEL_BTN))
 	{
 		ledOn(_DEF_LED1);
 	}
 	else
 	{
 		ledOff(_DEF_LED1);
+	}
+
+	if(buttonGetPressed(SEL_BTN))
+	{
+		gpioPinWrite(BUZZER, SET);
+	}
+	else
+	{
+		gpioPinWrite(BUZZER, RESET);
 	}
 }
 
