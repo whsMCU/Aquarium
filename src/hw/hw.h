@@ -9,7 +9,6 @@
 #define SRC_HW_HW_H_
 
 
-#include <sonar.h>
 #include "hw_def.h"
 
 
@@ -29,7 +28,7 @@
 #include "sd.h"
 #include "fatfs.h"
 #include "files.h"
-
+#include "image.h"
 
 void hwInit(void);
 

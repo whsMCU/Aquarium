@@ -26,6 +26,7 @@
 "src/hw/driver/uart.o"
 "src/hw/driver/fatfs/sd_diskio.o"
 "src/hw/driver/hangul/han.o"
+"src/hw/driver/image/image.o"
 "src/hw/driver/lcd/lcd_fonts.o"
 "src/hw/driver/lcd/ssd1306.o"
 "src/hw/driver/lcd/st7735.o"

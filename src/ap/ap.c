@@ -98,6 +98,7 @@ void lcdMain(void)
       lcdDrawFillRect(10, 118, 10, 10, green);
       lcdDrawFillRect(20, 118, 10, 10, blue);
 
+
       lcdRequestDraw();
   }
 }

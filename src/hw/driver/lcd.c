@@ -8,6 +8,7 @@
 
 #include "lcd.h"
 #include "cli.h"
+#include "image.h"
 
 
 #ifdef _USE_HW_LCD
@@ -627,6 +628,15 @@ void lcdDrawRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color)
   lcdDrawVLine(x+w-1, y, h, color);
 }
 
+void lcdDrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint16_t* data) {
+    if((x >= LCD_WIDTH) || (y >= LCD_HEIGHT)) return;
+    if((x + w - 1) >= LCD_WIDTH) return;
+    if((y + h - 1) >= LCD_HEIGHT) return;
+
+    lcd.setWindow(x, y, x+w-1, y+h-1);
+    lcd.sendBuffer((uint8_t *)data, sizeof(uint16_t)*w*h, 10);
+}
+
 void lcdDrawFillScreen(uint16_t color)
 {
   lcdDrawFillRect(0, 0, HW_LCD_WIDTH, HW_LCD_HEIGHT, color);
@@ -826,9 +836,27 @@ void cliLcd(cli_args_t *args)
     ret = true;
   }
 
+  if (args->argc == 1 && args->isStr(0, "image") == true)
+  {
+	  lcdClearBuffer(black);
+	  lcdUpdateDraw();
+	 // while(cliKeepLoop())
+	 // {
+		  lcdDrawImage(50, 20, 50, 50, TEST);
+		  HAL_Delay(1000);
+		  lcdDrawImage(50, 20, 50, 50, TEST);
+		  HAL_Delay(1000);
+	 // }
+	 // lcdClearBuffer(black);
+	 // lcdUpdateDraw();
+
+	  ret = true;
+  }
+
   if (ret != true)
   {
     cliPrintf("lcd test\n");
+    cliPrintf("lcd image\n");
   }
 }
 #endif

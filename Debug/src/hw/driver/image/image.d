@@ -1,7 +1,5 @@
-src/bsp/stm32f4xx_hal_msp.o: ../src/bsp/stm32f4xx_hal_msp.c \
- D:/3.\ Project/Aquarium/src/main.h D:/3.\ Project/Aquarium/src/ap/ap.h \
- D:/3.\ Project/Aquarium/src/hw/hw.h \
- D:/3.\ Project/Aquarium/src/hw/hw_def.h \
+src/hw/driver/image/image.o: ../src/hw/driver/image/image.c \
+ ../src/hw/driver/image/image.h D:/3.\ Project/Aquarium/src/hw/hw_def.h \
  D:/3.\ Project/Aquarium/src/common/def.h \
  D:/3.\ Project/Aquarium/src/bsp/bsp.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
@@ -36,32 +34,9 @@ src/bsp/stm32f4xx_hal_msp.o: ../src/bsp/stm32f4xx_hal_msp.c \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/led.h \
- D:/3.\ Project/Aquarium/src/hw/hw_def.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/uart.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/spi.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/lcd.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/cli.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/button.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/clcd.h \
- D:/3.\ Project/Aquarium/src/common/core/user_delay.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/ds18b20.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/sonar.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/tds.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/sd.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/fatfs.h \
- D:/3.\ Project/Aquarium/src/common/hw/include/files.h \
- D:/3.\ Project/Aquarium/src/hw/driver/image/image.h
+ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 
-D:/3.\ Project/Aquarium/src/main.h:
-
-D:/3.\ Project/Aquarium/src/ap/ap.h:
-
-D:/3.\ Project/Aquarium/src/hw/hw.h:
+../src/hw/driver/image/image.h:
 
 D:/3.\ Project/Aquarium/src/hw/hw_def.h:
 
@@ -134,41 +109,3 @@ D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 
 D:/3.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/led.h:
-
-D:/3.\ Project/Aquarium/src/hw/hw_def.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/uart.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/spi.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/lcd.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/cli.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/button.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/gpio.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/clcd.h:
-
-D:/3.\ Project/Aquarium/src/common/core/user_delay.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/ds18b20.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/onewire.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/sonar.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/tds.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/sd.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/fatfs.h:
-
-D:/3.\ Project/Aquarium/src/common/hw/include/files.h:
-
-D:/3.\ Project/Aquarium/src/hw/driver/image/image.h:
