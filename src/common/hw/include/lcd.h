@@ -120,6 +120,7 @@ void lcdSetFont(LcdFont font);
 LcdFont lcdGetFont(void);
 
 void lcdDrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint16_t* data);
+void lcdDrawBufferImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint16_t* data);
 
 
 #endif /* _USE_HW_LCD */

@@ -93,6 +93,7 @@ void lcdMain(void)
       lcdPrintf(0,16*4, white, "물온도 : %3.1f 도" , ds18b20[0].Temperature);
       lcdPrintf(0,16*5, white, "물높이 : %3d cm" , sonar_tbl[0].filter_distance_cm/10);
       lcdPrintf(0,16*6, white, "TDS : %4.1f ppm" , tds_tbl[0].filter_tdsValue);
+      lcdDrawBufferImage(50, 20, 50, 50, TEST);
 
       lcdDrawFillRect( 0, 118, 10, 10, red);
       lcdDrawFillRect(10, 118, 10, 10, green);

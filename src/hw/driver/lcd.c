@@ -636,6 +636,21 @@ void lcdDrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint16_t
     lcd.setWindow(x, y, x+w-1, y+h-1);
     lcd.sendBuffer((uint8_t *)data, sizeof(uint16_t)*w*h, 10);
 }
+void lcdDrawBufferImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint16_t* data) {
+    if((x >= LCD_WIDTH) || (y >= LCD_HEIGHT)) return;
+    if((x + w - 1) >= LCD_WIDTH) return;
+    if((y + h - 1) >= LCD_HEIGHT) return;
+
+    uint16_t pixel_cnt = 0;
+
+    for (int16_t i=y; i<y+h; i++)
+    {
+		for (int16_t j=x; j<x+w; j++)
+		{
+			lcdDrawPixel(j, i, data[pixel_cnt++]);
+		}
+    }
+}
 
 void lcdDrawFillScreen(uint16_t color)
 {
@@ -840,15 +855,14 @@ void cliLcd(cli_args_t *args)
   {
 	  lcdClearBuffer(black);
 	  lcdUpdateDraw();
-	 // while(cliKeepLoop())
-	 // {
-		  lcdDrawImage(50, 20, 50, 50, TEST);
-		  HAL_Delay(1000);
-		  lcdDrawImage(50, 20, 50, 50, TEST);
-		  HAL_Delay(1000);
-	 // }
-	 // lcdClearBuffer(black);
-	 // lcdUpdateDraw();
+	  while(cliKeepLoop())
+	  {
+	  	  lcdDrawBufferImage(50, 20, 50, 50, TEST);
+	  	  lcdRequestDraw();
+
+	  }
+	  lcdClearBuffer(black);
+	  lcdUpdateDraw();
 
 	  ret = true;
   }
