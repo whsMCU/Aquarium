@@ -9,6 +9,7 @@
 #include "lcd.h"
 #include "cli.h"
 #include "image.h"
+#include "ui_common.h"
 
 
 #ifdef _USE_HW_LCD
@@ -857,9 +858,9 @@ void cliLcd(cli_args_t *args)
 	  lcdUpdateDraw();
 	  while(cliKeepLoop())
 	  {
-	  	  lcdDrawBufferImage(50, 20, 50, 50, TEST);
-	  	  lcdRequestDraw();
-
+		  static bool blink = 0;
+		  blink = get_blink();
+		  draw_fan_status(0, 0, blink);
 	  }
 	  lcdClearBuffer(black);
 	  lcdUpdateDraw();

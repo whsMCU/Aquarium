@@ -29,6 +29,7 @@
 #include "fatfs.h"
 #include "files.h"
 #include "image.h"
+#include "ui_common.h"
 
 void hwInit(void);
 

@@ -27,6 +27,7 @@ src/hw/driver \
 src/hw/driver/fatfs \
 src/hw/driver/hangul \
 src/hw/driver/image \
+src/hw/driver/image/source \
 src/hw/driver/lcd \
 src/hw \
 src/lib/FatFs/src \

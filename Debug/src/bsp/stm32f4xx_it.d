@@ -56,6 +56,7 @@ src/bsp/stm32f4xx_it.o: ../src/bsp/stm32f4xx_it.c \
  D:/3.\ Project/Aquarium/src/common/hw/include/fatfs.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/files.h \
  D:/3.\ Project/Aquarium/src/hw/driver/image/image.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/ui_common.h \
  ../src/bsp/stm32f4xx_it.h
 
 D:/3.\ Project/Aquarium/src/main.h:
@@ -173,5 +174,7 @@ D:/3.\ Project/Aquarium/src/common/hw/include/fatfs.h:
 D:/3.\ Project/Aquarium/src/common/hw/include/files.h:
 
 D:/3.\ Project/Aquarium/src/hw/driver/image/image.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/ui_common.h:
 
 ../src/bsp/stm32f4xx_it.h:

@@ -54,7 +54,8 @@ src/ap/ap.o: ../src/ap/ap.c ../src/ap/ap.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/sd.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/fatfs.h \
  D:/3.\ Project/Aquarium/src/common/hw/include/files.h \
- D:/3.\ Project/Aquarium/src/hw/driver/image/image.h
+ D:/3.\ Project/Aquarium/src/hw/driver/image/image.h \
+ D:/3.\ Project/Aquarium/src/common/hw/include/ui_common.h
 
 ../src/ap/ap.h:
 
@@ -169,3 +170,5 @@ D:/3.\ Project/Aquarium/src/common/hw/include/fatfs.h:
 D:/3.\ Project/Aquarium/src/common/hw/include/files.h:
 
 D:/3.\ Project/Aquarium/src/hw/driver/image/image.h:
+
+D:/3.\ Project/Aquarium/src/common/hw/include/ui_common.h:

@@ -12,6 +12,7 @@ RM := rm -rf
 -include src/lib/FatFs/src/option/subdir.mk
 -include src/lib/FatFs/src/subdir.mk
 -include src/hw/driver/lcd/subdir.mk
+-include src/hw/driver/image/source/subdir.mk
 -include src/hw/driver/image/subdir.mk
 -include src/hw/driver/hangul/subdir.mk
 -include src/hw/driver/fatfs/subdir.mk
