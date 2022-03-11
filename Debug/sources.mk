@@ -32,6 +32,10 @@ src/hw/driver/lcd \
 src/hw \
 src/lib/FatFs/src \
 src/lib/FatFs/src/option \
+src/lib/f411/Debug/Core/Src \
+src/lib/f411/Debug/Core/Startup \
+src/lib/f411/Debug/Drivers/STM32F4xx_HAL_Driver/Src \
+src/lib/f411/Debug \
 src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src \
 src \
 

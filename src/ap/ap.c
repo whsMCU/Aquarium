@@ -78,7 +78,7 @@ void lcdMain(void)
   {
       lcdClearBuffer(black);
       lcdSetFont(LCD_FONT_HAN);
-      lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움]");
+      lcdPrintf(0,16*0, green, "[풍경채 아쿠아리움]");
 
       lcdPrintf(0,16*1, white, "%d fps", lcdGetFps());
       lcdPrintf(0,16*2, white, "%d ms" , lcdGetFpsTime());
