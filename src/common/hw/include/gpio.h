@@ -27,6 +27,10 @@ enum
 	DS18B20_DATA,
 	SONAR_DATA,
 	BUZZER,
+	Relay1,
+	Relay2,
+	Relay3,
+	Relay4,
 };
 
 
