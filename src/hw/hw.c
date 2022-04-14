@@ -34,4 +34,6 @@ void hwInit(void)
   {
     fatfsInit();
   }
+
+  menuInit();
 }
