@@ -35,7 +35,9 @@ src/hw/driver/menu.o: ../src/hw/driver/menu.c \
  C:/Users/jjins/Documents/1.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  C:/Users/jjins/Documents/1.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  C:/Users/jjins/Documents/1.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- C:/Users/jjins/Documents/1.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+ C:/Users/jjins/Documents/1.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/button.h \
+ C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/lcd.h
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/menu.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/hw/hw_def.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/def.h:
@@ -73,3 +75,5 @@ C:/Users/jjins/Documents/1.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/button.h:
+C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/lcd.h:

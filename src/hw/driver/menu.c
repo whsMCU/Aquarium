@@ -7,11 +7,14 @@
 
 
 #include "menu.h"
+#include "button.h"
+#include "lcd.h"
 
 #ifdef _USE_HW_MENU
 
 #define MENU_NAME_MAX 256
 #define MENU_LIST_MAX 32
+
 
 typedef struct
 {
@@ -27,6 +30,7 @@ typedef struct
 	uint8_t menu_count;
 	menu_func_t menu_list[MENU_LIST_MAX];
 	menu_args_t menu_args;
+	void (*callback)(void);
 } menu_t;
 
 menu_t menu_node;
@@ -41,6 +45,10 @@ static bool     menuArgsIsStr(uint8_t index, char *p_str);
 
 void menu_manual(menu_args_t *args);
 
+void menuSetCallBack(void (*callback)(void))
+{
+	menu_node.callback = callback;
+}
 
 bool menuInit(void)
 {
@@ -53,17 +61,12 @@ bool menuInit(void)
 	menu_node.menu_args.getStr   = menuArgsGetStr;
 	menu_node.menu_args.isStr    = menuArgsIsStr;
 
+	menu_node.callback = NULL;
+
 	menuAdd("manual", 0, menu_manual);
 
 	return true;
 }
-
-void menuShow(menu_t *p_menu)
-{
-
-
-}
-
 
 bool menuMain(void)
 {
@@ -84,10 +87,10 @@ bool menuUpdate(menu_t *p_menu)
 {
   bool ret = false;
 
-
-
-
-  menuShow(p_menu);
+  if(p_menu->callback != NULL)
+  {
+	  (*p_menu->callback)();
+  }
 
   return ret;
 }
@@ -215,8 +218,8 @@ void menu_manual(menu_args_t *args)
 {
 	menu_t *p_menu = &menu_node;
 
-
 }
+
 
 
 #endif

@@ -30,6 +30,7 @@
 #include "files.h"
 #include "image.h"
 #include "ui_common.h"
+#include "menu.h"
 
 void hwInit(void);
 

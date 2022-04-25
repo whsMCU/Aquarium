@@ -56,7 +56,8 @@ src/main.o: ../src/main.c ../src/main.h \
  C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/fatfs.h \
  C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/files.h \
  C:/Users/jjins/Documents/1.\ Project/Aquarium/src/hw/driver/image/image.h \
- C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/ui_common.h
+ C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/ui_common.h \
+ C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/menu.h
 ../src/main.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/ap/ap.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/hw/hw.h:
@@ -116,3 +117,4 @@ C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/fatfs.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/files.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/hw/driver/image/image.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/ui_common.h:
+C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/menu.h:

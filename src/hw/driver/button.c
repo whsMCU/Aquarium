@@ -110,6 +110,49 @@ bool buttonGetPressed(uint8_t ch)
   return ret;
 }
 
+bool buttonMain(void)
+{
+	bool ret = false;
+	button_tbl_t *button;
+
+	for (int i=0; i<BUTTON_MAX_CH; i++)
+	{
+		button = &button_tbl[i];
+	    if (i >= BUTTON_MAX_CH)
+	    {
+	    	return false;
+	    }
+
+	    switch(button->State)
+	    {
+	    	case BUTTON_IDLE:
+	    		if(HAL_GPIO_ReadPin(button->port, button->pin) == button->on_state)
+	    		{
+	    			button->lastDebounceTime = millis();
+	    			button->State = BUTTON_Pressed;
+	    		}
+	    		break;
+
+	    	case BUTTON_Pressed:
+	    		if(HAL_GPIO_ReadPin(button->port, button->pin) == button->on_state)
+	    		{
+	    			if ((millis() - button->lastDebounceTime) > button->debounceDelay)
+	    			{
+	    				button->PinState = GPIO_PIN_SET;
+	    				ret = button->PinState;
+	    			}
+	    		}else
+	    		{
+	    			button->State = BUTTON_IDLE;
+	    			button->PinState = GPIO_PIN_RESET;
+	    			ret = button->PinState;
+	    		}
+	    		break;
+	    }
+	}
+	  return ret;
+}
+
 
 
 #ifdef _USE_HW_CLI

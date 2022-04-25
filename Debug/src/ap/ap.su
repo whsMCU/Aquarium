@@ -1,5 +1,4 @@
-../src/ap/ap.c:15:6:apInit	8	static
-../src/ap/ap.c:20:6:apMain	16	static
-../src/ap/ap.c:41:6:sensorMain	8	static
-../src/ap/ap.c:48:6:buttonMain	16	static
-../src/ap/ap.c:69:6:lcdMain	16	static
+../src/ap/ap.c:16:6:apInit	8	static
+../src/ap/ap.c:22:6:apMain	16	static
+../src/ap/ap.c:44:6:sensorMain	8	static
+../src/ap/ap.c:72:6:lcdMain	16	static

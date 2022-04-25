@@ -23,10 +23,10 @@ typedef struct
   bool     (*isStr)(uint8_t index, char *p_str);
 } menu_args_t;
 
-
 bool menuInit(void);
 bool menuMain(void);
 bool menuAdd(const char *menu_str, uint8_t layer, void (*p_func)(menu_args_t *));
+void menuSetCallBack(void (*callback)(void));
 
 #endif
 

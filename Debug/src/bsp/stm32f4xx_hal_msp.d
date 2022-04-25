@@ -57,7 +57,8 @@ src/bsp/stm32f4xx_hal_msp.o: ../src/bsp/stm32f4xx_hal_msp.c \
  C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/fatfs.h \
  C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/files.h \
  C:/Users/jjins/Documents/1.\ Project/Aquarium/src/hw/driver/image/image.h \
- C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/ui_common.h
+ C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/ui_common.h \
+ C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/menu.h
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/main.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/ap/ap.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/hw/hw.h:
@@ -117,3 +118,4 @@ C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/fatfs.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/files.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/hw/driver/image/image.h:
 C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/ui_common.h:
+C:/Users/jjins/Documents/1.\ Project/Aquarium/src/common/hw/include/menu.h:

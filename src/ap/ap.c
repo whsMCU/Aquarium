@@ -10,11 +10,13 @@
 
 void lcdMain(void);
 void sensorMain(void);
-void buttonMain(void);
+//void buttonMain(void);
+
 
 void apInit(void)
 {
 	cliOpen(_DEF_UART1, 57600);
+	menuSetCallBack(lcdMain);
 }
 
 void apMain(void)
@@ -34,7 +36,8 @@ void apMain(void)
     buttonMain();
 
     cliMain();
-    lcdMain();
+    //lcdMain();
+    menuMain();
   }
 }
 
@@ -45,26 +48,26 @@ void sensorMain(void)
     tds_measure();
 }
 
-void buttonMain(void)
-{
-	if(buttonGetPressed(USER_BTN)|buttonGetPressed(MENU_BTN)|buttonGetPressed(UP_BTN)|buttonGetPressed(DOWN_BTN)|buttonGetPressed(SEL_BTN))
-	{
-		ledOn(_DEF_LED1);
-	}
-	else
-	{
-		ledOff(_DEF_LED1);
-	}
-
-	if(buttonGetPressed(SEL_BTN))
-	{
-		gpioPinWrite(BUZZER, SET);
-	}
-	else
-	{
-		gpioPinWrite(BUZZER, RESET);
-	}
-}
+//void buttonMain(void)
+//{
+//	if(buttonGetPressed(USER_BTN)|buttonGetPressed(MENU_BTN)|buttonGetPressed(UP_BTN)|buttonGetPressed(DOWN_BTN)|buttonGetPressed(SEL_BTN))
+//	{
+//		ledOn(_DEF_LED1);
+//	}
+//	else
+//	{
+//		ledOff(_DEF_LED1);
+//	}
+//
+//	if(buttonGetPressed(SEL_BTN))
+//	{
+//		gpioPinWrite(BUZZER, SET);
+//	}
+//	else
+//	{
+//		gpioPinWrite(BUZZER, RESET);
+//	}
+//}
 
 void lcdMain(void)
 {
