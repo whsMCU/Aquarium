@@ -8,7 +8,7 @@
 
 #include "ap.h"
 
-void lcdMain(void);
+void lcdMain(uint8_t layer);
 void sensorMain(void);
 //void buttonMain(void);
 
@@ -69,7 +69,7 @@ void sensorMain(void)
 //	}
 //}
 
-void lcdMain(void)
+void lcdMain(uint8_t layer)
 {
   if (lcdIsInit() != true)
   {

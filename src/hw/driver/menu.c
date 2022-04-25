@@ -30,7 +30,7 @@ typedef struct
 	uint8_t menu_count;
 	menu_func_t menu_list[MENU_LIST_MAX];
 	menu_args_t menu_args;
-	void (*callback)(void);
+	void (*callback)(uint8_t layer);
 } menu_t;
 
 menu_t menu_node;
@@ -45,7 +45,7 @@ static bool     menuArgsIsStr(uint8_t index, char *p_str);
 
 void menu_manual(menu_args_t *args);
 
-void menuSetCallBack(void (*callback)(void))
+void menuSetCallBack(void (*callback)(uint8_t layer))
 {
 	menu_node.callback = callback;
 }
@@ -89,7 +89,7 @@ bool menuUpdate(menu_t *p_menu)
 
   if(p_menu->callback != NULL)
   {
-	  (*p_menu->callback)();
+	  (*p_menu->callback)(p_menu->layer);
   }
 
   return ret;
