@@ -1,2 +1,2 @@
-../src/hw/driver/ui_common.c:12:6:draw_fan_status	40	static
+../src/hw/driver/ui_common.c:12:6:draw_fan_status	48	static
 ../src/hw/driver/ui_common.c:32:6:get_blink	16	static

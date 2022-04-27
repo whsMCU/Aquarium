@@ -25,8 +25,8 @@ void draw_fan_status(uint16_t x, uint16_t y, const bool blink) {
   {
     image = Fan0_32x32x4;
   }
-  lcdDrawBufferImage(0, 0, image.width, image.height, image.data);
-  lcdRequestDraw();
+  lcdDrawBufferImage(x, y, image.width, image.height, image.data);
+  //lcdRequestDraw();
 }
 
 bool get_blink() {

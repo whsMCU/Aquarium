@@ -2,10 +2,10 @@
 ../src/hw/driver/menu.c:53:6:menuInit	8	static
 ../src/hw/driver/menu.c:71:6:menuMain	8	static
 ../src/hw/driver/menu.c:86:6:menuUpdate	24	static
-../src/hw/driver/menu.c:99:6:menu_strToUpper	24	static
-../src/hw/driver/menu.c:127:9:menuArgsGetData	24	static
-../src/hw/driver/menu.c:143:7:menuArgsGetFloat	24	static
-../src/hw/driver/menu.c:159:7:menuArgsGetStr	24	static
-../src/hw/driver/menu.c:175:6:menuArgsIsStr	24	static
-../src/hw/driver/menu.c:194:6:menuAdd	40	static
-../src/hw/driver/menu.c:218:6:menu_manual	24	static
+../src/hw/driver/menu.c:98:6:menu_strToUpper	24	static
+../src/hw/driver/menu.c:126:9:menuArgsGetData	24	static
+../src/hw/driver/menu.c:142:7:menuArgsGetFloat	24	static
+../src/hw/driver/menu.c:158:7:menuArgsGetStr	24	static
+../src/hw/driver/menu.c:174:6:menuArgsIsStr	24	static
+../src/hw/driver/menu.c:193:6:menuAdd	40	static
+../src/hw/driver/menu.c:217:6:menu_manual	24	static
