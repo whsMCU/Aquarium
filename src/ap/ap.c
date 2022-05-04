@@ -85,10 +85,10 @@ void lcdMain(uint8_t layer)
       lcdSetFont(LCD_FONT_HAN);
       lcdPrintf(0,16*0, green, "[풍경채 아쿠아리움]");
 
-      lcdDrawRoundRect(70, 16*4, 52, 17, 5, white);
-      lcdDrawFillRoundRect(71, 65, 50, 15, 5, red);
+      lcdDrawRoundRect(0, 16*7,  35, 17, 5, white);
+      lcdDrawFillRoundRect(0, (16*7)+1, 34, 15, 5, red);
       lcdSetFont(LCD_FONT_07x10);
-      lcdPrintf(75,70, white, "BUTTON");
+      lcdPrintf(5,(16*7)+5, white, "FAN");
 
       lcdSetFont(LCD_FONT_HAN);
       lcdPrintf(0,16*1, white, "물온도 : %3.1f 도" , ds18b20[0].Temperature);
@@ -96,9 +96,6 @@ void lcdMain(uint8_t layer)
       lcdPrintf(0,16*3, white, "TDS : %4.1f ppm" , tds_tbl[0].filter_tdsValue);
       //lcdDrawBufferImage(50, 20, 50, 50, TEST);
 
-      lcdDrawFillRect( 0, 118, 10, 10, red);
-      lcdDrawFillRect(10, 118, 10, 10, green);
-      lcdDrawFillRect(20, 118, 10, 10, blue);
       blink = get_blink();
       draw_fan_status(0, 16*4, blink);
 
