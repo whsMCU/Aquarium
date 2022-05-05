@@ -53,10 +53,18 @@ void sensorMain(void)
 //	if(buttonGetPressed(USER_BTN)|buttonGetPressed(MENU_BTN)|buttonGetPressed(UP_BTN)|buttonGetPressed(DOWN_BTN)|buttonGetPressed(SEL_BTN))
 //	{
 //		ledOn(_DEF_LED1);
+//		gpioPinWrite(Relay1, true);
+//		gpioPinWrite(Relay2, true);
+//		gpioPinWrite(Relay3, true);
+//		gpioPinWrite(Relay4, true);
 //	}
 //	else
 //	{
 //		ledOff(_DEF_LED1);
+//		gpioPinWrite(Relay1, false);
+//		gpioPinWrite(Relay2, false);
+//		gpioPinWrite(Relay3, false);
+//		gpioPinWrite(Relay4, false);
 //	}
 //
 //	if(buttonGetPressed(SEL_BTN))

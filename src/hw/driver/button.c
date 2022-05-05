@@ -21,22 +21,22 @@ typedef struct
 {
   GPIO_TypeDef *port;
   uint32_t      pin;
-  uint32_t		pull;
+  uint32_t		  pull;
   GPIO_PinState on_state;
   GPIO_PinState PinState;
-  uint8_t		State;
-  uint32_t 		debounceDelay;
-  uint32_t		lastDebounceTime;
+  uint8_t		    State;
+  uint32_t 		  debounceDelay;
+  uint32_t		  lastDebounceTime;
 } button_tbl_t;
 
 
 button_tbl_t button_tbl[BUTTON_MAX_CH] =
     {
         {GPIOA, GPIO_PIN_0, GPIO_PULLUP, GPIO_PIN_RESET, 0, BUTTON_IDLE, 10, 0},
-		{GPIOB, GPIO_PIN_2, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
-		{GPIOB, GPIO_PIN_10, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
-		{GPIOB, GPIO_PIN_12, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
-		{GPIOB, GPIO_PIN_13, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
+				{GPIOB, GPIO_PIN_2, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
+				{GPIOB, GPIO_PIN_10, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
+				{GPIOB, GPIO_PIN_12, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
+				{GPIOB, GPIO_PIN_13, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
     };
 
 
@@ -110,9 +110,9 @@ bool buttonGetPressed(uint8_t ch)
   return ret;
 }
 
-bool buttonMain(void)
+uint8_t buttonMain(void)
 {
-	bool ret = false;
+	uint8_t ret = false;
 	button_tbl_t *button;
 
 	for (int i=0; i<BUTTON_MAX_CH; i++)

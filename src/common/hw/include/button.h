@@ -27,7 +27,7 @@ enum
 
 bool buttonInit(void);
 bool buttonGetPressed(uint8_t ch);
-bool buttonMain(void);
+uint8_t buttonMain(void);
 
 
 #endif
