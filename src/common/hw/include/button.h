@@ -17,12 +17,14 @@
 
 enum
 {
-	USER_BTN,
-	MENU_BTN,
-	UP_BTN,
-	DOWN_BTN,
-	SEL_BTN,
+	USER_BTN = 0b00000001,
+	MENU_BTN = 0b00000010,
+	UP_BTN   = 0b00000100,
+	DOWN_BTN = 0b00001000,
+	SEL_BTN  = 0b00010000,
 };
+
+
 
 
 bool buttonInit(void);

@@ -10,7 +10,8 @@
 
 void lcdMain(uint8_t layer);
 void sensorMain(void);
-//void buttonMain(void);
+
+uint8_t button_status;
 
 
 void apInit(void)
@@ -33,10 +34,51 @@ void apMain(void)
     }
 
     sensorMain();
-    buttonMain();
+
+    switch(buttonMain())
+    {
+    	case(USER_BTN):
+				{
+					gpioPinWrite(BUZZER, true);
+				}
+    	break;
+
+    	case(MENU_BTN):
+				{
+					gpioPinWrite(Relay1, true);
+				}
+    	break;
+
+    	case(UP_BTN):
+				{
+					gpioPinWrite(Relay2, true);
+				}
+    	break;
+
+    	case(DOWN_BTN):
+				{
+					gpioPinWrite(Relay3, true);
+				}
+    	break;
+
+    	case(SEL_BTN):
+				{
+					gpioPinWrite(Relay4, true);
+				}
+    	break;
+
+    	default:
+    	{
+    		gpioPinWrite(BUZZER, false);
+    		gpioPinWrite(Relay1, false);
+    		gpioPinWrite(Relay2, false);
+    		gpioPinWrite(Relay3, false);
+    		gpioPinWrite(Relay4, false);
+    	}
+
+    }
 
     cliMain();
-    //lcdMain();
     menuMain();
   }
 }
@@ -47,35 +89,6 @@ void sensorMain(void)
     Sonar_measure();
     tds_measure();
 }
-
-//void buttonMain(void)
-//{
-//	if(buttonGetPressed(USER_BTN)|buttonGetPressed(MENU_BTN)|buttonGetPressed(UP_BTN)|buttonGetPressed(DOWN_BTN)|buttonGetPressed(SEL_BTN))
-//	{
-//		ledOn(_DEF_LED1);
-//		gpioPinWrite(Relay1, true);
-//		gpioPinWrite(Relay2, true);
-//		gpioPinWrite(Relay3, true);
-//		gpioPinWrite(Relay4, true);
-//	}
-//	else
-//	{
-//		ledOff(_DEF_LED1);
-//		gpioPinWrite(Relay1, false);
-//		gpioPinWrite(Relay2, false);
-//		gpioPinWrite(Relay3, false);
-//		gpioPinWrite(Relay4, false);
-//	}
-//
-//	if(buttonGetPressed(SEL_BTN))
-//	{
-//		gpioPinWrite(BUZZER, SET);
-//	}
-//	else
-//	{
-//		gpioPinWrite(BUZZER, RESET);
-//	}
-//}
 
 void lcdMain(uint8_t layer)
 {
