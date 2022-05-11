@@ -34,50 +34,6 @@ void apMain(void)
     }
 
     sensorMain();
-
-    switch(buttonMain())
-    {
-    	case(USER_BTN):
-				{
-					gpioPinWrite(BUZZER, true);
-				}
-    	break;
-
-    	case(MENU_BTN):
-				{
-					gpioPinWrite(Relay1, true);
-				}
-    	break;
-
-    	case(UP_BTN):
-				{
-					gpioPinWrite(Relay2, true);
-				}
-    	break;
-
-    	case(DOWN_BTN):
-				{
-					gpioPinWrite(Relay3, true);
-				}
-    	break;
-
-    	case(SEL_BTN):
-				{
-					gpioPinWrite(Relay4, true);
-				}
-    	break;
-
-    	default:
-    	{
-    		gpioPinWrite(BUZZER, false);
-    		gpioPinWrite(Relay1, false);
-    		gpioPinWrite(Relay2, false);
-    		gpioPinWrite(Relay3, false);
-    		gpioPinWrite(Relay4, false);
-    	}
-
-    }
-
     cliMain();
     menuMain();
   }
@@ -104,12 +60,7 @@ void lcdMain(uint8_t layer)
   {
       lcdClearBuffer(black);
       lcdSetFont(LCD_FONT_HAN);
-      lcdPrintf(0,16*0, green, "[풍경채 아쿠아리움]");
-
-      lcdDrawRoundRect(0, 16*7,  35, 17, 5, white);
-      lcdDrawFillRoundRect(0, (16*7)+1, 34, 15, 5, red);
-      lcdSetFont(LCD_FONT_07x10);
-      lcdPrintf(5,(16*7)+5, white, "FAN");
+      lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움]");
 
       lcdSetFont(LCD_FONT_HAN);
       lcdPrintf(0,16*1, white, "물온도 : %3.1f 도" , ds18b20[0].Temperature);
@@ -119,6 +70,58 @@ void lcdMain(uint8_t layer)
 
       blink = get_blink();
       draw_fan_status(0, 16*4, blink);
+
+      switch(buttonMain())
+      {
+      	case(USER_BTN):
+  				{
+  					gpioPinWrite(BUZZER, true);
+  				}
+      	break;
+
+      	case(MENU_BTN):
+  				{
+  					gpioPinWrite(Relay1, true);
+  				}
+      	break;
+
+      	case(UP_BTN):
+  				{
+  					gpioPinWrite(Relay2, true);
+  				}
+      	break;
+
+      	case(DOWN_BTN):
+  				{
+  					gpioPinWrite(Relay3, true);
+  				}
+      	break;
+
+      	case(SEL_BTN):
+  				{
+  					gpioPinWrite(Relay4, true);
+  				}
+      	break;
+
+      	default:
+      	{
+          lcdDrawRoundRect(0, 0+110,  35, 17, 5, white);
+          lcdDrawFillRoundRect(1, 1+110, 33, 15, 5, red);
+          lcdSetFont(LCD_FONT_07x10);
+          lcdPrintf(5,5+110, white, "FAN");
+
+          lcdDrawRoundRect(0+40, 0+110,  35, 17, 5, white);
+          lcdDrawFillRoundRect(1+40, 1+110, 33, 15, 5, red);
+          lcdSetFont(LCD_FONT_07x10);
+          lcdPrintf(5+40,5+110, white, "PUMP");
+//      		gpioPinWrite(BUZZER, false);
+//      		gpioPinWrite(Relay1, false);
+//      		gpioPinWrite(Relay2, false);
+//      		gpioPinWrite(Relay3, false);
+//      		gpioPinWrite(Relay4, false);
+      	}
+
+      }
 
       lcdRequestDraw();
   }

@@ -10,7 +10,7 @@
 
 
 void draw_fan_status(uint16_t x, uint16_t y, const bool blink) {
-  uint8_t fanSpeed = 127;
+  uint8_t fanSpeed = 50;
   UI_Image image;
 
   if (fanSpeed >= 127)
@@ -26,7 +26,6 @@ void draw_fan_status(uint16_t x, uint16_t y, const bool blink) {
     image = Fan0_32x32x4;
   }
   lcdDrawBufferImage(x, y, image.width, image.height, image.data);
-  //lcdRequestDraw();
 }
 
 bool get_blink() {

@@ -37,7 +37,8 @@ src/hw/driver/menu.o: ../src/hw/driver/menu.c \
  D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  D:/STM32CubeIDE/Aquarium/src/common/hw/include/button.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/lcd.h
+ D:/STM32CubeIDE/Aquarium/src/common/hw/include/lcd.h \
+ D:/STM32CubeIDE/Aquarium/src/common/hw/include/cli.h
 D:/STM32CubeIDE/Aquarium/src/common/hw/include/menu.h:
 D:/STM32CubeIDE/Aquarium/src/hw/hw_def.h:
 D:/STM32CubeIDE/Aquarium/src/common/def.h:
@@ -77,3 +78,4 @@ D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx
 D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 D:/STM32CubeIDE/Aquarium/src/common/hw/include/button.h:
 D:/STM32CubeIDE/Aquarium/src/common/hw/include/lcd.h:
+D:/STM32CubeIDE/Aquarium/src/common/hw/include/cli.h:

@@ -9,6 +9,7 @@
 #include "menu.h"
 #include "button.h"
 #include "lcd.h"
+#include "cli.h"
 
 #ifdef _USE_HW_MENU
 
@@ -43,7 +44,12 @@ static float    menuArgsGetFloat(uint8_t index);
 static char    *menuArgsGetStr(uint8_t index);
 static bool     menuArgsIsStr(uint8_t index, char *p_str);
 
-void menu_manual(menu_args_t *args);
+void menu_relay1(menu_args_t *args);
+void menu_relay2(menu_args_t *args);
+
+#ifdef _USE_HW_CLI
+static void cliMenu(cli_args_t *args);
+#endif
 
 void menuSetCallBack(void (*callback)(uint8_t layer))
 {
@@ -63,7 +69,12 @@ bool menuInit(void)
 
 	menu_node.callback = NULL;
 
-	menuAdd("manual", 0, menu_manual);
+	menuAdd("Relay1", 0, menu_relay1);
+	menuAdd("Relay2", 0, menu_relay2);
+
+#ifdef _USE_HW_CLI
+  cliAdd("menu", cliMenu);
+#endif
 
 	return true;
 }
@@ -214,11 +225,44 @@ bool menuAdd(const char *menu_str, uint8_t layer, void (*p_func)(menu_args_t *))
   return ret;
 }
 
-void menu_manual(menu_args_t *args)
+void menu_relay1(menu_args_t *args)
 {
 	menu_t *p_menu = &menu_node;
 
 }
+
+void menu_relay2(menu_args_t *args)
+{
+	menu_t *p_menu = &menu_node;
+
+}
+
+#ifdef _USE_HW_CLI
+
+void cliMenu(cli_args_t *args)
+{
+  bool ret = false;
+
+  menu_t *p_menu = &menu_node;
+
+
+  if (args->argc == 1 && args->isStr(0, "show"))
+  {
+      for (int i=0; i<2; i++)
+      {
+        cliPrintf("%s\n", p_menu->menu_list[i].menu_str);
+      }
+      cliPrintf("\n");
+    ret = true;
+  }
+
+
+  if (ret != true)
+  {
+    cliPrintf("menu show\n");
+  }
+}
+#endif
 
 
 
