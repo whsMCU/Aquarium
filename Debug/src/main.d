@@ -57,7 +57,8 @@ src/main.o: ../src/main.c ../src/main.h \
  D:/STM32CubeIDE/Aquarium/src/common/hw/include/files.h \
  D:/STM32CubeIDE/Aquarium/src/hw/driver/image/image.h \
  D:/STM32CubeIDE/Aquarium/src/common/hw/include/ui_common.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/menu.h
+ D:/STM32CubeIDE/Aquarium/src/common/hw/include/menu.h \
+ D:/STM32CubeIDE/Aquarium/src/common/hw/include/telemetry.h
 ../src/main.h:
 D:/STM32CubeIDE/Aquarium/src/ap/ap.h:
 D:/STM32CubeIDE/Aquarium/src/hw/hw.h:
@@ -118,3 +119,4 @@ D:/STM32CubeIDE/Aquarium/src/common/hw/include/files.h:
 D:/STM32CubeIDE/Aquarium/src/hw/driver/image/image.h:
 D:/STM32CubeIDE/Aquarium/src/common/hw/include/ui_common.h:
 D:/STM32CubeIDE/Aquarium/src/common/hw/include/menu.h:
+D:/STM32CubeIDE/Aquarium/src/common/hw/include/telemetry.h:

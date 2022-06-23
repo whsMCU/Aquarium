@@ -31,6 +31,7 @@
 #include "image.h"
 #include "ui_common.h"
 #include "menu.h"
+#include "telemetry.h"
 
 void hwInit(void);
 

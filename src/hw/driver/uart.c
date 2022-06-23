@@ -206,6 +206,33 @@ uint32_t uartWrite(uint8_t ch, uint8_t *p_data, uint32_t length)
   return ret;
 }
 
+uint32_t uartWriteIT(uint8_t ch, uint8_t *p_data, uint32_t length)
+{
+  uint32_t ret = 0;
+  HAL_StatusTypeDef status;
+
+  switch(ch)
+  {
+    case _DEF_UART1:
+      status = HAL_UART_Transmit_IT(&huart1, p_data, length);
+      if (status == HAL_OK)
+      {
+        ret = length;
+      }
+      break;
+
+    case _DEF_UART2:
+//      status = HAL_UART_Transmit_IT(&huart2, p_data, length);
+//      if (status == HAL_OK)
+//      {
+//        ret = length;
+//      }
+      break;
+  }
+
+  return ret;
+}
+
 uint32_t uartPrintf(uint8_t ch, char *fmt, ...)
 {
   char buf[256];

@@ -24,6 +24,7 @@
 "./src/hw/driver/sonar.o"
 "./src/hw/driver/spi.o"
 "./src/hw/driver/tds.o"
+"./src/hw/driver/telemetry.o"
 "./src/hw/driver/uart.o"
 "./src/hw/driver/ui_common.o"
 "./src/hw/driver/fatfs/sd_diskio.o"

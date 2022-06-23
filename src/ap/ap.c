@@ -36,6 +36,7 @@ void apMain(void)
     sensorMain();
     cliMain();
     menuMain();
+    SerialCom();
   }
 }
 

@@ -21,6 +21,7 @@ C_SRCS += \
 ../src/hw/driver/sonar.c \
 ../src/hw/driver/spi.c \
 ../src/hw/driver/tds.c \
+../src/hw/driver/telemetry.c \
 ../src/hw/driver/uart.c \
 ../src/hw/driver/ui_common.c 
 
@@ -41,6 +42,7 @@ OBJS += \
 ./src/hw/driver/sonar.o \
 ./src/hw/driver/spi.o \
 ./src/hw/driver/tds.o \
+./src/hw/driver/telemetry.o \
 ./src/hw/driver/uart.o \
 ./src/hw/driver/ui_common.o 
 
@@ -61,6 +63,7 @@ C_DEPS += \
 ./src/hw/driver/sonar.d \
 ./src/hw/driver/spi.d \
 ./src/hw/driver/tds.d \
+./src/hw/driver/telemetry.d \
 ./src/hw/driver/uart.d \
 ./src/hw/driver/ui_common.d 
 
@@ -72,7 +75,7 @@ src/hw/driver/%.o src/hw/driver/%.su: ../src/hw/driver/%.c src/hw/driver/subdir.
 clean: clean-src-2f-hw-2f-driver
 
 clean-src-2f-hw-2f-driver:
-	-$(RM) ./src/hw/driver/button.d ./src/hw/driver/button.o ./src/hw/driver/button.su ./src/hw/driver/clcd.d ./src/hw/driver/clcd.o ./src/hw/driver/clcd.su ./src/hw/driver/cli.d ./src/hw/driver/cli.o ./src/hw/driver/cli.su ./src/hw/driver/ds18b20.d ./src/hw/driver/ds18b20.o ./src/hw/driver/ds18b20.su ./src/hw/driver/fatfs.d ./src/hw/driver/fatfs.o ./src/hw/driver/fatfs.su ./src/hw/driver/files.d ./src/hw/driver/files.o ./src/hw/driver/files.su ./src/hw/driver/gpio.d ./src/hw/driver/gpio.o ./src/hw/driver/gpio.su ./src/hw/driver/i2c.d ./src/hw/driver/i2c.o ./src/hw/driver/i2c.su ./src/hw/driver/lcd.d ./src/hw/driver/lcd.o ./src/hw/driver/lcd.su ./src/hw/driver/led.d ./src/hw/driver/led.o ./src/hw/driver/led.su ./src/hw/driver/menu.d ./src/hw/driver/menu.o ./src/hw/driver/menu.su ./src/hw/driver/onewire.d ./src/hw/driver/onewire.o ./src/hw/driver/onewire.su ./src/hw/driver/sd.d ./src/hw/driver/sd.o ./src/hw/driver/sd.su ./src/hw/driver/sonar.d ./src/hw/driver/sonar.o ./src/hw/driver/sonar.su ./src/hw/driver/spi.d ./src/hw/driver/spi.o ./src/hw/driver/spi.su ./src/hw/driver/tds.d ./src/hw/driver/tds.o ./src/hw/driver/tds.su ./src/hw/driver/uart.d ./src/hw/driver/uart.o ./src/hw/driver/uart.su ./src/hw/driver/ui_common.d ./src/hw/driver/ui_common.o ./src/hw/driver/ui_common.su
+	-$(RM) ./src/hw/driver/button.d ./src/hw/driver/button.o ./src/hw/driver/button.su ./src/hw/driver/clcd.d ./src/hw/driver/clcd.o ./src/hw/driver/clcd.su ./src/hw/driver/cli.d ./src/hw/driver/cli.o ./src/hw/driver/cli.su ./src/hw/driver/ds18b20.d ./src/hw/driver/ds18b20.o ./src/hw/driver/ds18b20.su ./src/hw/driver/fatfs.d ./src/hw/driver/fatfs.o ./src/hw/driver/fatfs.su ./src/hw/driver/files.d ./src/hw/driver/files.o ./src/hw/driver/files.su ./src/hw/driver/gpio.d ./src/hw/driver/gpio.o ./src/hw/driver/gpio.su ./src/hw/driver/i2c.d ./src/hw/driver/i2c.o ./src/hw/driver/i2c.su ./src/hw/driver/lcd.d ./src/hw/driver/lcd.o ./src/hw/driver/lcd.su ./src/hw/driver/led.d ./src/hw/driver/led.o ./src/hw/driver/led.su ./src/hw/driver/menu.d ./src/hw/driver/menu.o ./src/hw/driver/menu.su ./src/hw/driver/onewire.d ./src/hw/driver/onewire.o ./src/hw/driver/onewire.su ./src/hw/driver/sd.d ./src/hw/driver/sd.o ./src/hw/driver/sd.su ./src/hw/driver/sonar.d ./src/hw/driver/sonar.o ./src/hw/driver/sonar.su ./src/hw/driver/spi.d ./src/hw/driver/spi.o ./src/hw/driver/spi.su ./src/hw/driver/tds.d ./src/hw/driver/tds.o ./src/hw/driver/tds.su ./src/hw/driver/telemetry.d ./src/hw/driver/telemetry.o ./src/hw/driver/telemetry.su ./src/hw/driver/uart.d ./src/hw/driver/uart.o ./src/hw/driver/uart.su ./src/hw/driver/ui_common.d ./src/hw/driver/ui_common.o ./src/hw/driver/ui_common.su
 
 .PHONY: clean-src-2f-hw-2f-driver
 

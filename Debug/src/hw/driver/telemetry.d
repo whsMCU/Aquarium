@@ -1,4 +1,6 @@
-src/hw/hw.o: ../src/hw/hw.c ../src/hw/hw.h ../src/hw/hw_def.h \
+src/hw/driver/telemetry.o: ../src/hw/driver/telemetry.c \
+ D:/STM32CubeIDE/Aquarium/src/common/hw/include/telemetry.h \
+ D:/STM32CubeIDE/Aquarium/src/hw/hw_def.h \
  D:/STM32CubeIDE/Aquarium/src/common/def.h \
  D:/STM32CubeIDE/Aquarium/src/bsp/bsp.h \
  D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
@@ -34,30 +36,10 @@ src/hw/hw.o: ../src/hw/hw.c ../src/hw/hw.h ../src/hw/hw_def.h \
  D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/led.h \
- D:/STM32CubeIDE/Aquarium/src/hw/hw_def.h \
  D:/STM32CubeIDE/Aquarium/src/common/hw/include/uart.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/spi.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/lcd.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/cli.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/button.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/gpio.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/clcd.h \
- D:/STM32CubeIDE/Aquarium/src/common/core/user_delay.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/onewire.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/ds18b20.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/onewire.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/sonar.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/tds.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/sd.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/fatfs.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/files.h \
- D:/STM32CubeIDE/Aquarium/src/hw/driver/image/image.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/ui_common.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/menu.h \
- D:/STM32CubeIDE/Aquarium/src/common/hw/include/telemetry.h
-../src/hw/hw.h:
-../src/hw/hw_def.h:
+ D:/STM32CubeIDE/Aquarium/src/common/hw/include/led.h
+D:/STM32CubeIDE/Aquarium/src/common/hw/include/telemetry.h:
+D:/STM32CubeIDE/Aquarium/src/hw/hw_def.h:
 D:/STM32CubeIDE/Aquarium/src/common/def.h:
 D:/STM32CubeIDE/Aquarium/src/bsp/bsp.h:
 D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -93,25 +75,5 @@ D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx
 D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 D:/STM32CubeIDE/Aquarium/src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/led.h:
-D:/STM32CubeIDE/Aquarium/src/hw/hw_def.h:
 D:/STM32CubeIDE/Aquarium/src/common/hw/include/uart.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/spi.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/lcd.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/cli.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/button.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/gpio.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/clcd.h:
-D:/STM32CubeIDE/Aquarium/src/common/core/user_delay.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/onewire.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/ds18b20.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/onewire.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/sonar.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/tds.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/sd.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/fatfs.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/files.h:
-D:/STM32CubeIDE/Aquarium/src/hw/driver/image/image.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/ui_common.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/menu.h:
-D:/STM32CubeIDE/Aquarium/src/common/hw/include/telemetry.h:
+D:/STM32CubeIDE/Aquarium/src/common/hw/include/led.h:
