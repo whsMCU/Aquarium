@@ -164,61 +164,52 @@ void s_struct(uint8_t *cb,uint8_t siz)
 void SerialCom(void)
 {
 	uint8_t c;
-	//uint32_t timeMax; // limit max time in this function in case of GPS
-	//timeMax = micros();
-	int i = 1;
-#ifndef _USE_HW_CLI
-	for(int i = 0; i < 2; i++)
+
+	currentPortState = &ports[_DEF_UART1];
+	CURRENTPORT = _DEF_UART1;
+	while(uartAvailable(CURRENTPORT) > 0)
 	{
-#endif
-		currentPortState = &ports[i];
-		CURRENTPORT = i;
-		while(uartAvailable(CURRENTPORT) > 0)
+		c = uartRead(CURRENTPORT);
+		if (currentPortState->c_state == IDLE)
 		{
-			c = uartRead(CURRENTPORT);
-			if (currentPortState->c_state == IDLE)
-			{
-				currentPortState->c_state = (c=='$') ? HEADER_START : IDLE;
-			} else if (currentPortState->c_state == HEADER_START)
-			{
-				currentPortState->c_state = (c=='M') ? HEADER_M : IDLE;
-			} else if (currentPortState->c_state == HEADER_M)
-			{
-				currentPortState->c_state = (c=='<') ? HEADER_ARROW : IDLE;
-			} else if (currentPortState->c_state == HEADER_ARROW)
-			{
-				if (c > INBUF_SIZE)
-				{  // now we are expecting the payload size
-					currentPortState->c_state = IDLE;
-					continue;
-				}
-				currentPortState->dataSize = c;
-				currentPortState->offset = 0;
-				currentPortState->indRX = 0;
-				currentPortState->checksum = 0;
-				currentPortState->checksum ^= c;
-				currentPortState->c_state = HEADER_SIZE;
-			} else if (currentPortState->c_state == HEADER_SIZE)
-			{
-				currentPortState->cmdMSP = c;
-				currentPortState->checksum ^= c;
-				currentPortState->c_state = HEADER_CMD;
-			} else if (currentPortState->c_state == HEADER_CMD && currentPortState->offset < currentPortState->dataSize)
-			{
-				currentPortState->checksum ^= c;
-				currentPortState->inBuf[currentPortState->offset++] = c;
-			} else if (currentPortState->c_state == HEADER_CMD && currentPortState->offset >= currentPortState->dataSize)
-			{
-				if (currentPortState->checksum == c)
-				{
-					evaluateCommand();
-				}
+			currentPortState->c_state = (c=='$') ? HEADER_START : IDLE;
+		} else if (currentPortState->c_state == HEADER_START)
+		{
+			currentPortState->c_state = (c=='M') ? HEADER_M : IDLE;
+		} else if (currentPortState->c_state == HEADER_M)
+		{
+			currentPortState->c_state = (c=='<') ? HEADER_ARROW : IDLE;
+		} else if (currentPortState->c_state == HEADER_ARROW)
+		{
+			if (c > INBUF_SIZE)
+			{  // now we are expecting the payload size
 				currentPortState->c_state = IDLE;
+				continue;
 			}
+			currentPortState->dataSize = c;
+			currentPortState->offset = 0;
+			currentPortState->indRX = 0;
+			currentPortState->checksum = 0;
+			currentPortState->checksum ^= c;
+			currentPortState->c_state = HEADER_SIZE;
+		} else if (currentPortState->c_state == HEADER_SIZE)
+		{
+			currentPortState->cmdMSP = c;
+			currentPortState->checksum ^= c;
+			currentPortState->c_state = HEADER_CMD;
+		} else if (currentPortState->c_state == HEADER_CMD && currentPortState->offset < currentPortState->dataSize)
+		{
+			currentPortState->checksum ^= c;
+			currentPortState->inBuf[currentPortState->offset++] = c;
+		} else if (currentPortState->c_state == HEADER_CMD && currentPortState->offset >= currentPortState->dataSize)
+		{
+			if (currentPortState->checksum == c)
+			{
+				evaluateCommand();
+			}
+			currentPortState->c_state = IDLE;
 		}
-#ifndef _USE_HW_CLI
 	}
-#endif
 }
 
 void evaluateCommand(void)

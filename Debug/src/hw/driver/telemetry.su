@@ -13,6 +13,6 @@
 ../src/hw/driver/telemetry.c:151:6:s_struct_partial	16	static
 ../src/hw/driver/telemetry.c:156:6:s_struct	16	static
 ../src/hw/driver/telemetry.c:164:6:SerialCom	16	static
-../src/hw/driver/telemetry.c:224:6:evaluateCommand	16	static
-../src/hw/driver/telemetry.c:348:6:SerialSerialize	24	static
-../src/hw/driver/telemetry.c:355:6:UartSendData	32	static
+../src/hw/driver/telemetry.c:215:6:evaluateCommand	16	static
+../src/hw/driver/telemetry.c:339:6:SerialSerialize	24	static
+../src/hw/driver/telemetry.c:346:6:UartSendData	32	static
