@@ -3,4 +3,3 @@
 ../src/hw/driver/gpio.c:126:6:gpioPinWrite	24	static
 ../src/hw/driver/gpio.c:143:6:gpioPinRead	24	static
 ../src/hw/driver/gpio.c:160:6:gpioPinToggle	16	static
-../src/hw/driver/gpio.c:175:6:cliGpio	40	static

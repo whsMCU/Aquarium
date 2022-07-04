@@ -16,7 +16,8 @@ uint8_t button_status;
 
 void apInit(void)
 {
-	cliOpen(_DEF_UART1, 57600);
+	//cliOpen(_DEF_UART1, 57600);
+	uartOpen(_DEF_UART1, 57600);
 	menuSetCallBack(lcdMain);
 }
 
@@ -30,11 +31,19 @@ void apMain(void)
     if (millis()-pre_time >= 1000)
     {
       pre_time = millis();
-
+			struct {
+      	float water_temp;
+      	uint32_t water_level;
+      	float water_tds;
+			} tmp;
+    	tmp.water_temp = (float)ds18b20[0].Temperature;
+    	tmp.water_level = (uint32_t)sonar_tbl[0].filter_distance_cm/10;
+    	tmp.water_tds = (float)tds_tbl[0].filter_tdsValue;
+			s_struct((uint8_t*)&tmp,12);
     }
 
     sensorMain();
-    cliMain();
+    //cliMain();
     menuMain();
     SerialCom();
   }

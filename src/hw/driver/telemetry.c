@@ -64,7 +64,7 @@ static void headSerialReply(uint8_t s);
 static void headSerialError(uint8_t s);
 static void tailSerialReply(void);
 static void s_struct_partial(uint8_t *cb,uint8_t siz);
-static void s_struct(uint8_t *cb,uint8_t siz);
+//static void s_struct(uint8_t *cb,uint8_t siz);
 
 
 void serialize8(uint8_t a)

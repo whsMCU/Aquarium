@@ -10,4 +10,3 @@
 ../src/hw/driver/menu.c:204:6:menuAdd	40	static
 ../src/hw/driver/menu.c:228:6:menu_relay1	24	static
 ../src/hw/driver/menu.c:234:6:menu_relay2	24	static
-../src/hw/driver/menu.c:242:6:cliMenu	32	static

@@ -11,4 +11,3 @@
 ../src/hw/driver/ds18b20.c:578:9:DS18B20_DisableAlarmTemperature	24	static
 ../src/hw/driver/ds18b20.c:624:9:DS18B20_AlarmSearch	16	static
 ../src/hw/driver/ds18b20.c:630:9:DS18B20_AllDone	16	static
-../src/hw/driver/ds18b20.c:637:6:cliDS18B20	24	static

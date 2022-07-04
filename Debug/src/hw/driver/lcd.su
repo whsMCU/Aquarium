@@ -43,4 +43,3 @@
 ../src/hw/driver/lcd.c:790:6:disEngFont	40	static
 ../src/hw/driver/lcd.c:809:6:lcdSetFont	16	static
 ../src/hw/driver/lcd.c:814:9:lcdGetFont	4	static
-../src/hw/driver/lcd.c:820:6:cliLcd	32	static

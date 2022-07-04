@@ -54,7 +54,7 @@
 #define      HW_LCD_HEIGHT          128
 #endif
 
-#define _USE_HW_CLI
+//#define _USE_HW_CLI
 #define      HW_CLI_CMD_LIST_MAX    16
 #define      HW_CLI_CMD_NAME_MAX    16
 #define      HW_CLI_LINE_HIS_MAX    4

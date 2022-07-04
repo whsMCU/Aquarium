@@ -19,6 +19,7 @@ int fputc(int ch, FILE *f);
 void SerialCom(void);
 void evaluateCommand(void);
 void SendTelemetry(void);
+void s_struct(uint8_t *cb,uint8_t siz);
 void SerialSerialize(uint8_t port,uint8_t a);
 void UartSendData(uint8_t port);
 

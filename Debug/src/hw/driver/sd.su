@@ -12,4 +12,3 @@
 ../src/hw/driver/sd.c:251:6:HAL_SD_TxCpltCallback	16	static
 ../src/hw/driver/sd.c:256:6:HAL_SD_MspInit	56	static
 ../src/hw/driver/sd.c:352:6:HAL_SD_MspDeInit	16	static
-../src/hw/driver/sd.c:392:6:cliSd	552	static
