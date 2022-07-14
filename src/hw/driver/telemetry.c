@@ -9,6 +9,11 @@
 #include "telemetry.h"
 #include "uart.h"
 #include "led.h"
+#include "ds18b20.h"
+#include "sonar.h"
+#include "tds.h"
+
+int8_t Relay[4];
 
 
 char Buf[128];
@@ -218,114 +223,24 @@ void evaluateCommand(void)
 
 	switch(currentPortState->cmdMSP)
 	{
-		case MSP_ARM:
-			//mwArm();
-			break;
-
-		case MSP_DISARM:
-			//mwDisarm();
-			break;
-
-		case MSP_RC_RAW:
-			for(i=0; i < 5; i++)
-			{
-				//RC_Raw.rcCommand[i]  = read8();
-			}
-			break;
-
-		case MSP_RC:
+		case MSP_IDENT:
 		{
-//			struct {
-//			uint16_t roll, pitch, yaw, throttle, gear, aux1;
-//		} rc;
-//		rc.roll     = RC.rcCommand[ROLL];
-//		rc.pitch    = RC.rcCommand[PITCH];
-//		rc.yaw      = RC.rcCommand[YAW];
-//		rc.throttle = RC.rcCommand[THROTTLE];
-//		rc.aux1     = RC.rcCommand[AUX1];
-//		rc.gear     = RC.rcCommand[GEAR];
-//		s_struct((uint8_t*)&rc, 12);
-		break;
-		}
-
-		case MSP_STATUS:
-		{
-//		 struct {
-//			uint32_t ArmedTime;
-//			uint32_t cycleTime;
-//			uint8_t error, flag;
-//		} st;
-//		st.ArmedTime    = armedTime;
-//		st.cycleTime    = loopTime;
-//		st.error        = Error.error;
-//		if(f.ARMED) tmp |= 1<<BOXARM;
-//		if(f.HEADFREE_MODE) tmp |= 1<<BOXHEADFREE;
-//		st.flag         = tmp;
-//		s_struct((uint8_t*)&st,10);
-		break;
-		}
-
-		case MSP_ATTITUDE:
-//			s_struct((uint8_t*)&att,8);
+			struct {
+				float water_temp;
+				uint32_t water_level;
+				float water_tds;
+			} data;
+			data.water_temp = (float)ds18b20[0].Temperature;
+			data.water_level = (uint32_t)sonar_tbl[0].filter_distance_cm/10;
+			data.water_tds = (float)tds_tbl[0].filter_tdsValue;
+			s_struct((uint8_t*)&data,12);
 			break;
-
-		case MSP_ALTITUDE:
-		{
-//			struct {
-//			int16_t alt;
-//		} tmp;
-//		tmp.alt = (int16_t) alt.EstAlt;
-//		s_struct((uint8_t*)&tmp,2);
-		break;
 		}
-
-		case MSP_MISC:
-		{
-		break;
-		}
-
-		case MSP_RAW_IMU:
-		{
-		break;
-		}
-
-		case MSP_RAW_GPS:
-		{
-		break;
-		}
-
-		case MSP_MOTOR:
-
-			break;
-
-		case MSP_PID:
-		{
-
-		break;
-		}
-
-		case MSP_ANALOG:
-		{
-		break;
-		}
-
-		case MSP_SET_PID:
-			break;
-
-		case MSP_SET_MOTOR:
-
-			break;
-
-		case MSP_RESET:
-
-			break;
-
-		case MSP_MOBILE:
-
-		break;
-
-		case MSP_ACC_CALIBRATION:
-
+		case MSP_SET_RELAY:
+			Relay[0] = read8();
+			Relay[1] = read8();
+			Relay[2] = read8();
+			Relay[3] = read8();
 			break;
 
 		default:
