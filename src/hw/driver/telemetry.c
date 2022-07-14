@@ -223,7 +223,7 @@ void evaluateCommand(void)
 
 	switch(currentPortState->cmdMSP)
 	{
-		case MSP_IDENT:
+		case MSP_DATA:
 		{
 			struct {
 				float water_temp;

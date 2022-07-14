@@ -34,6 +34,7 @@ typedef enum serialState_t {
 
 #define MSP_IDENT                100   //out message         multitype + multiwii version + protocol version + capability variable
 #define MSP_STATUS               101   //out message         cycletime & errors_count & sensor present & box activation & current setting number
+#define MSP_DATA								 102
 
 ////////////////////////////////////////////////////////////////////////////////
 
