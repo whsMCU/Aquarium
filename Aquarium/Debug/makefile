@@ -68,6 +68,12 @@ default.size.stdout \
 OBJDUMP_LIST += \
 Aquarium.list \
 
+OBJCOPY_HEX += \
+Aquarium.hex \
+
+OBJCOPY_BIN += \
+Aquarium.bin \
+
 
 # All Target
 all: main-build
@@ -91,12 +97,22 @@ Aquarium.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+Aquarium.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "Aquarium.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+Aquarium.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Aquarium.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) Aquarium.elf Aquarium.list Aquarium.map default.size.stdout
+	-$(RM) Aquarium.bin Aquarium.elf Aquarium.hex Aquarium.list Aquarium.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
