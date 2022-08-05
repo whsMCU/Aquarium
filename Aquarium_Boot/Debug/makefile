@@ -76,8 +76,8 @@ all: main-build
 main-build: Aquarium_Boot.elf secondary-outputs
 
 # Tool invocations
-Aquarium_Boot.elf Aquarium_Boot.map: $(OBJS) $(USER_OBJS) C:\Users\jjins\Documents\1.\ Project\Aquarium\Aquarium_Boot\src\bsp\ldscript\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Aquarium_Boot.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\jjins\Documents\1. Project\Aquarium\Aquarium_Boot\src\bsp\ldscript\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Aquarium_Boot.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Aquarium_Boot.elf Aquarium_Boot.map: $(OBJS) $(USER_OBJS) D:\STM32CubeIDE\Aquarium\Aquarium_Boot\src\bsp\ldscript\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Aquarium_Boot.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\STM32CubeIDE\Aquarium\Aquarium_Boot\src\bsp\ldscript\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Aquarium_Boot.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

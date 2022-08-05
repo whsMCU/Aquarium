@@ -19,6 +19,10 @@
 #include "files.h"
 #include "ymodem.h"
 #include "cmd.h"
+#include "button.h"
+#include "flash.h"
+#include "rtc.h"
+#include "reset.h"
 #include "util.h"
 
 

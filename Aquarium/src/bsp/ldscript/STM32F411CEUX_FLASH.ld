@@ -45,7 +45,6 @@ MEMORY
 /* Sections */
 SECTIONS
 {
-
   .tag :
   {
     . = ALIGN(4);

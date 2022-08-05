@@ -21,7 +21,6 @@ void hwInit(void)
 {
   bspInit();
 
-
   DWT_Delay_Init();
 
   rtcInit();

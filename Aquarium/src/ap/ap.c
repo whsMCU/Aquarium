@@ -18,7 +18,7 @@ uint8_t button_status;
 
 void apInit(void)
 {
-	cliOpen(_DEF_UART1, 57600);
+	//cliOpen(_DEF_UART1, 57600);
 	uartOpen(_DEF_UART1, 57600);
 	menuSetCallBack(lcdMain);
 	cliAdd("boot", cliBoot);

@@ -1,7 +1,0 @@
-../src/hw/driver/cmd.c:32:6:cmdInit	16	static
-../src/hw/driver/cmd.c:41:6:cmdOpen	24	static
-../src/hw/driver/cmd.c:52:6:cmdClose	16	static
-../src/hw/driver/cmd.c:57:6:cmdReceivePacket	24	static
-../src/hw/driver/cmd.c:157:6:cmdSendCmd	40	static
-../src/hw/driver/cmd.c:189:6:cmdSendResp	40	static
-../src/hw/driver/cmd.c:221:6:cmdSendCmdRxResp	32	static
