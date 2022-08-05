@@ -1718,8 +1718,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x22 ./src/hw/driver/clcd.o
  .debug_macro   0x0000000000000000       0xfa ./src/hw/driver/clcd.o
  .debug_macro   0x0000000000000000       0x4c ./src/hw/driver/clcd.o
- .debug_line    0x0000000000000000      0xfec ./src/hw/driver/clcd.o
- .debug_str     0x0000000000000000    0x998aa ./src/hw/driver/clcd.o
+ .debug_line    0x0000000000000000     0x103d ./src/hw/driver/clcd.o
+ .debug_str     0x0000000000000000    0x998b3 ./src/hw/driver/clcd.o
  .comment       0x0000000000000000       0x51 ./src/hw/driver/clcd.o
  .debug_frame   0x0000000000000000      0x35c ./src/hw/driver/clcd.o
  .ARM.attributes
@@ -2525,8 +2525,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x7c ./src/hw/driver/files.o
  .debug_macro   0x0000000000000000       0xf2 ./src/hw/driver/files.o
  .debug_macro   0x0000000000000000       0xdb ./src/hw/driver/files.o
- .debug_line    0x0000000000000000      0xe69 ./src/hw/driver/files.o
- .debug_str     0x0000000000000000    0x9a0f0 ./src/hw/driver/files.o
+ .debug_line    0x0000000000000000      0xec3 ./src/hw/driver/files.o
+ .debug_str     0x0000000000000000    0x9a0f9 ./src/hw/driver/files.o
  .comment       0x0000000000000000       0x51 ./src/hw/driver/files.o
  .debug_frame   0x0000000000000000      0x1d0 ./src/hw/driver/files.o
  .ARM.attributes
@@ -3077,8 +3077,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x22 ./src/hw/driver/i2c.o
  .debug_macro   0x0000000000000000       0xfa ./src/hw/driver/i2c.o
  .debug_macro   0x0000000000000000       0x22 ./src/hw/driver/i2c.o
- .debug_line    0x0000000000000000      0xb57 ./src/hw/driver/i2c.o
- .debug_str     0x0000000000000000    0x994b4 ./src/hw/driver/i2c.o
+ .debug_line    0x0000000000000000      0xb9f ./src/hw/driver/i2c.o
+ .debug_str     0x0000000000000000    0x994bd ./src/hw/driver/i2c.o
  .comment       0x0000000000000000       0x51 ./src/hw/driver/i2c.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./src/hw/driver/i2c.o
@@ -6319,8 +6319,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x126 ./src/hw/driver/image/source/fan_fast_64x64x4.o
  .debug_macro   0x0000000000000000       0x22 ./src/hw/driver/image/source/fan_fast_64x64x4.o
  .debug_macro   0x0000000000000000       0xfa ./src/hw/driver/image/source/fan_fast_64x64x4.o
- .debug_line    0x0000000000000000      0xb68 ./src/hw/driver/image/source/fan_fast_64x64x4.o
- .debug_str     0x0000000000000000    0x99446 ./src/hw/driver/image/source/fan_fast_64x64x4.o
+ .debug_line    0x0000000000000000      0xbb0 ./src/hw/driver/image/source/fan_fast_64x64x4.o
+ .debug_str     0x0000000000000000    0x9944f ./src/hw/driver/image/source/fan_fast_64x64x4.o
  .comment       0x0000000000000000       0x51 ./src/hw/driver/image/source/fan_fast_64x64x4.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./src/hw/driver/image/source/fan_fast_64x64x4.o
@@ -6510,8 +6510,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x126 ./src/hw/driver/image/source/fan_slow_64x64x4.o
  .debug_macro   0x0000000000000000       0x22 ./src/hw/driver/image/source/fan_slow_64x64x4.o
  .debug_macro   0x0000000000000000       0xfa ./src/hw/driver/image/source/fan_slow_64x64x4.o
- .debug_line    0x0000000000000000      0xb68 ./src/hw/driver/image/source/fan_slow_64x64x4.o
- .debug_str     0x0000000000000000    0x99446 ./src/hw/driver/image/source/fan_slow_64x64x4.o
+ .debug_line    0x0000000000000000      0xbb0 ./src/hw/driver/image/source/fan_slow_64x64x4.o
+ .debug_str     0x0000000000000000    0x9944f ./src/hw/driver/image/source/fan_slow_64x64x4.o
  .comment       0x0000000000000000       0x51 ./src/hw/driver/image/source/fan_slow_64x64x4.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./src/hw/driver/image/source/fan_slow_64x64x4.o
@@ -6876,8 +6876,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x22 ./src/hw/driver/lcd/ssd1306.o
  .debug_macro   0x0000000000000000       0xfa ./src/hw/driver/lcd/ssd1306.o
  .debug_macro   0x0000000000000000       0xe8 ./src/hw/driver/lcd/ssd1306.o
- .debug_line    0x0000000000000000      0xbbc ./src/hw/driver/lcd/ssd1306.o
- .debug_str     0x0000000000000000    0x9983d ./src/hw/driver/lcd/ssd1306.o
+ .debug_line    0x0000000000000000      0xc0d ./src/hw/driver/lcd/ssd1306.o
+ .debug_str     0x0000000000000000    0x99846 ./src/hw/driver/lcd/ssd1306.o
  .comment       0x0000000000000000       0x51 ./src/hw/driver/lcd/ssd1306.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./src/hw/driver/lcd/ssd1306.o
@@ -8346,8 +8346,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x47 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o
  .debug_macro   0x0000000000000000      0x287 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o
  .debug_macro   0x0000000000000000      0x126 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o
- .debug_line    0x0000000000000000     0x14eb ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o
- .debug_str     0x0000000000000000    0x950d9 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o
+ .debug_line    0x0000000000000000     0x1518 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o
+ .debug_str     0x0000000000000000    0x950e2 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o
  .comment       0x0000000000000000       0x51 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o
  .debug_frame   0x0000000000000000       0xac ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o
  .ARM.attributes
@@ -8475,8 +8475,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x47 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
  .debug_macro   0x0000000000000000      0x287 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
  .debug_macro   0x0000000000000000      0x126 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
- .debug_line    0x0000000000000000      0xb46 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
- .debug_str     0x0000000000000000    0x94f71 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
+ .debug_line    0x0000000000000000      0xb73 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
+ .debug_str     0x0000000000000000    0x94f7a ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
  .comment       0x0000000000000000       0x51 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
  .debug_frame   0x0000000000000000      0x174 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
  .ARM.attributes
@@ -8837,8 +8837,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x47 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o
  .debug_macro   0x0000000000000000      0x287 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o
  .debug_macro   0x0000000000000000      0x126 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o
- .debug_line    0x0000000000000000      0x8b3 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o
- .debug_str     0x0000000000000000    0x94f3f ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o
+ .debug_line    0x0000000000000000      0x8e0 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o
+ .debug_str     0x0000000000000000    0x94f48 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o
  .comment       0x0000000000000000       0x51 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o
  .debug_frame   0x0000000000000000       0xb0 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o
  .ARM.attributes
@@ -9087,8 +9087,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x47 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o
  .debug_macro   0x0000000000000000      0x287 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o
  .debug_macro   0x0000000000000000      0x126 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o
- .debug_line    0x0000000000000000      0xa52 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o
- .debug_str     0x0000000000000000    0x95143 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o
+ .debug_line    0x0000000000000000      0xa7f ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o
+ .debug_str     0x0000000000000000    0x9514c ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o
  .comment       0x0000000000000000       0x51 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o
  .debug_frame   0x0000000000000000      0x254 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o
  .ARM.attributes
@@ -9218,8 +9218,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x47 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o
  .debug_macro   0x0000000000000000      0x287 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o
  .debug_macro   0x0000000000000000      0x126 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o
- .debug_line    0x0000000000000000      0xa12 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o
- .debug_str     0x0000000000000000    0x950c8 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o
+ .debug_line    0x0000000000000000      0xa3f ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o
+ .debug_str     0x0000000000000000    0x950d1 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o
  .comment       0x0000000000000000       0x51 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o
  .debug_frame   0x0000000000000000      0x15c ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o
  .ARM.attributes
@@ -14490,189 +14490,188 @@ LOAD c:/st/stm32cubeide_1.5.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x0000000000023b83      0x21f ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.o
  .debug_macro   0x0000000000023da2      0x524 ./src/main.o
 
-.debug_line     0x0000000000000000    0x381d5
- .debug_line    0x0000000000000000      0xe25 ./src/ap/ap.o
- .debug_line    0x0000000000000e25      0xb8d ./src/bsp/bsp.o
- .debug_line    0x00000000000019b2      0xd5f ./src/bsp/stm32f4xx_hal_msp.o
- .debug_line    0x0000000000002711      0xf29 ./src/bsp/stm32f4xx_it.o
- .debug_line    0x000000000000363a      0x7ee ./src/bsp/syscalls.o
- .debug_line    0x0000000000003e28      0x4e4 ./src/bsp/sysmem.o
- .debug_line    0x000000000000430c      0x556 ./src/bsp/system_stm32f4xx.o
- .debug_line    0x0000000000004862       0x88 ./src/bsp/startup/startup_stm32f411ceux.o
- .debug_line    0x00000000000048ea      0x754 ./src/common/core/qbuffer.o
- .debug_line    0x000000000000503e      0xb4c ./src/common/core/user_delay.o
- .debug_line    0x0000000000005b8a      0xd58 ./src/hw/driver/button.o
- .debug_line    0x00000000000068e2     0x144b ./src/hw/driver/cli.o
- .debug_line    0x0000000000007d2d     0x1008 ./src/hw/driver/ds18b20.o
- .debug_line    0x0000000000008d35      0xdb5 ./src/hw/driver/fatfs.o
- .debug_line    0x0000000000009aea      0xe21 ./src/hw/driver/flash.o
- .debug_line    0x000000000000a90b      0xd6a ./src/hw/driver/gpio.o
- .debug_line    0x000000000000b675     0x188c ./src/hw/driver/lcd.o
- .debug_line    0x000000000000cf01      0xc7e ./src/hw/driver/led.o
- .debug_line    0x000000000000db7f      0xe0b ./src/hw/driver/menu.o
- .debug_line    0x000000000000e98a     0x10ef ./src/hw/driver/onewire.o
- .debug_line    0x000000000000fa79      0xc42 ./src/hw/driver/reset.o
- .debug_line    0x00000000000106bb      0xbee ./src/hw/driver/rtc.o
- .debug_line    0x00000000000112a9      0xf62 ./src/hw/driver/sd.o
- .debug_line    0x000000000001220b      0xde8 ./src/hw/driver/sonar.o
- .debug_line    0x0000000000012ff3      0xf52 ./src/hw/driver/spi.o
- .debug_line    0x0000000000013f45      0xce8 ./src/hw/driver/tds.o
- .debug_line    0x0000000000014c2d      0xfdb ./src/hw/driver/telemetry.o
- .debug_line    0x0000000000015c08      0xebf ./src/hw/driver/uart.o
- .debug_line    0x0000000000016ac7      0xc19 ./src/hw/driver/ui_common.o
- .debug_line    0x00000000000176e0      0xd49 ./src/hw/driver/fatfs/sd_diskio.o
- .debug_line    0x0000000000018429      0x92c ./src/hw/driver/hangul/han.o
- .debug_line    0x0000000000018d55      0xb15 ./src/hw/driver/image/image.o
- .debug_line    0x000000000001986a      0xb63 ./src/hw/driver/image/source/fan_32x32x4.o
- .debug_line    0x000000000001a3cd      0xb62 ./src/hw/driver/lcd/lcd_fonts.o
- .debug_line    0x000000000001af2f      0xe85 ./src/hw/driver/lcd/st7735.o
- .debug_line    0x000000000001bdb4      0xcfc ./src/hw/hw.o
- .debug_line    0x000000000001cab0      0x60e ./src/lib/FatFs/src/diskio.o
- .debug_line    0x000000000001d0be     0x38d0 ./src/lib/FatFs/src/ff.o
- .debug_line    0x000000000002098e      0x62c ./src/lib/FatFs/src/ff_gen_drv.o
- .debug_line    0x0000000000020fba      0x54f ./src/lib/FatFs/src/option/syscall.o
- .debug_line    0x0000000000021509      0x637 ./src/lib/FatFs/src/option/unicode.o
- .debug_line    0x0000000000021b40      0xb58 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_line    0x0000000000022698     0x12ec ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_line    0x0000000000023984     0x1007 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.o
- .debug_line    0x000000000002498b      0xe07 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_line    0x0000000000025792     0x10c3 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_line    0x0000000000026855      0xbea ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
- .debug_line    0x000000000002743f      0xcee ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
- .debug_line    0x000000000002812d      0xca4 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_line    0x0000000000028dd1      0xebb ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_line    0x0000000000029c8c      0xbb2 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
- .debug_line    0x000000000002a83e     0x122e ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.o
- .debug_line    0x000000000002ba6c     0x163a ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.o
- .debug_line    0x000000000002d0a6     0x1f9c ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.o
- .debug_line    0x000000000002f042     0x1d95 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_line    0x0000000000030dd7     0x2992 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_line    0x0000000000033769     0x133e ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_line    0x0000000000034aa7     0x1970 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
- .debug_line    0x0000000000036417     0x109e ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.o
- .debug_line    0x00000000000374b5      0xd20 ./src/main.o
+.debug_line     0x0000000000000000    0x38ec5
+ .debug_line    0x0000000000000000      0xe7f ./src/ap/ap.o
+ .debug_line    0x0000000000000e7f      0xbc3 ./src/bsp/bsp.o
+ .debug_line    0x0000000000001a42      0xdcb ./src/bsp/stm32f4xx_hal_msp.o
+ .debug_line    0x000000000000280d      0xf95 ./src/bsp/stm32f4xx_it.o
+ .debug_line    0x00000000000037a2      0x7ee ./src/bsp/syscalls.o
+ .debug_line    0x0000000000003f90      0x4e4 ./src/bsp/sysmem.o
+ .debug_line    0x0000000000004474      0x568 ./src/bsp/system_stm32f4xx.o
+ .debug_line    0x00000000000049dc       0x88 ./src/bsp/startup/startup_stm32f411ceux.o
+ .debug_line    0x0000000000004a64      0x75d ./src/common/core/qbuffer.o
+ .debug_line    0x00000000000051c1      0xb8b ./src/common/core/user_delay.o
+ .debug_line    0x0000000000005d4c      0xda0 ./src/hw/driver/button.o
+ .debug_line    0x0000000000006aec     0x1493 ./src/hw/driver/cli.o
+ .debug_line    0x0000000000007f7f     0x1050 ./src/hw/driver/ds18b20.o
+ .debug_line    0x0000000000008fcf      0xe0f ./src/hw/driver/fatfs.o
+ .debug_line    0x0000000000009dde      0xe69 ./src/hw/driver/flash.o
+ .debug_line    0x000000000000ac47      0xdb2 ./src/hw/driver/gpio.o
+ .debug_line    0x000000000000b9f9     0x18e6 ./src/hw/driver/lcd.o
+ .debug_line    0x000000000000d2df      0xcc6 ./src/hw/driver/led.o
+ .debug_line    0x000000000000dfa5      0xe53 ./src/hw/driver/menu.o
+ .debug_line    0x000000000000edf8     0x1140 ./src/hw/driver/onewire.o
+ .debug_line    0x000000000000ff38      0xc8a ./src/hw/driver/reset.o
+ .debug_line    0x0000000000010bc2      0xc36 ./src/hw/driver/rtc.o
+ .debug_line    0x00000000000117f8      0xfaa ./src/hw/driver/sd.o
+ .debug_line    0x00000000000127a2      0xe39 ./src/hw/driver/sonar.o
+ .debug_line    0x00000000000135db      0xf9a ./src/hw/driver/spi.o
+ .debug_line    0x0000000000014575      0xd30 ./src/hw/driver/tds.o
+ .debug_line    0x00000000000152a5     0x1023 ./src/hw/driver/telemetry.o
+ .debug_line    0x00000000000162c8      0xf10 ./src/hw/driver/uart.o
+ .debug_line    0x00000000000171d8      0xc6a ./src/hw/driver/ui_common.o
+ .debug_line    0x0000000000017e42      0xda3 ./src/hw/driver/fatfs/sd_diskio.o
+ .debug_line    0x0000000000018be5      0x92c ./src/hw/driver/hangul/han.o
+ .debug_line    0x0000000000019511      0xb54 ./src/hw/driver/image/image.o
+ .debug_line    0x000000000001a065      0xbab ./src/hw/driver/image/source/fan_32x32x4.o
+ .debug_line    0x000000000001ac10      0xbaa ./src/hw/driver/lcd/lcd_fonts.o
+ .debug_line    0x000000000001b7ba      0xed6 ./src/hw/driver/lcd/st7735.o
+ .debug_line    0x000000000001c690      0xd56 ./src/hw/hw.o
+ .debug_line    0x000000000001d3e6      0x617 ./src/lib/FatFs/src/diskio.o
+ .debug_line    0x000000000001d9fd     0x38d9 ./src/lib/FatFs/src/ff.o
+ .debug_line    0x00000000000212d6      0x635 ./src/lib/FatFs/src/ff_gen_drv.o
+ .debug_line    0x000000000002190b      0x558 ./src/lib/FatFs/src/option/syscall.o
+ .debug_line    0x0000000000021e63      0x640 ./src/lib/FatFs/src/option/unicode.o
+ .debug_line    0x00000000000224a3      0xb85 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_line    0x0000000000023028     0x1319 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_line    0x0000000000024341     0x1034 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.o
+ .debug_line    0x0000000000025375      0xe34 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_line    0x00000000000261a9     0x10f0 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_line    0x0000000000027299      0xc17 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
+ .debug_line    0x0000000000027eb0      0xd1b ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
+ .debug_line    0x0000000000028bcb      0xcd1 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_line    0x000000000002989c      0xee8 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_line    0x000000000002a784      0xbdf ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
+ .debug_line    0x000000000002b363     0x125b ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.o
+ .debug_line    0x000000000002c5be     0x1667 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.o
+ .debug_line    0x000000000002dc25     0x1fc9 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.o
+ .debug_line    0x000000000002fbee     0x1dc2 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_line    0x00000000000319b0     0x29bf ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_line    0x000000000003436f     0x136b ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x00000000000356da     0x199d ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_line    0x0000000000037077     0x10cb ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.o
+ .debug_line    0x0000000000038142      0xd83 ./src/main.o
 
-.debug_str      0x0000000000000000    0xa5fe7
- .debug_str     0x0000000000000000    0x9a409 ./src/ap/ap.o
-                                      0x9a741 (size before relaxing)
- .debug_str     0x000000000009a409      0x396 ./src/bsp/bsp.o
-                                      0x994ad (size before relaxing)
- .debug_str     0x000000000009a79f       0x38 ./src/bsp/stm32f4xx_hal_msp.o
-                                      0x9a3d0 (size before relaxing)
- .debug_str     0x000000000009a7d7      0xbdc ./src/bsp/stm32f4xx_it.o
-                                      0x9b02e (size before relaxing)
- .debug_str     0x000000000009b3b3     0x1636 ./src/bsp/syscalls.o
-                                       0x8a85 (size before relaxing)
- .debug_str     0x000000000009c9e9       0x6a ./src/bsp/sysmem.o
-                                       0x5db7 (size before relaxing)
- .debug_str     0x000000000009ca53      0x12d ./src/bsp/system_stm32f4xx.o
-                                      0x4f748 (size before relaxing)
- .debug_str     0x000000000009cb80       0x39 ./src/bsp/startup/startup_stm32f411ceux.o
-                                         0x6c (size before relaxing)
- .debug_str     0x000000000009cbb9       0xb6 ./src/common/core/qbuffer.o
-                                       0x82da (size before relaxing)
- .debug_str     0x000000000009cc6f       0xd7 ./src/common/core/user_delay.o
-                                      0x99500 (size before relaxing)
- .debug_str     0x000000000009cd46      0x177 ./src/hw/driver/button.o
-                                      0x9981e (size before relaxing)
- .debug_str     0x000000000009cebd      0x3d6 ./src/hw/driver/cli.o
-                                      0x999ab (size before relaxing)
- .debug_str     0x000000000009d293      0x327 ./src/hw/driver/ds18b20.o
-                                      0x99bb1 (size before relaxing)
- .debug_str     0x000000000009d5ba      0x9a5 ./src/hw/driver/fatfs.o
-                                      0x99f23 (size before relaxing)
- .debug_str     0x000000000009df5f      0x162 ./src/hw/driver/flash.o
-                                      0x9972b (size before relaxing)
- .debug_str     0x000000000009e0c1       0x9d ./src/hw/driver/gpio.o
-                                      0x997f3 (size before relaxing)
- .debug_str     0x000000000009e15e      0xa91 ./src/hw/driver/lcd.o
-                                      0x9a31e (size before relaxing)
- .debug_str     0x000000000009ebef       0x62 ./src/hw/driver/led.o
-                                      0x997c0 (size before relaxing)
- .debug_str     0x000000000009ec51      0x130 ./src/hw/driver/menu.o
-                                      0x997c7 (size before relaxing)
- .debug_str     0x000000000009ed81      0x1d0 ./src/hw/driver/onewire.o
-                                      0x999e0 (size before relaxing)
- .debug_str     0x000000000009ef51       0x75 ./src/hw/driver/reset.o
-                                      0x99540 (size before relaxing)
- .debug_str     0x000000000009efc6      0x23e ./src/hw/driver/rtc.o
-                                      0x99817 (size before relaxing)
- .debug_str     0x000000000009f204      0x64a ./src/hw/driver/sd.o
-                                      0x9a2c4 (size before relaxing)
- .debug_str     0x000000000009f84e      0x1fa ./src/hw/driver/sonar.o
-                                      0x9a32d (size before relaxing)
- .debug_str     0x000000000009fa48      0x1fb ./src/hw/driver/spi.o
-                                      0x9a0c3 (size before relaxing)
- .debug_str     0x000000000009fc43       0xc1 ./src/hw/driver/tds.o
-                                      0x99f63 (size before relaxing)
- .debug_str     0x000000000009fd04      0x29f ./src/hw/driver/telemetry.o
-                                      0x9a0a7 (size before relaxing)
- .debug_str     0x000000000009ffa3       0xff ./src/hw/driver/uart.o
-                                      0x9a037 (size before relaxing)
- .debug_str     0x00000000000a00a2       0x66 ./src/hw/driver/ui_common.o
-                                      0x995df (size before relaxing)
- .debug_str     0x00000000000a0108       0x9f ./src/hw/driver/fatfs/sd_diskio.o
-                                      0x99c1d (size before relaxing)
- .debug_str     0x00000000000a01a7      0x17d ./src/hw/driver/hangul/han.o
-                                       0x6ff8 (size before relaxing)
- .debug_str     0x00000000000a0324       0xc9 ./src/hw/driver/image/image.o
-                                      0x99503 (size before relaxing)
- .debug_str     0x00000000000a03ed       0x2c ./src/hw/driver/image/source/fan_32x32x4.o
-                                      0x99439 (size before relaxing)
- .debug_str     0x00000000000a0419       0x3e ./src/hw/driver/lcd/lcd_fonts.o
-                                      0x99497 (size before relaxing)
- .debug_str     0x00000000000a0457      0x191 ./src/hw/driver/lcd/st7735.o
-                                      0x99d60 (size before relaxing)
- .debug_str     0x00000000000a05e8       0xed ./src/hw/hw.o
-                                      0x9a439 (size before relaxing)
- .debug_str     0x00000000000a06d5       0x53 ./src/lib/FatFs/src/diskio.o
-                                       0x74db (size before relaxing)
- .debug_str     0x00000000000a0728      0xfdc ./src/lib/FatFs/src/ff.o
-                                       0x7d20 (size before relaxing)
- .debug_str     0x00000000000a1704       0x81 ./src/lib/FatFs/src/ff_gen_drv.o
-                                       0x750f (size before relaxing)
- .debug_str     0x00000000000a1785       0x33 ./src/lib/FatFs/src/option/syscall.o
-                                       0x6769 (size before relaxing)
- .debug_str     0x00000000000a17b8       0x3a ./src/lib/FatFs/src/option/unicode.o
-                                       0x6763 (size before relaxing)
- .debug_str     0x00000000000a17f2      0x604 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
-                                      0x95943 (size before relaxing)
- .debug_str     0x00000000000a1df6      0x2a1 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
-                                      0x954e3 (size before relaxing)
- .debug_str     0x00000000000a2097      0x2ec ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.o
-                                      0x95546 (size before relaxing)
- .debug_str     0x00000000000a2383      0x323 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
-                                      0x95664 (size before relaxing)
- .debug_str     0x00000000000a26a6      0x2d4 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
-                                      0x9531f (size before relaxing)
- .debug_str     0x00000000000a297a      0x29e ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
-                                      0x950f5 (size before relaxing)
- .debug_str     0x00000000000a2c18      0x2b5 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
-                                      0x95218 (size before relaxing)
- .debug_str     0x00000000000a2ecd      0x1a3 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
-                                      0x9513f (size before relaxing)
- .debug_str     0x00000000000a3070      0x221 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
-                                      0x9534b (size before relaxing)
- .debug_str     0x00000000000a3291      0x11e ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
-                                      0x9509f (size before relaxing)
- .debug_str     0x00000000000a33af      0x2b0 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.o
-                                      0x952d5 (size before relaxing)
- .debug_str     0x00000000000a365f      0x537 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.o
-                                      0x95635 (size before relaxing)
- .debug_str     0x00000000000a3b96      0x844 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.o
-                                      0x95c74 (size before relaxing)
- .debug_str     0x00000000000a43da      0x499 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
-                                      0x957a8 (size before relaxing)
- .debug_str     0x00000000000a4873      0xc8c ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
-                                      0x96071 (size before relaxing)
- .debug_str     0x00000000000a54ff      0x454 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
-                                      0x958ba (size before relaxing)
- .debug_str     0x00000000000a5953      0x477 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+.debug_str      0x0000000000000000    0xa6023
+ .debug_str     0x0000000000000000    0x9a412 ./src/ap/ap.o
+                                      0x9a74a (size before relaxing)
+ .debug_str     0x000000000009a412      0x396 ./src/bsp/bsp.o
+                                      0x994b6 (size before relaxing)
+ .debug_str     0x000000000009a7a8       0x38 ./src/bsp/stm32f4xx_hal_msp.o
+                                      0x9a3d9 (size before relaxing)
+ .debug_str     0x000000000009a7e0      0xbdc ./src/bsp/stm32f4xx_it.o
+                                      0x9b037 (size before relaxing)
+ .debug_str     0x000000000009b3bc     0x1636 ./src/bsp/syscalls.o
+                                       0x8a8e (size before relaxing)
+ .debug_str     0x000000000009c9f2       0x6a ./src/bsp/sysmem.o
+                                       0x5dc0 (size before relaxing)
+ .debug_str     0x000000000009ca5c      0x12d ./src/bsp/system_stm32f4xx.o
+                                      0x4f751 (size before relaxing)
+ .debug_str     0x000000000009cb89       0x6c ./src/bsp/startup/startup_stm32f411ceux.o
+ .debug_str     0x000000000009cbf5       0xb6 ./src/common/core/qbuffer.o
+                                       0x82e3 (size before relaxing)
+ .debug_str     0x000000000009ccab       0xd7 ./src/common/core/user_delay.o
+                                      0x99509 (size before relaxing)
+ .debug_str     0x000000000009cd82      0x177 ./src/hw/driver/button.o
+                                      0x99827 (size before relaxing)
+ .debug_str     0x000000000009cef9      0x3d6 ./src/hw/driver/cli.o
+                                      0x999b4 (size before relaxing)
+ .debug_str     0x000000000009d2cf      0x327 ./src/hw/driver/ds18b20.o
+                                      0x99bba (size before relaxing)
+ .debug_str     0x000000000009d5f6      0x9a5 ./src/hw/driver/fatfs.o
+                                      0x99f2c (size before relaxing)
+ .debug_str     0x000000000009df9b      0x162 ./src/hw/driver/flash.o
+                                      0x99734 (size before relaxing)
+ .debug_str     0x000000000009e0fd       0x9d ./src/hw/driver/gpio.o
+                                      0x997fc (size before relaxing)
+ .debug_str     0x000000000009e19a      0xa91 ./src/hw/driver/lcd.o
+                                      0x9a327 (size before relaxing)
+ .debug_str     0x000000000009ec2b       0x62 ./src/hw/driver/led.o
+                                      0x997c9 (size before relaxing)
+ .debug_str     0x000000000009ec8d      0x130 ./src/hw/driver/menu.o
+                                      0x997d0 (size before relaxing)
+ .debug_str     0x000000000009edbd      0x1d0 ./src/hw/driver/onewire.o
+                                      0x999e9 (size before relaxing)
+ .debug_str     0x000000000009ef8d       0x75 ./src/hw/driver/reset.o
+                                      0x99549 (size before relaxing)
+ .debug_str     0x000000000009f002      0x23e ./src/hw/driver/rtc.o
+                                      0x99820 (size before relaxing)
+ .debug_str     0x000000000009f240      0x64a ./src/hw/driver/sd.o
+                                      0x9a2cd (size before relaxing)
+ .debug_str     0x000000000009f88a      0x1fa ./src/hw/driver/sonar.o
+                                      0x9a336 (size before relaxing)
+ .debug_str     0x000000000009fa84      0x1fb ./src/hw/driver/spi.o
+                                      0x9a0cc (size before relaxing)
+ .debug_str     0x000000000009fc7f       0xc1 ./src/hw/driver/tds.o
+                                      0x99f6c (size before relaxing)
+ .debug_str     0x000000000009fd40      0x29f ./src/hw/driver/telemetry.o
+                                      0x9a0b0 (size before relaxing)
+ .debug_str     0x000000000009ffdf       0xff ./src/hw/driver/uart.o
+                                      0x9a040 (size before relaxing)
+ .debug_str     0x00000000000a00de       0x66 ./src/hw/driver/ui_common.o
+                                      0x995e8 (size before relaxing)
+ .debug_str     0x00000000000a0144       0x9f ./src/hw/driver/fatfs/sd_diskio.o
+                                      0x99c26 (size before relaxing)
+ .debug_str     0x00000000000a01e3      0x17d ./src/hw/driver/hangul/han.o
+                                       0x7001 (size before relaxing)
+ .debug_str     0x00000000000a0360       0xc9 ./src/hw/driver/image/image.o
+                                      0x9950c (size before relaxing)
+ .debug_str     0x00000000000a0429       0x2c ./src/hw/driver/image/source/fan_32x32x4.o
+                                      0x99442 (size before relaxing)
+ .debug_str     0x00000000000a0455       0x3e ./src/hw/driver/lcd/lcd_fonts.o
+                                      0x994a0 (size before relaxing)
+ .debug_str     0x00000000000a0493      0x191 ./src/hw/driver/lcd/st7735.o
+                                      0x99d69 (size before relaxing)
+ .debug_str     0x00000000000a0624       0xed ./src/hw/hw.o
+                                      0x9a442 (size before relaxing)
+ .debug_str     0x00000000000a0711       0x53 ./src/lib/FatFs/src/diskio.o
+                                       0x74e4 (size before relaxing)
+ .debug_str     0x00000000000a0764      0xfdc ./src/lib/FatFs/src/ff.o
+                                       0x7d29 (size before relaxing)
+ .debug_str     0x00000000000a1740       0x81 ./src/lib/FatFs/src/ff_gen_drv.o
+                                       0x7518 (size before relaxing)
+ .debug_str     0x00000000000a17c1       0x33 ./src/lib/FatFs/src/option/syscall.o
+                                       0x6772 (size before relaxing)
+ .debug_str     0x00000000000a17f4       0x3a ./src/lib/FatFs/src/option/unicode.o
+                                       0x676c (size before relaxing)
+ .debug_str     0x00000000000a182e      0x604 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                                      0x9594c (size before relaxing)
+ .debug_str     0x00000000000a1e32      0x2a1 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+                                      0x954ec (size before relaxing)
+ .debug_str     0x00000000000a20d3      0x2ec ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.o
+                                      0x9554f (size before relaxing)
+ .debug_str     0x00000000000a23bf      0x323 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+                                      0x9566d (size before relaxing)
+ .debug_str     0x00000000000a26e2      0x2d4 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+                                      0x95328 (size before relaxing)
+ .debug_str     0x00000000000a29b6      0x29e ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
+                                      0x950fe (size before relaxing)
+ .debug_str     0x00000000000a2c54      0x2b5 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
+                                      0x95221 (size before relaxing)
+ .debug_str     0x00000000000a2f09      0x1a3 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+                                      0x95148 (size before relaxing)
+ .debug_str     0x00000000000a30ac      0x221 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+                                      0x95354 (size before relaxing)
+ .debug_str     0x00000000000a32cd      0x11e ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
+                                      0x950a8 (size before relaxing)
+ .debug_str     0x00000000000a33eb      0x2b0 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.o
+                                      0x952de (size before relaxing)
+ .debug_str     0x00000000000a369b      0x537 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.o
+                                      0x9563e (size before relaxing)
+ .debug_str     0x00000000000a3bd2      0x844 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.o
+                                      0x95c7d (size before relaxing)
+ .debug_str     0x00000000000a4416      0x499 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
                                       0x957b1 (size before relaxing)
- .debug_str     0x00000000000a5dca      0x20f ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.o
-                                      0x9536c (size before relaxing)
- .debug_str     0x00000000000a5fd9        0xe ./src/main.o
-                                      0x9a2a4 (size before relaxing)
+ .debug_str     0x00000000000a48af      0xc8c ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+                                      0x9607a (size before relaxing)
+ .debug_str     0x00000000000a553b      0x454 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+                                      0x958c3 (size before relaxing)
+ .debug_str     0x00000000000a598f      0x477 ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+                                      0x957ba (size before relaxing)
+ .debug_str     0x00000000000a5e06      0x20f ./src/lib/f411/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.o
+                                      0x95375 (size before relaxing)
+ .debug_str     0x00000000000a6015        0xe ./src/main.o
+                                      0x9a2ad (size before relaxing)
 
 .comment        0x0000000000000000       0x50
  .comment       0x0000000000000000       0x50 ./src/ap/ap.o
