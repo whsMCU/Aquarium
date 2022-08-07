@@ -30,6 +30,8 @@ void bspDeInit(void);
 void delay(uint32_t ms);
 uint32_t millis(void);
 
+void Error_Handler(void);
+
 typedef uint32_t millis_t;
 
 #define SEC_TO_MS(N) millis_t((N)*1000UL)

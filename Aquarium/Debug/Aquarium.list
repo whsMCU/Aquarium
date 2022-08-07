@@ -31,23 +31,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  13 .ARM.attributes 00000030  00000000  00000000  000402dc  2**0
                   CONTENTS, READONLY
- 14 .debug_info   000263df  00000000  00000000  0004030c  2**0
+ 14 .debug_info   000263eb  00000000  00000000  0004030c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_abbrev 000072f1  00000000  00000000  000666eb  2**0
+ 15 .debug_abbrev 000072f1  00000000  00000000  000666f7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_aranges 00002478  00000000  00000000  0006d9e0  2**3
+ 16 .debug_aranges 00002478  00000000  00000000  0006d9e8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_ranges 000020a8  00000000  00000000  0006fe58  2**3
+ 17 .debug_ranges 000020a8  00000000  00000000  0006fe60  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_macro  000242c6  00000000  00000000  00071f00  2**0
+ 18 .debug_macro  000242c6  00000000  00000000  00071f08  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_line   00037205  00000000  00000000  000961c6  2**0
+ 19 .debug_line   00037208  00000000  00000000  000961ce  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_str    000a5fdc  00000000  00000000  000cd3cb  2**0
+ 20 .debug_str    000a5fdc  00000000  00000000  000cd3d6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .comment      00000050  00000000  00000000  001733a7  2**0
+ 21 .comment      00000050  00000000  00000000  001733b2  2**0
                   CONTENTS, READONLY
- 22 .debug_frame  0000a864  00000000  00000000  001733f8  2**2
+ 22 .debug_frame  0000a864  00000000  00000000  00173404  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -2865,28 +2865,28 @@ void SystemInit(void)
   /* FPU settings ------------------------------------------------------------*/
   #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
     SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
- 8011ea4:	4b08      	ldr	r3, [pc, #32]	; (8011ec8 <SystemInit+0x28>)
+ 8011ea4:	4b07      	ldr	r3, [pc, #28]	; (8011ec4 <SystemInit+0x24>)
  8011ea6:	f8d3 3088 	ldr.w	r3, [r3, #136]	; 0x88
- 8011eaa:	4a07      	ldr	r2, [pc, #28]	; (8011ec8 <SystemInit+0x28>)
+ 8011eaa:	4a06      	ldr	r2, [pc, #24]	; (8011ec4 <SystemInit+0x24>)
  8011eac:	f443 0370 	orr.w	r3, r3, #15728640	; 0xf00000
  8011eb0:	f8c2 3088 	str.w	r3, [r2, #136]	; 0x88
-
   /* Configure the Vector Table location add offset address ------------------*/
 #ifdef VECT_TAB_SRAM
   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
 #else
-  SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH */
- 8011eb4:	4b04      	ldr	r3, [pc, #16]	; (8011ec8 <SystemInit+0x28>)
- 8011eb6:	f04f 6200 	mov.w	r2, #134217728	; 0x8000000
- 8011eba:	609a      	str	r2, [r3, #8]
+  //SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH */
+  SCB->VTOR = (uint32_t)&__isr_vector_addr;
+ 8011eb4:	4b03      	ldr	r3, [pc, #12]	; (8011ec4 <SystemInit+0x24>)
+ 8011eb6:	4a04      	ldr	r2, [pc, #16]	; (8011ec8 <SystemInit+0x28>)
+ 8011eb8:	609a      	str	r2, [r3, #8]
 #endif
 }
- 8011ebc:	bf00      	nop
- 8011ebe:	46bd      	mov	sp, r7
- 8011ec0:	f85d 7b04 	ldr.w	r7, [sp], #4
- 8011ec4:	4770      	bx	lr
- 8011ec6:	bf00      	nop
- 8011ec8:	e000ed00 	.word	0xe000ed00
+ 8011eba:	bf00      	nop
+ 8011ebc:	46bd      	mov	sp, r7
+ 8011ebe:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8011ec2:	4770      	bx	lr
+ 8011ec4:	e000ed00 	.word	0xe000ed00
+ 8011ec8:	08010400 	.word	0x08010400
 
 08011ecc <Reset_Handler>:
 
