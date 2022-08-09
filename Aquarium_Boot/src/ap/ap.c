@@ -45,7 +45,7 @@ void apInit(void)
   }
 
 
-  cliOpen(_DEF_UART1, 57600);
+  //cliOpen(_DEF_UART1, 57600);
 
   cmdInit(&cmd);
   cmdOpen(&cmd, _DEF_UART1, 57600);

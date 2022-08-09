@@ -58,7 +58,7 @@ bool uartOpen(uint8_t ch, uint32_t baud)
         huart1.Init.HwFlowCtl   = UART_HWCONTROL_NONE;
         huart1.Init.OverSampling= UART_OVERSAMPLING_16;
 
-        HAL_UART_DeInit(&huart1);
+        //HAL_UART_DeInit(&huart1);
 
         qbufferCreate(&qbuffer[ch], &rx_buf[0], 256);
 
