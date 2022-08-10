@@ -43,7 +43,8 @@ src/hw/driver/telemetry.o: ../src/hw/driver/telemetry.c \
  D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/ds18b20.h \
  D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/onewire.h \
  D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/sonar.h \
- D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/tds.h
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/tds.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/reset.h
 D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/telemetry.h:
 D:/STM32CubeIDE/Aquarium/Aquarium/src/hw/hw_def.h:
 D:/STM32CubeIDE/Aquarium/Aquarium/src/common/def.h:
@@ -89,3 +90,4 @@ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/ds18b20.h:
 D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/onewire.h:
 D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/sonar.h:
 D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/tds.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/reset.h:

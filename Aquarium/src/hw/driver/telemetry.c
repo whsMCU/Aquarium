@@ -12,6 +12,7 @@
 #include "ds18b20.h"
 #include "sonar.h"
 #include "tds.h"
+#include "reset.h"
 
 int8_t Relay[4];
 
@@ -241,6 +242,10 @@ void evaluateCommand(void)
 			Relay[1] = read8();
 			Relay[2] = read8();
 			Relay[3] = read8();
+			break;
+
+		case MSP_SET_BOOT:
+			resetToBoot(0);
 			break;
 
 		default:

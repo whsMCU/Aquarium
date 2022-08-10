@@ -39,6 +39,7 @@ typedef enum serialState_t {
 ////////////////////////////////////////////////////////////////////////////////
 
 #define MSP_SET_RELAY            200   //in message          8 rc chan
+#define MSP_SET_BOOT             201   //in message          8 rc chan
 
 
 #define MSP_EEPROM_WRITE         250   //in message          no param
