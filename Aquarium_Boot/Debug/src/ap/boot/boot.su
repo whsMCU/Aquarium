@@ -1,7 +1,7 @@
 ../src/ap/boot/boot.c:48:6:bootInit	4	static
 ../src/ap/boot/boot.c:53:6:bootVerifyFw	16	static
 ../src/ap/boot/boot.c:68:6:bootVerifyCrc	24	static
-../src/ap/boot/boot.c:96:6:bootJumpToFw	16	static,ignoring_inline_asm
+../src/ap/boot/boot.c:96:6:bootJumpToFw	16	static
 ../src/ap/boot/boot.c:105:6:bootProcessCmd	24	static
 ../src/ap/boot/boot.c:147:6:bootCmdReadBootVersion	24	static
 ../src/ap/boot/boot.c:152:6:bootCmdReadBootName	24	static

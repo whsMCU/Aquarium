@@ -65,7 +65,7 @@ void lcdMain(uint8_t layer)
   {
       lcdClearBuffer(black);
       lcdSetFont(LCD_FONT_HAN);
-      lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움]");
+      lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움!]");
 
       lcdSetFont(LCD_FONT_HAN);
       lcdPrintf(0,16*1, white, "물온도 : %3.1f 도" , ds18b20[0].Temperature);

@@ -23,6 +23,7 @@ void bspInit(void)
 void bspDeInit(void)
 {
   HAL_RCC_DeInit();
+  HAL_DeInit();
 
   // Disable Interrupts
   //

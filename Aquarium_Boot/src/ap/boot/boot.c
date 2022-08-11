@@ -98,7 +98,7 @@ void bootJumpToFw(void)
   void (**jump_func)(void) = (void (**)(void))(FLASH_ADDR_FW + 4);
 
   bspDeInit();
-  __set_MSP(*(uint32_t*)FLASH_ADDR_FW);
+
   (*jump_func)();
 }
 

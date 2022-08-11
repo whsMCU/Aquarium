@@ -13197,77 +13197,77 @@ LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
 .rodata         0x0000000008028700     0xe954
                 0x0000000008028700                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x0000000008028700       0xcf ./src/ap/ap.o
- *fill*         0x00000000080287cf        0x1 
- .rodata        0x00000000080287d0       0x25 ./src/hw/driver/button.o
- *fill*         0x00000000080287f5        0x3 
- .rodata        0x00000000080287f8      0x15f ./src/hw/driver/cli.o
- *fill*         0x0000000008028957        0x1 
- .rodata        0x0000000008028958       0x36 ./src/hw/driver/ds18b20.o
- *fill*         0x000000000802898e        0x2 
- .rodata        0x0000000008028990      0x108 ./src/hw/driver/fatfs.o
- .rodata        0x0000000008028a98       0xd3 ./src/hw/driver/flash.o
- *fill*         0x0000000008028b6b        0x1 
- .rodata        0x0000000008028b6c       0x89 ./src/hw/driver/gpio.o
- *fill*         0x0000000008028bf5        0x3 
- .rodata        0x0000000008028bf8       0x29 ./src/hw/driver/led.o
- *fill*         0x0000000008028c21        0x3 
- .rodata        0x0000000008028c24       0x33 ./src/hw/driver/menu.o
- *fill*         0x0000000008028c57        0x1 
- .rodata        0x0000000008028c58      0x1ae ./src/hw/driver/sd.o
- *fill*         0x0000000008028e06        0x2 
- .rodata        0x0000000008028e08       0x48 ./src/lib/FatFs/src/ff.o
+ .rodata        0x0000000008028700       0xd3 ./src/ap/ap.o
+ *fill*         0x00000000080287d3        0x1 
+ .rodata        0x00000000080287d4       0x25 ./src/hw/driver/button.o
+ *fill*         0x00000000080287f9        0x3 
+ .rodata        0x00000000080287fc      0x15f ./src/hw/driver/cli.o
+ *fill*         0x000000000802895b        0x1 
+ .rodata        0x000000000802895c       0x36 ./src/hw/driver/ds18b20.o
+ *fill*         0x0000000008028992        0x2 
+ .rodata        0x0000000008028994      0x108 ./src/hw/driver/fatfs.o
+ .rodata        0x0000000008028a9c       0xd3 ./src/hw/driver/flash.o
+ *fill*         0x0000000008028b6f        0x1 
+ .rodata        0x0000000008028b70       0x89 ./src/hw/driver/gpio.o
+ *fill*         0x0000000008028bf9        0x3 
+ .rodata        0x0000000008028bfc       0x29 ./src/hw/driver/led.o
+ *fill*         0x0000000008028c25        0x3 
+ .rodata        0x0000000008028c28       0x33 ./src/hw/driver/menu.o
+ *fill*         0x0000000008028c5b        0x1 
+ .rodata        0x0000000008028c5c      0x1ae ./src/hw/driver/sd.o
+ *fill*         0x0000000008028e0a        0x2 
+ .rodata        0x0000000008028e0c       0x48 ./src/lib/FatFs/src/ff.o
  *(.rodata*)
  .rodata.AHBPrescTable
-                0x0000000008028e50       0x10 ./src/bsp/system_stm32f4xx.o
-                0x0000000008028e50                AHBPrescTable
+                0x0000000008028e54       0x10 ./src/bsp/system_stm32f4xx.o
+                0x0000000008028e54                AHBPrescTable
  .rodata.APBPrescTable
-                0x0000000008028e60        0x8 ./src/bsp/system_stm32f4xx.o
-                0x0000000008028e60                APBPrescTable
+                0x0000000008028e64        0x8 ./src/bsp/system_stm32f4xx.o
+                0x0000000008028e64                APBPrescTable
  .rodata.gpio_tbl
-                0x0000000008028e68       0x9c ./src/hw/driver/gpio.o
-                0x0000000008028e68                gpio_tbl
+                0x0000000008028e6c       0x9c ./src/hw/driver/gpio.o
+                0x0000000008028e6c                gpio_tbl
  .rodata.lcdInit.str1.4
-                0x0000000008028f04        0x4 ./src/hw/driver/lcd.o
+                0x0000000008028f08        0x4 ./src/hw/driver/lcd.o
  .rodata.cliLcd.str1.4
-                0x0000000008028f08       0x47 ./src/hw/driver/lcd.o
- *fill*         0x0000000008028f4f        0x1 
+                0x0000000008028f0c       0x47 ./src/hw/driver/lcd.o
+ *fill*         0x0000000008028f53        0x1 
  .rodata.SD_Driver
-                0x0000000008028f50       0x14 ./src/hw/driver/fatfs/sd_diskio.o
-                0x0000000008028f50                SD_Driver
+                0x0000000008028f54       0x14 ./src/hw/driver/fatfs/sd_diskio.o
+                0x0000000008028f54                SD_Driver
  .rodata.wEngFon
-                0x0000000008028f64     0x1800 ./src/hw/driver/hangul/han.o
-                0x0000000008028f64                wEngFon
+                0x0000000008028f68     0x1800 ./src/hw/driver/hangul/han.o
+                0x0000000008028f68                wEngFon
  .rodata.ChoIdxTbl
-                0x000000000802a764       0x20 ./src/hw/driver/hangul/han.o
-                0x000000000802a764                ChoIdxTbl
+                0x000000000802a768       0x20 ./src/hw/driver/hangul/han.o
+                0x000000000802a768                ChoIdxTbl
  .rodata.JooIdxTbl
-                0x000000000802a784       0x20 ./src/hw/driver/hangul/han.o
-                0x000000000802a784                JooIdxTbl
+                0x000000000802a788       0x20 ./src/hw/driver/hangul/han.o
+                0x000000000802a788                JooIdxTbl
  .rodata.JonIdxTbl
-                0x000000000802a7a4       0x20 ./src/hw/driver/hangul/han.o
-                0x000000000802a7a4                JonIdxTbl
+                0x000000000802a7a8       0x20 ./src/hw/driver/hangul/han.o
+                0x000000000802a7a8                JonIdxTbl
  .rodata.UniChoIdxTbl
-                0x000000000802a7c4       0x20 ./src/hw/driver/hangul/han.o
-                0x000000000802a7c4                UniChoIdxTbl
+                0x000000000802a7c8       0x20 ./src/hw/driver/hangul/han.o
+                0x000000000802a7c8                UniChoIdxTbl
  .rodata.UniJooIdxTbl
-                0x000000000802a7e4       0x20 ./src/hw/driver/hangul/han.o
-                0x000000000802a7e4                UniJooIdxTbl
+                0x000000000802a7e8       0x20 ./src/hw/driver/hangul/han.o
+                0x000000000802a7e8                UniJooIdxTbl
  .rodata.UniJonIdxTbl
-                0x000000000802a804       0x20 ./src/hw/driver/hangul/han.o
-                0x000000000802a804                UniJonIdxTbl
+                0x000000000802a808       0x20 ./src/hw/driver/hangul/han.o
+                0x000000000802a808                UniJonIdxTbl
  .rodata.ChoTypeCaseJongNo
-                0x000000000802a824       0x16 ./src/hw/driver/hangul/han.o
-                0x000000000802a824                ChoTypeCaseJongNo
- *fill*         0x000000000802a83a        0x2 
+                0x000000000802a828       0x16 ./src/hw/driver/hangul/han.o
+                0x000000000802a828                ChoTypeCaseJongNo
+ *fill*         0x000000000802a83e        0x2 
  .rodata.ChoTypeCaseJongYes
-                0x000000000802a83c       0x16 ./src/hw/driver/hangul/han.o
-                0x000000000802a83c                ChoTypeCaseJongYes
- *fill*         0x000000000802a852        0x2 
+                0x000000000802a840       0x16 ./src/hw/driver/hangul/han.o
+                0x000000000802a840                ChoTypeCaseJongYes
+ *fill*         0x000000000802a856        0x2 
  .rodata.JonType
-                0x000000000802a854       0x16 ./src/hw/driver/hangul/han.o
-                0x000000000802a854                JonType
- *fill*         0x000000000802a86a       0x16 
+                0x000000000802a858       0x16 ./src/hw/driver/hangul/han.o
+                0x000000000802a858                JonType
+ *fill*         0x000000000802a86e       0x12 
  .rodata.wWanToJohabTable
                 0x000000000802a880     0x24b8 ./src/hw/driver/hangul/han.o
                 0x000000000802a880                wWanToJohabTable
