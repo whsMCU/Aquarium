@@ -19,7 +19,6 @@
 "./src/hw/driver/i2c.o"
 "./src/hw/driver/lcd.o"
 "./src/hw/driver/led.o"
-"./src/hw/driver/menu.o"
 "./src/hw/driver/onewire.o"
 "./src/hw/driver/reset.o"
 "./src/hw/driver/rtc.o"

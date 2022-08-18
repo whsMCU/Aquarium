@@ -18,7 +18,7 @@
 #define _USE_HW_FLASH
 #define _USE_HW_RTC
 #define _USE_HW_RESET
-#define _USE_HW_MENU
+//#define _USE_HW_MENU
 
 
 #define _USE_HW_LED
@@ -26,6 +26,7 @@
 
 #define _USE_HW_BUTTON
 #define      HW_BUTTON_MAX_CH       5
+#define      HW_BUTTON_OBJ_USE      1
 
 #define _USE_HW_GPIO
 #define      HW_GPIO_MAX_CH         13

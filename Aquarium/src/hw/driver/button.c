@@ -23,21 +23,17 @@ typedef struct
   uint32_t      pin;
   uint32_t		  pull;
   GPIO_PinState on_state;
-  GPIO_PinState PinState;
-  uint8_t		    State;
-  uint32_t 		  debounceDelay;
-  uint32_t		  lastDebounceTime;
 } button_tbl_t;
 
 
 button_tbl_t button_tbl[BUTTON_MAX_CH] =
-    {
-        {GPIOA, GPIO_PIN_0, GPIO_PULLUP, GPIO_PIN_RESET, 0, BUTTON_IDLE, 10, 0},
-				{GPIOB, GPIO_PIN_2, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
-				{GPIOB, GPIO_PIN_10, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
-				{GPIOB, GPIO_PIN_12, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
-				{GPIOB, GPIO_PIN_13, GPIO_NOPULL, GPIO_PIN_SET, 0, BUTTON_IDLE, 10, 0},
-    };
+{
+  {GPIOA, GPIO_PIN_0, GPIO_PULLUP, GPIO_PIN_RESET},
+  {GPIOB, GPIO_PIN_2, GPIO_NOPULL, GPIO_PIN_SET},
+  {GPIOB, GPIO_PIN_10, GPIO_NOPULL, GPIO_PIN_SET},
+  {GPIOB, GPIO_PIN_12, GPIO_NOPULL, GPIO_PIN_SET},
+  {GPIOB, GPIO_PIN_13, GPIO_NOPULL, GPIO_PIN_SET},
+};
 
 
 #ifdef _USE_HW_CLI
@@ -73,90 +69,193 @@ bool buttonInit(void)
 bool buttonGetPressed(uint8_t ch)
 {
   bool ret = false;
-  button_tbl_t *button;
-  button = &button_tbl[ch];
+
 
   if (ch >= BUTTON_MAX_CH)
   {
     return false;
   }
 
-  switch(button->State)
+  if (HAL_GPIO_ReadPin(button_tbl[ch].port, button_tbl[ch].pin) == button_tbl[ch].on_state)
   {
-  	  case BUTTON_IDLE:
-  		  if(HAL_GPIO_ReadPin(button->port, button->pin) == button->on_state)
-  		  {
-  			  button->lastDebounceTime = millis();
-  			  button->State = BUTTON_Pressed;
-  		  }
-  		  break;
-
-  	  case BUTTON_Pressed:
-		  if(HAL_GPIO_ReadPin(button->port, button->pin) == button->on_state)
-		  {
-			  if ((millis() - button->lastDebounceTime) > button->debounceDelay)
-	  		  {
-				  button->PinState = GPIO_PIN_SET;
-				  ret = button->PinState;
-	  		  }
-		  }else
-		  {
-			  button->State = BUTTON_IDLE;
-			  button->PinState = GPIO_PIN_RESET;
-			  ret = button->PinState;
-		  }
-		  break;
+    ret = true;
   }
+
   return ret;
 }
 
-uint8_t buttonMain(void)
+#if HW_BUTTON_OBJ_USE == 1
+enum ButtonObjState
 {
-	uint8_t status = 0;
-	uint8_t temp = 0;
-	button_tbl_t *button;
+  BUTTON_OBJ_WAIT_FOR_RELEASED,
+  BUTTON_OBJ_WAIT_FOR_PRESSED,
+  BUTTON_OBJ_PRESSED,
+  BUTTON_OBJ_REPEATED_START,
+  BUTTON_OBJ_REPEATED,
+};
 
-	for (int i=0; i<BUTTON_MAX_CH; i++)
-	{
-		temp = 0x1;
-		button = &button_tbl[i];
-	  if (i >= BUTTON_MAX_CH)
-	  {
-	   	return false;
-	  }
-
-	  switch(button->State)
-	  {
-	  	case BUTTON_IDLE:
-	   		if(HAL_GPIO_ReadPin(button->port, button->pin) == button->on_state)
-	    	{
-	    		button->lastDebounceTime = millis();
-	    		button->State = BUTTON_Pressed;
-	    	}
-	    	break;
-
-	    case BUTTON_Pressed:
-	    	if(HAL_GPIO_ReadPin(button->port, button->pin) == button->on_state)
-	    	{
-	    		if ((millis() - button->lastDebounceTime) > button->debounceDelay)
-	    		{
-	    			button->PinState = GPIO_PIN_SET;
-	    			temp <<= i;
-	    			status |= temp;
-	    		}
-	    	}else
-	    	{
-	    		button->State = BUTTON_IDLE;
-	    		button->PinState = GPIO_PIN_RESET;
-	    		temp <<= i;
-	    		temp ^= 0x11111111;
-	    		status &= temp;
-	    	}
-	    	break;
-	    }
-	}
-	  return status;
+void buttonObjCreate(button_obj_t *p_obj, uint8_t ch, uint32_t pressed_time, uint32_t repeat_start_time, uint32_t repeat_pressed_time)
+{
+  p_obj->ch = ch;
+  p_obj->state = 0;
+  p_obj->pre_time = millis();
+  p_obj->pressed_time = pressed_time;
+  p_obj->repeat_start_time = repeat_start_time;
+  p_obj->repeat_pressed_time = repeat_pressed_time;
+  p_obj->event_flag = 0;
+  p_obj->state_flag = 0;
+  p_obj->click_count = 0;
 }
+
+bool buttonObjUpdateEx(button_obj_t *p_obj, bool clear_event)
+{
+  bool ret = false;
+
+
+  if (clear_event == true)
+  {
+    buttonObjClearEventAll(p_obj);
+  }
+
+  switch(p_obj->state)
+  {
+    case BUTTON_OBJ_WAIT_FOR_RELEASED:
+      if (buttonGetPressed(p_obj->ch) == false)
+      {
+        p_obj->state = BUTTON_OBJ_WAIT_FOR_PRESSED;
+      }
+      break;
+
+    case BUTTON_OBJ_WAIT_FOR_PRESSED:
+      if (buttonGetPressed(p_obj->ch) == true)
+      {
+        p_obj->state = BUTTON_OBJ_PRESSED;
+        p_obj->pre_time = millis();
+        p_obj->click_count = 0;
+      }
+      break;
+
+    case BUTTON_OBJ_PRESSED:
+      if (buttonGetPressed(p_obj->ch) == true)
+      {
+        if (millis()-p_obj->pre_time >= p_obj->pressed_time)
+        {
+          ret = true;
+          p_obj->state = BUTTON_OBJ_REPEATED_START;
+          p_obj->pre_time = millis();
+          p_obj->event_flag |= BUTTON_EVT_CLICKED;
+
+          p_obj->state_flag |= BUTTON_STATE_PRESSED;
+          p_obj->click_count++;
+        }
+      }
+      else
+      {
+        p_obj->state = BUTTON_OBJ_WAIT_FOR_PRESSED;
+
+        if (p_obj->state_flag & BUTTON_STATE_PRESSED)
+        {
+          p_obj->event_flag |= BUTTON_EVT_RELEASED;
+
+          p_obj->state_flag |= BUTTON_STATE_RELEASED;
+          p_obj->state_flag &= ~BUTTON_STATE_PRESSED;
+          p_obj->state_flag &= ~BUTTON_STATE_REPEATED;
+        }
+      }
+      break;
+
+    case BUTTON_OBJ_REPEATED_START:
+      if (buttonGetPressed(p_obj->ch) == true)
+      {
+        if (millis()-p_obj->pre_time >= p_obj->repeat_start_time)
+        {
+          ret = true;
+          p_obj->pre_time = millis();
+
+          ret = true;
+          p_obj->state = BUTTON_OBJ_REPEATED;
+
+          p_obj->event_flag |= BUTTON_EVT_CLICKED;
+          p_obj->event_flag |= BUTTON_EVT_REPEATED;
+
+          p_obj->state_flag |= BUTTON_STATE_REPEATED;
+          p_obj->click_count++;
+        }
+      }
+      else
+      {
+        p_obj->state = BUTTON_OBJ_PRESSED;
+        p_obj->pre_time = millis();
+      }
+      break;
+
+    case BUTTON_OBJ_REPEATED:
+      if (buttonGetPressed(p_obj->ch) == true)
+      {
+        if (millis()-p_obj->pre_time >= p_obj->repeat_pressed_time)
+        {
+          ret = true;
+          p_obj->pre_time = millis();
+
+          p_obj->event_flag |= BUTTON_EVT_CLICKED;
+          p_obj->event_flag |= BUTTON_EVT_REPEATED;
+
+          p_obj->state_flag |= BUTTON_STATE_REPEATED;
+          p_obj->click_count++;
+        }
+      }
+      else
+      {
+        p_obj->state = BUTTON_OBJ_PRESSED;
+        p_obj->pre_time = millis();
+
+      }
+      break;
+  }
+
+  return ret;
+}
+
+bool buttonObjInit(button_obj_t *p_obj)
+{
+  p_obj->state = 0;
+  p_obj->pre_time = millis();
+  p_obj->event_flag = 0;
+  p_obj->state_flag = 0;
+  p_obj->click_count = 0;
+  return true;
+}
+
+bool buttonObjUpdate(button_obj_t *p_obj)
+{
+  return buttonObjUpdateEx(p_obj, false);
+}
+
+bool buttonObjClearAndUpdate(button_obj_t *p_obj)
+{
+  return buttonObjUpdateEx(p_obj, true);
+}
+
+uint8_t buttonObjGetEvent(button_obj_t *p_obj)
+{
+  return p_obj->event_flag;
+}
+
+void buttonObjClearEventAll(button_obj_t *p_obj)
+{
+  p_obj->event_flag = 0;
+}
+
+void buttonObjClearEvent(button_obj_t *p_obj, uint8_t event_bit)
+{
+  p_obj->event_flag &= ~event_bit;
+}
+
+uint8_t buttonObjGetState(button_obj_t *p_obj)
+{
+  return p_obj->state_flag;
+}
+#endif
 
 
 
@@ -183,10 +282,52 @@ void cliButton(cli_args_t *args)
     ret = true;
   }
 
+#if HW_BUTTON_OBJ_USE == 1
+  if (args->argc == 1 && args->isStr(0, "event"))
+  {
+    button_obj_t button[BUTTON_MAX_CH];
+    uint8_t button_event;
+
+    for (int i=0; i<BUTTON_MAX_CH; i++)
+    {
+      buttonObjCreate(&button[i], i, 50, 1000, 100);
+    }
+
+    while(cliKeepLoop())
+    {
+      for (int i=0; i<BUTTON_MAX_CH; i++)
+      {
+        buttonObjUpdate(&button[i]);
+
+        button_event = buttonObjGetEvent(&button[i]);
+
+        if (button_event > 0)
+        {
+          if (button_event & BUTTON_EVT_PRESSED)
+            cliPrintf("button %d pressed\n", i);
+          if (button_event & BUTTON_EVT_CLICKED)
+            cliPrintf("button %d clicked cnt : %d\n", i, button[i].click_count);
+          if (button_event & BUTTON_EVT_RELEASED)
+            cliPrintf("button %d released\n", i);
+
+          buttonObjClearEventAll(&button[i]);
+        }
+      }
+
+      delay(5);
+    }
+
+    ret = true;
+  }
+  #endif
+
 
   if (ret != true)
   {
     cliPrintf("button show\n");
+	#if HW_BUTTON_OBJ_USE == 1
+	cliPrintf("button event\n");
+	#endif
   }
 }
 #endif

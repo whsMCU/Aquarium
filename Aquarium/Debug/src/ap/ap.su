@@ -1,5 +1,7 @@
-../src/ap/ap.c:19:6:apInit	8	static
-../src/ap/ap.c:27:6:apMain	16	static
-../src/ap/ap.c:47:6:sensorMain	8	static
-../src/ap/ap.c:54:6:lcdMain	24	static
-../src/ap/ap.c:136:6:cliBoot	24	static
+../src/ap/ap.c:46:6:apInit	8	static
+../src/ap/ap.c:55:6:apMain	16	static
+../src/ap/ap.c:75:6:sensorMain	8	static
+../src/ap/ap.c:82:6:menuInit	16	static
+../src/ap/ap.c:100:6:menuUpdate	24	static
+../src/ap/ap.c:184:6:menuRunApp	24	static
+../src/ap/ap.c:222:6:cliBoot	24	static

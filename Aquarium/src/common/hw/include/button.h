@@ -15,21 +15,50 @@
 
 #define BUTTON_MAX_CH         HW_BUTTON_MAX_CH
 
-enum
+
+typedef struct
 {
-	USER_BTN = 0b00000001,
-	MENU_BTN = 0b00000010,
-	UP_BTN   = 0b00000100,
-	DOWN_BTN = 0b00001000,
-	SEL_BTN  = 0b00010000,
+  uint8_t  ch;
+  uint8_t  state;
+  uint8_t  state_pre;
+  uint8_t  state_next;
+  uint32_t pressed_time;
+  uint32_t repeat_start_time;
+  uint32_t repeat_pressed_time;
+  uint32_t pre_time;
+
+  uint8_t event_flag;
+  uint8_t state_flag;
+  uint8_t click_count;
+} button_obj_t;
+
+enum ButtonEvt
+{
+  BUTTON_EVT_PRESSED  = (1<<0),
+  BUTTON_EVT_RELEASED = (1<<1),
+  BUTTON_EVT_CLICKED  = (1<<2),
+  BUTTON_EVT_REPEATED = (1<<3),
 };
 
-
+enum ButtonState
+{
+  BUTTON_STATE_PRESSED  = (1<<0),
+  BUTTON_STATE_RELEASED = (1<<1),
+  BUTTON_STATE_REPEATED = (1<<2),
+};
 
 
 bool buttonInit(void);
 bool buttonGetPressed(uint8_t ch);
-uint8_t buttonMain(void);
+
+void buttonObjCreate(button_obj_t *p_obj, uint8_t ch, uint32_t pressed_time, uint32_t repeat_start_time, uint32_t repeat_pressed_time);
+bool buttonObjInit(button_obj_t *p_obj);
+bool buttonObjUpdate(button_obj_t *p_obj);
+bool buttonObjClearAndUpdate(button_obj_t *p_obj);
+uint8_t buttonObjGetEvent(button_obj_t *p_obj);
+void buttonObjClearEventAll(button_obj_t *p_obj);
+void buttonObjClearEvent(button_obj_t *p_obj, uint8_t event_bit);
+uint8_t buttonObjGetState(button_obj_t *p_obj);
 
 
 #endif

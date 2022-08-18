@@ -1,4 +1,12 @@
-../src/hw/driver/button.c:48:6:buttonInit	40	static
-../src/hw/driver/button.c:73:6:buttonGetPressed	24	static
-../src/hw/driver/button.c:113:9:buttonMain	24	static
-../src/hw/driver/button.c:165:6:cliButton	24	static
+../src/hw/driver/button.c:44:6:buttonInit	40	static
+../src/hw/driver/button.c:69:6:buttonGetPressed	24	static
+../src/hw/driver/button.c:97:6:buttonObjCreate	24	static
+../src/hw/driver/button.c:110:6:buttonObjUpdateEx	24	static
+../src/hw/driver/button.c:219:6:buttonObjInit	16	static
+../src/hw/driver/button.c:229:6:buttonObjUpdate	16	static
+../src/hw/driver/button.c:234:6:buttonObjClearAndUpdate	16	static
+../src/hw/driver/button.c:239:9:buttonObjGetEvent	16	static
+../src/hw/driver/button.c:244:6:buttonObjClearEventAll	16	static
+../src/hw/driver/button.c:249:6:buttonObjClearEvent	16	static
+../src/hw/driver/button.c:254:9:buttonObjGetState	16	static
+../src/hw/driver/button.c:264:6:cliButton	168	static
