@@ -87,7 +87,7 @@ void menuInit(void)
   buttonObjCreate(&menu.btn_left,   1, 50, 1000, 100);
   buttonObjCreate(&menu.btn_right,  2, 50, 1000, 100);
   buttonObjCreate(&menu.btn_enter,  3, 50, 1000, 100);
-  buttonObjCreate(&menu.btn_exit, 4, 50, 1000, 100);
+  buttonObjCreate(&menu.btn_exit,   4, 50, 1000, 100);
 
 //  menu.img[0] = lcdCreateImage(&menu_img,  0, 0, 64, 80);
 //  menu.img[1] = lcdCreateImage(&menu_img, 64, 0, 64, 80);
@@ -136,11 +136,6 @@ void menuUpdate(void)
 
   static bool blink = 0;
 
-  if (lcdIsInit() != true)
-  {
-    return;
-  }
-
   if (lcdDrawAvailable() == true)
   {
     lcdClearBuffer(black);
@@ -156,29 +151,55 @@ void menuUpdate(void)
     blink = get_blink();
     draw_fan_status(0, 16*4, blink);
 
-	lcdDrawRoundRect(0, 0+110,  35, 17, 5, white);
-	lcdDrawFillRoundRect(1, 1+110, 33, 15, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(5,5+110, white, "FAN");
+    lcdDrawRoundRect(0, 0+110,  35, 17, 5, white);
+		lcdDrawFillRoundRect(1, 1+110, 33, 15, 5, red);
+		lcdSetFont(LCD_FONT_07x10);
+		lcdPrintf(2,5+110, white, "Light");
 
-	lcdDrawRoundRect(0+40, 0+110,  35, 17, 5, white);
-	lcdDrawFillRoundRect(1+40, 1+110, 33, 15, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(5+40,5+110, white, "PUMP");
+		lcdDrawRoundRect(0+40, 0+110,  35, 17, 5, white);
+		lcdDrawFillRoundRect(1+40, 1+110, 33, 15, 5, red);
+		lcdSetFont(LCD_FONT_07x10);
+		lcdPrintf(5+40,5+110, white, "FAN");
 
-	for (int i=0; i<menu.menu_cnt; i++)
-	{
-	  if (menu.menu_index == Fan)
-	  {
-		lcdDrawFillRoundRect(1, 1+110, 33, 15, 5, blue);
-	  }
-	  if (menu.menu_index == Pump)
-	  {
-		lcdDrawFillRoundRect(1+40, 1+110, 33, 15, 5, blue);
-	  }
-	}
-	lcdRequestDraw();
-  }
+		lcdDrawRoundRect(0+80, 0+110,  35, 17, 5, white);
+		lcdDrawFillRoundRect(1+80, 1+110, 33, 15, 5, red);
+		lcdSetFont(LCD_FONT_07x10);
+		lcdPrintf(5+80,5+110, white, "PUMP");
+
+		lcdDrawRoundRect(0+120, 0+110,  35, 17, 5, white);
+		lcdDrawFillRoundRect(1+120, 1+110, 33, 15, 5, red);
+		lcdSetFont(LCD_FONT_07x10);
+		lcdPrintf(5+120,5+110, white, "HTR");
+
+		for (int i=0; i<menu.menu_cnt; i++)
+		{
+			if (menu.menu_index == Light)
+			{
+				lcdDrawFillRoundRect(1, 1+110, 33, 15, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2,5+110, white, "Light");
+			}
+			if (menu.menu_index == Fan)
+			{
+				lcdDrawFillRoundRect(1+40, 1+110, 33, 15, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(5+40,5+110, white, "FAN");
+			}
+			if (menu.menu_index == Pump)
+			{
+				lcdDrawFillRoundRect(1+80, 1+110, 33, 15, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(5+80,5+110, white, "PUMP");
+			}
+			if (menu.menu_index == Heater)
+			{
+				lcdDrawFillRoundRect(1+120, 1+110, 33, 15, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(5+120,5+110, white, "HTR");
+			}
+		}
+		lcdRequestDraw();
+		}
 }
 
 void menuRunApp(uint8_t index)
@@ -211,7 +232,7 @@ void menuRunApp(uint8_t index)
 
   if (is_run == true)
   {
-	buttonObjInit(&menu.btn_reset);
+	  buttonObjInit(&menu.btn_reset);
     buttonObjInit(&menu.btn_left);
     buttonObjInit(&menu.btn_right);
     buttonObjInit(&menu.btn_enter);

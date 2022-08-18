@@ -3,5 +3,5 @@
 ../src/ap/ap.c:75:6:sensorMain	8	static
 ../src/ap/ap.c:82:6:menuInit	16	static
 ../src/ap/ap.c:100:6:menuUpdate	24	static
-../src/ap/ap.c:184:6:menuRunApp	24	static
-../src/ap/ap.c:222:6:cliBoot	24	static
+../src/ap/ap.c:205:6:menuRunApp	24	static
+../src/ap/ap.c:243:6:cliBoot	24	static

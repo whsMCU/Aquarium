@@ -220,8 +220,6 @@ void SerialCom(void)
 
 void evaluateCommand(void)
 {
-	uint8_t i=0;
-
 	switch(currentPortState->cmdMSP)
 	{
 		case MSP_DATA:
