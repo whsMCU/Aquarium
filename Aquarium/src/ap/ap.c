@@ -13,7 +13,7 @@ typedef struct
   //image_t img[3];
   uint8_t menu_cnt;
   uint8_t menu_index;
-  button_obj_t btn_reset;
+  button_obj_t btn_user;
   button_obj_t btn_left;
   button_obj_t btn_right;
   button_obj_t btn_enter;
@@ -29,6 +29,7 @@ typedef struct
   float ds18b20_temp;
   uint32_t sonar_distance;
   float tds_quality;
+
   float ds18b20_temp_setting;
   uint32_t sonar_distance_setting;
   float tds_quality_setting;
@@ -114,7 +115,7 @@ void menuInit(void)
   menu.menu_cnt = 6;
   menu.menu_index = 0;
   menu.menu_run = false;
-  buttonObjCreate(&menu.btn_reset,  0, 50, 1000, 100);
+  buttonObjCreate(&menu.btn_user,  0, 50, 1000, 100);
   buttonObjCreate(&menu.btn_left,   1, 50, 1000, 100);
   buttonObjCreate(&menu.btn_right,  2, 50, 1000, 100);
   buttonObjCreate(&menu.btn_enter,  3, 50, 1000, 100);
@@ -126,7 +127,7 @@ void menuInit(void)
 
 void menuUpdate(void)
 {
-  buttonObjClearAndUpdate(&menu.btn_reset);
+  buttonObjClearAndUpdate(&menu.btn_user);
   buttonObjClearAndUpdate(&menu.btn_left);
   buttonObjClearAndUpdate(&menu.btn_right);
   buttonObjClearAndUpdate(&menu.btn_enter);
@@ -145,37 +146,69 @@ void menuUpdate(void)
   if (lcdDrawAvailable() == true)
   {
     lcdClearBuffer(black);
+
+    lcdDrawVLine((lcdGetWidth()/2)+20, 16, (lcdGetHeight()/2), pink);
+    lcdDrawHLine(0, 16*1, lcdGetWidth(), pink);
+    lcdDrawHLine(0, 16*2, lcdGetWidth(), pink);
+    lcdDrawHLine(0, 16*3, lcdGetWidth(), pink);
+    lcdDrawHLine(0, 16*4, lcdGetWidth(), pink);
+    lcdDrawHLine(0, 16*5, lcdGetWidth(), pink);
+
     lcdSetFont(LCD_FONT_HAN);
     lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움!]");
 
     lcdSetFont(LCD_FONT_HAN);
-    lcdPrintf(0,16*1, white, "물온도 : %3.1f 도" , sensor.ds18b20_temp);
-    lcdPrintf(0,16*2, white, "물높이 : %3d cm" , sensor.sonar_distance);
-    lcdPrintf(0,16*3, white, "TDS : %4.1f ppm" , sensor.tds_quality);
+    lcdPrintf(0,16*1, white, "   현재값    세팅값");
+
+    lcdSetFont(LCD_FONT_HAN);
+    lcdPrintf(0,16*2, white, "온도: %3.1f도" , sensor.ds18b20_temp);
+    lcdPrintf(0,16*3, white, "높이:%3dcm" , sensor.sonar_distance);
+    lcdPrintf(0,16*4, white, "TDS: %4.1fppm" , sensor.tds_quality);
+
+    lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
+    lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.sonar_distance_setting);
+    lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.tds_quality_setting);
     //lcdDrawBufferImage(50, 20, 50, 50, TEST);
+    if(Mode == Auto_Mode)
+    {
+		lcdPrintf(40, 16*5, white, "MODE : AUTO");
+    }else
+    {
+    	lcdPrintf(40, 16*5, white, "MODE : Menual");
+    }
 
     blink = get_blink();
-    draw_fan_status(0, 16*4, blink);
+    draw_fan_status(0, 16*5, blink);
 
-    lcdDrawRoundRect(0, 0+110,  35, 17, 5, white);
-	lcdDrawFillRoundRect(1, 1+110, 33, 15, 5, red);
+    lcdDrawRoundRect(0, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2,5+110, white, "Light");
+	lcdPrintf(2,5+112, white, "ATO");
 
-	lcdDrawRoundRect(0+40, 0+110,  35, 17, 5, white);
-	lcdDrawFillRoundRect(1+40, 1+110, 33, 15, 5, red);
+    lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(5+40,5+110, white, "FAN");
+	lcdPrintf(2+26,5+112, white, "LTE");
 
-	lcdDrawRoundRect(0+80, 0+110,  35, 17, 5, white);
-	lcdDrawFillRoundRect(1+80, 1+110, 33, 15, 5, red);
+	lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(5+80,5+110, white, "PUMP");
+	lcdPrintf(2+52,5+112, white, "FAN");
 
-	lcdDrawRoundRect(0+120, 0+110,  35, 17, 5, white);
-	lcdDrawFillRoundRect(1+120, 1+110, 33, 15, 5, red);
+	lcdDrawRoundRect(0+78, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(5+120,5+110, white, "HTR");
+	lcdPrintf(5+78,5+112, white, "PP");
+
+	lcdDrawRoundRect(0+104, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, red);
+	lcdSetFont(LCD_FONT_07x10);
+	lcdPrintf(2+104,5+110, white, "HTR");
+
+	lcdDrawRoundRect(0+130, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, red);
+	lcdSetFont(LCD_FONT_07x10);
+	lcdPrintf(2+130,5+110, white, "SET");
 
 	if(menu.menu_run == true)
 	{
@@ -208,29 +241,41 @@ void menuUpdate(void)
 	  }
 		for (int i=0; i<menu.menu_cnt; i++)
 		{
+			if (menu.menu_index == Auto)
+			{
+				lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2,5+112, white, "ATO");
+			}
 			if (menu.menu_index == Light)
 			{
-				lcdDrawFillRoundRect(1, 1+110, 33, 15, 5, blue);
+				lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, blue);
 				lcdSetFont(LCD_FONT_07x10);
-				lcdPrintf(2,5+110, white, "Light");
+				lcdPrintf(2+26,5+112, white, "LTE");
 			}
 			if (menu.menu_index == Fan)
 			{
-				lcdDrawFillRoundRect(1+40, 1+110, 33, 15, 5, blue);
+				lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, blue);
 				lcdSetFont(LCD_FONT_07x10);
-				lcdPrintf(5+40,5+110, white, "FAN");
+				lcdPrintf(2+52,5+112, white, "FAN");
 			}
 			if (menu.menu_index == Pump)
 			{
-				lcdDrawFillRoundRect(1+80, 1+110, 33, 15, 5, blue);
+				lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, blue);
 				lcdSetFont(LCD_FONT_07x10);
-				lcdPrintf(5+80,5+110, white, "PUMP");
+				lcdPrintf(5+78,5+112, white, "PP");
 			}
 			if (menu.menu_index == Heater)
 			{
-				lcdDrawFillRoundRect(1+120, 1+110, 33, 15, 5, blue);
+				lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, blue);
 				lcdSetFont(LCD_FONT_07x10);
-				lcdPrintf(5+120,5+110, white, "HTR");
+				lcdPrintf(2+104,5+110, white, "HTR");
+			}
+			if (menu.menu_index == Setting)
+			{
+				lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2+130,5+110, white, "SET");
 			}
 		}
 
@@ -246,33 +291,40 @@ void menuRunApp(uint8_t index)
   switch(index)
   {
   	case Auto:
+  		Mode = Auto_Mode;
   	    AutoMain();
   	  break;
     case Light:
+    	Mode = Menual_Mode;
     	gpioPinToggle(Relay1);
       break;
     case Fan:
+    	Mode = Menual_Mode;
     	gpioPinToggle(Relay2);
       break;
     case Pump:
+    	Mode = Menual_Mode;
     	gpioPinToggle(Relay3);
       break;
     case Heater:
+    	Mode = Menual_Mode;
     	gpioPinToggle(Relay4);
       break;
     case Setting:
+    	Mode = Menual_Mode;
     	gpioPinToggle(BUZZER);
     	SettingMain();
       break;
 
     default:
-      is_run = false;
+    	Mode = Menual_Mode;
+    	is_run = false;
       break;
   }
 
   if (is_run == true)
   {
-	buttonObjInit(&menu.btn_reset);
+	buttonObjInit(&menu.btn_user);
     buttonObjInit(&menu.btn_left);
     buttonObjInit(&menu.btn_right);
     buttonObjInit(&menu.btn_enter);
