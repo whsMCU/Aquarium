@@ -30,6 +30,10 @@ typedef struct
   uint32_t sonar_distance;
   float tds_quality;
 
+  bool setting_mode;
+  uint8_t setting_cnt;
+  uint8_t setting_index;
+
   float ds18b20_temp_setting;
   uint32_t sonar_distance_setting;
   float tds_quality_setting;
@@ -75,6 +79,9 @@ void apInit(void)
 	cliAdd("boot", cliBoot);
 	menuInit();
 	Mode = Menual_Mode;
+	sensor.setting_cnt = 3;
+	sensor.setting_index = 0;
+	sensor.setting_mode = false;
 	sensor.ds18b20_temp_setting = 25.0;
 	sensor.sonar_distance_setting = 30;
 	sensor.tds_quality_setting = 10.0;
@@ -223,6 +230,18 @@ void menuUpdate(void)
 		  menu.menu_index = menu.menu_cnt - 1;
 		}
 		menu.pre_time = millis();
+
+		if(sensor.setting_mode == true)
+		{
+			if (sensor.setting_index > 0)
+			{
+				sensor.setting_index--;
+			}
+			else
+			{
+				sensor.setting_index = sensor.setting_cnt - 1;
+			}
+		}
 	  }
 	  if (buttonObjGetEvent(&menu.btn_right) & BUTTON_EVT_CLICKED)
 	  {
@@ -230,6 +249,12 @@ void menuUpdate(void)
 		menu.menu_index %= menu.menu_cnt;
 
 		menu.pre_time = millis();
+
+		if(sensor.setting_mode == true)
+		{
+			sensor.setting_index++;
+			sensor.setting_index %= sensor.setting_cnt;
+		}
 	  }
 	  if (buttonObjGetEvent(&menu.btn_enter) & BUTTON_EVT_CLICKED)
 	  {
@@ -238,6 +263,7 @@ void menuUpdate(void)
 	  if (buttonObjGetEvent(&menu.btn_exit) & BUTTON_EVT_CLICKED)
 	  {
 		menu.menu_run = false;
+		sensor.setting_mode = false;
 	  }
 		for (int i=0; i<menu.menu_cnt; i++)
 		{
@@ -312,6 +338,7 @@ void menuRunApp(uint8_t index)
       break;
     case Setting:
     	Mode = Menual_Mode;
+    	sensor.setting_mode = true;
     	gpioPinToggle(BUZZER);
     	SettingMain();
       break;
@@ -362,7 +389,29 @@ void AutoMain(void)
 
 void SettingMain(void)
 {
+  uint32_t pre_time;
+  button_obj_t btn_exit;
 
+  buttonObjCreate(&btn_exit,  4, 50, 1000, 100);
+
+  pre_time = millis();
+  while(1)
+  {
+	buttonObjClearAndUpdate(&btn_exit);
+
+	if (buttonObjGetEvent(&btn_exit) & BUTTON_EVT_CLICKED)
+	{
+	  break;
+	}
+	if (millis()-pre_time >= 1000)
+	{
+	  pre_time = millis();
+
+	}
+	sensorMain();
+	menuUpdate();
+	SerialCom();
+  }
 }
 
 void cliBoot(cli_args_t *args)
