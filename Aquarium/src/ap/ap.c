@@ -335,10 +335,19 @@ void menuRunApp(uint8_t index)
 void AutoMain(void)
 {
   uint32_t pre_time;
+  button_obj_t btn_exit;
+
+  buttonObjCreate(&btn_exit,  4, 50, 1000, 100);
 
   pre_time = millis();
   while(1)
   {
+	buttonObjClearAndUpdate(&btn_exit);
+
+    if (buttonObjGetEvent(&btn_exit) & BUTTON_EVT_CLICKED)
+    {
+      break;
+    }
 	if (millis()-pre_time >= 1000)
 	{
 	  pre_time = millis();

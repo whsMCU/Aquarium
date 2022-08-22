@@ -4,6 +4,6 @@
 ../src/ap/ap.c:113:6:menuInit	16	static
 ../src/ap/ap.c:128:6:menuUpdate	32	static
 ../src/ap/ap.c:287:6:menuRunApp	24	static
-../src/ap/ap.c:335:6:AutoMain	16	static
-../src/ap/ap.c:354:6:SettingMain	4	static
-../src/ap/ap.c:359:6:cliBoot	24	static
+../src/ap/ap.c:335:6:AutoMain	48	static
+../src/ap/ap.c:363:6:SettingMain	4	static
+../src/ap/ap.c:368:6:cliBoot	24	static
