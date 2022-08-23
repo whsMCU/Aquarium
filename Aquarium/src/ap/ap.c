@@ -55,6 +55,13 @@ enum Mode
   Menual_Mode
 };
 
+enum Setting_List
+{
+  Water_Temp,
+  Water_Level,
+  Water_Quality
+};
+
 void menuInit(void);
 void menuUpdate(void);
 void menuRunApp(uint8_t index);
@@ -230,18 +237,6 @@ void menuUpdate(void)
 		  menu.menu_index = menu.menu_cnt - 1;
 		}
 		menu.pre_time = millis();
-
-		if(sensor.setting_mode == true)
-		{
-			if (sensor.setting_index > 0)
-			{
-				sensor.setting_index--;
-			}
-			else
-			{
-				sensor.setting_index = sensor.setting_cnt - 1;
-			}
-		}
 	  }
 	  if (buttonObjGetEvent(&menu.btn_right) & BUTTON_EVT_CLICKED)
 	  {
@@ -249,12 +244,6 @@ void menuUpdate(void)
 		menu.menu_index %= menu.menu_cnt;
 
 		menu.pre_time = millis();
-
-		if(sensor.setting_mode == true)
-		{
-			sensor.setting_index++;
-			sensor.setting_index %= sensor.setting_cnt;
-		}
 	  }
 	  if (buttonObjGetEvent(&menu.btn_enter) & BUTTON_EVT_CLICKED)
 	  {
@@ -263,7 +252,6 @@ void menuUpdate(void)
 	  if (buttonObjGetEvent(&menu.btn_exit) & BUTTON_EVT_CLICKED)
 	  {
 		menu.menu_run = false;
-		sensor.setting_mode = false;
 	  }
 		for (int i=0; i<menu.menu_cnt; i++)
 		{
@@ -306,6 +294,56 @@ void menuUpdate(void)
 		}
 
 	}
+
+	if(sensor.setting_mode == true)
+	{
+	  if (buttonObjGetEvent(&menu.btn_left) & BUTTON_EVT_CLICKED)
+	  {
+		if (sensor.setting_index > 0)
+		{
+			sensor.setting_index--;
+		}
+		else
+		{
+			sensor.setting_index = sensor.setting_cnt - 1;
+		}
+	  }
+	  if (buttonObjGetEvent(&menu.btn_right) & BUTTON_EVT_CLICKED)
+	  {
+		sensor.setting_index++;
+		sensor.setting_index %= sensor.setting_cnt;
+	  }
+	  if (buttonObjGetEvent(&menu.btn_enter) & BUTTON_EVT_CLICKED)
+	  {
+		//settingRunApp(sensor.setting_index);
+	  }
+	  if (buttonObjGetEvent(&menu.btn_exit) & BUTTON_EVT_CLICKED)
+	  {
+		sensor.setting_mode = false;
+	  }
+		for (int i=0; i<sensor.setting_cnt; i++)
+		{
+			if (sensor.setting_index == Water_Temp)
+			{
+				lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2,5+112, white, "ATO");
+			}
+			if (sensor.setting_index == Water_Level)
+			{
+				lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2+26,5+112, white, "LTE");
+			}
+			if (sensor.setting_index == Water_Quality)
+			{
+				lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2+52,5+112, white, "FAN");
+			}
+		}
+
+	}
 	lcdRequestDraw();
 	}
 }
@@ -339,8 +377,10 @@ void menuRunApp(uint8_t index)
     case Setting:
     	Mode = Menual_Mode;
     	sensor.setting_mode = true;
+    	menu.menu_run = false;
     	gpioPinToggle(BUZZER);
     	SettingMain();
+    	menu.menu_run = true;
       break;
 
     default:
