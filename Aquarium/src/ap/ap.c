@@ -31,6 +31,7 @@ typedef struct
   float tds_quality;
 
   bool setting_mode;
+  bool setting;
   uint8_t setting_cnt;
   uint8_t setting_index;
 
@@ -89,6 +90,7 @@ void apInit(void)
 	sensor.setting_cnt = 3;
 	sensor.setting_index = 0;
 	sensor.setting_mode = false;
+	sensor.setting = false;
 	sensor.ds18b20_temp_setting = 25.0;
 	sensor.sonar_distance_setting = 30;
 	sensor.tds_quality_setting = 10.0;
@@ -299,23 +301,57 @@ void menuUpdate(void)
 	{
 	  if (buttonObjGetEvent(&menu.btn_left) & BUTTON_EVT_CLICKED)
 	  {
-		if (sensor.setting_index > 0)
-		{
-			sensor.setting_index--;
-		}
-		else
-		{
-			sensor.setting_index = sensor.setting_cnt - 1;
-		}
+		  if (sensor.setting != true)
+		  {
+			if (sensor.setting_index > 0)
+			{
+				sensor.setting_index--;
+			}
+			else
+			{
+				sensor.setting_index = sensor.setting_cnt - 1;
+			}
+		  }else
+		  {
+			  if (sensor.setting_index == Water_Temp)
+			  {
+				  sensor.ds18b20_temp_setting -= 1;
+			  }
+			  if (sensor.setting_index == Water_Level)
+			  {
+				  sensor.sonar_distance_setting -= 1;
+			  }
+			  if (sensor.setting_index == Water_Quality)
+			  {
+				  sensor.tds_quality_setting -= 1;
+			  }
+		  }
 	  }
 	  if (buttonObjGetEvent(&menu.btn_right) & BUTTON_EVT_CLICKED)
 	  {
-		sensor.setting_index++;
-		sensor.setting_index %= sensor.setting_cnt;
+		  if (sensor.setting != true)
+		  {
+			sensor.setting_index++;
+			sensor.setting_index %= sensor.setting_cnt;
+		  }else
+		  {
+			  if (sensor.setting_index == Water_Temp)
+			  {
+				  sensor.ds18b20_temp_setting += 1;
+			  }
+			  if (sensor.setting_index == Water_Level)
+			  {
+				  sensor.sonar_distance_setting += 1;
+			  }
+			  if (sensor.setting_index == Water_Quality)
+			  {
+				  sensor.tds_quality_setting += 1;
+			  }
+		  }
 	  }
 	  if (buttonObjGetEvent(&menu.btn_enter) & BUTTON_EVT_CLICKED)
 	  {
-		//settingRunApp(sensor.setting_index);
+		sensor.setting = true;
 	  }
 	  if (buttonObjGetEvent(&menu.btn_exit) & BUTTON_EVT_CLICKED)
 	  {
@@ -325,21 +361,21 @@ void menuUpdate(void)
 		{
 			if (sensor.setting_index == Water_Temp)
 			{
-				lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, blue);
-				lcdSetFont(LCD_FONT_07x10);
-				lcdPrintf(2,5+112, white, "ATO");
+				lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*2)+1, 60, 15, 5, blue);
+				lcdSetFont(LCD_FONT_HAN);
+				lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
 			}
 			if (sensor.setting_index == Water_Level)
 			{
-				lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, blue);
-				lcdSetFont(LCD_FONT_07x10);
-				lcdPrintf(2+26,5+112, white, "LTE");
+				lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*3)+1, 60, 15, 5, blue);
+				lcdSetFont(LCD_FONT_HAN);
+				lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.sonar_distance_setting);
 			}
 			if (sensor.setting_index == Water_Quality)
 			{
-				lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, blue);
-				lcdSetFont(LCD_FONT_07x10);
-				lcdPrintf(2+52,5+112, white, "FAN");
+				lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*4)+1, 60, 15, 5, blue);
+				lcdSetFont(LCD_FONT_HAN);
+				lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.tds_quality_setting);
 			}
 		}
 
@@ -380,6 +416,7 @@ void menuRunApp(uint8_t index)
     	menu.menu_run = false;
     	gpioPinToggle(BUZZER);
     	SettingMain();
+    	sensor.setting_mode = false;
     	menu.menu_run = true;
       break;
 
