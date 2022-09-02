@@ -3,8 +3,8 @@
 ../src/ap/ap.c:120:6:sensorMain	8	static
 ../src/ap/ap.c:130:6:menuInit	16	static
 ../src/ap/ap.c:145:6:menuUpdate	32	static
-../src/ap/ap.c:388:6:menuRunApp	24	static
-../src/ap/ap.c:440:6:AutoMain	48	static
-../src/ap/ap.c:468:6:SettingMain	48	static
-../src/ap/ap.c:495:6:SettingUpdate	32	static
-../src/ap/ap.c:660:6:cliBoot	24	static
+../src/ap/ap.c:304:6:menuRunApp	24	static
+../src/ap/ap.c:355:6:AutoMain	48	static
+../src/ap/ap.c:383:6:SettingMain	16	static
+../src/ap/ap.c:405:6:SettingUpdate	32	static
+../src/ap/ap.c:579:6:cliBoot	24	static
