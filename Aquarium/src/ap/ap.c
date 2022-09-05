@@ -28,6 +28,8 @@ typedef struct
 {
   float ds18b20_temp;
   uint32_t sonar_distance;
+  uint32_t water_tank_height;
+  uint32_t water_level;
   float tds_quality;
 
   bool setting;
@@ -36,14 +38,16 @@ typedef struct
   uint8_t setting_index;
 
   float ds18b20_temp_setting;
-  uint32_t sonar_distance_setting;
+  uint32_t water_temp_deadband;
+  uint32_t water_level_setting;
+  uint32_t water_level_deadband;
   float tds_quality_setting;
 } sensor_t;
 
 enum Menu_List
 {
   Auto,
-  Light,
+  Valve,
   Fan,
   Pump,
   Heater,
@@ -93,7 +97,10 @@ void apInit(void)
 	sensor.setting = false;
 	sensor.setting_mode = false;
 	sensor.ds18b20_temp_setting = 25.0;
-	sensor.sonar_distance_setting = 30;
+	sensor.water_level_setting = 30;
+	sensor.water_tank_height  = 50;
+	sensor.water_temp_deadband = 2;
+	sensor.water_level_deadband = 5;
 	sensor.tds_quality_setting = 10.0;
 }
 
@@ -124,6 +131,7 @@ void sensorMain(void)
     tds_measure();
     sensor.ds18b20_temp = ds18b20[0].Temperature;
 	sensor.sonar_distance = sonar_tbl[0].filter_distance_cm/10;
+	sensor.water_level = sensor.water_tank_height - sensor.sonar_distance;
 	sensor.tds_quality = tds_tbl[0].filter_tdsValue;
 }
 
@@ -179,11 +187,11 @@ void menuUpdate(void)
 
     lcdSetFont(LCD_FONT_HAN);
     lcdPrintf(0,16*2, white, "온도: %3.1f도" , sensor.ds18b20_temp);
-    lcdPrintf(0,16*3, white, "높이:%3dcm" , sensor.sonar_distance);
+    lcdPrintf(0,16*3, white, "높이:%3dcm" , sensor.water_level);
     lcdPrintf(0,16*4, white, "TDS: %4.1fppm" , sensor.tds_quality);
 
     lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
-    lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.sonar_distance_setting);
+    lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.water_level_setting);
     lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.tds_quality_setting);
     //lcdDrawBufferImage(50, 20, 50, 50, TEST);
     if(Mode == Auto_Mode)
@@ -205,7 +213,7 @@ void menuUpdate(void)
     lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+26,5+112, white, "LTE");
+	lcdPrintf(2+26,5+112, white, "Vv");
 
 	lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
@@ -264,11 +272,11 @@ void menuUpdate(void)
 			lcdSetFont(LCD_FONT_07x10);
 			lcdPrintf(2,5+112, white, "ATO");
 		}
-		if (menu.menu_index == Light)
+		if (menu.menu_index == Valve)
 		{
 			lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, blue);
 			lcdSetFont(LCD_FONT_07x10);
-			lcdPrintf(2+26,5+112, white, "LTE");
+			lcdPrintf(2+26,5+112, white, "Vv");
 		}
 		if (menu.menu_index == Fan)
 		{
@@ -311,7 +319,7 @@ void menuRunApp(uint8_t index)
   		Mode = Auto_Mode;
   	    AutoMain();
   	  break;
-    case Light:
+    case Valve:
     	Mode = Menual_Mode;
     	gpioPinToggle(Relay1);
       break;
@@ -375,6 +383,29 @@ void AutoMain(void)
 	}
 	sensorMain();
 	menuUpdate();
+
+
+	if(sensor.ds18b20_temp < sensor.ds18b20_temp_setting - sensor.water_temp_deadband)
+	{
+		gpioPinWrite(Relay4, false); // HTR OFF
+		gpioPinWrite(Relay2, true);  // FAN ON
+	}else if(sensor.ds18b20_temp > sensor.ds18b20_temp_setting)
+	{
+		gpioPinWrite(Relay4, true);  // HTR ON
+		gpioPinWrite(Relay2, false); // FAN OFF
+	}
+
+	if(sensor.water_level < sensor.water_level_setting - sensor.water_level_deadband)
+	{
+		gpioPinWrite(Relay3, false);  // PUMP OFF
+		gpioPinWrite(Relay1, true); // VALVE Open
+	}else if(sensor.water_level > sensor.water_level_setting)
+	{
+		gpioPinWrite(Relay3, true); // PUMP ON
+		gpioPinWrite(Relay1, false);  // VALVE Close
+	}
+
+
 	SerialCom();
   }
 
@@ -429,7 +460,7 @@ void SettingUpdate(void)
   			  }
   			  if (sensor.setting_index == Water_Level)
   			  {
-  				  sensor.sonar_distance_setting -= 1;
+  				  sensor.water_level_setting -= 1;
   			  }
   			  if (sensor.setting_index == Water_Quality)
   			  {
@@ -451,7 +482,7 @@ void SettingUpdate(void)
   			  }
   			  if (sensor.setting_index == Water_Level)
   			  {
-  				  sensor.sonar_distance_setting += 1;
+  				  sensor.water_level_setting += 1;
   			  }
   			  if (sensor.setting_index == Water_Quality)
   			  {
@@ -490,11 +521,11 @@ void SettingUpdate(void)
 
 	lcdSetFont(LCD_FONT_HAN);
 	lcdPrintf(0,16*2, white, "온도: %3.1f도" , sensor.ds18b20_temp);
-	lcdPrintf(0,16*3, white, "높이:%3dcm" , sensor.sonar_distance);
+	lcdPrintf(0,16*3, white, "높이:%3dcm" , sensor.water_level);
 	lcdPrintf(0,16*4, white, "TDS: %4.1fppm" , sensor.tds_quality);
 
 	lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
-	lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.sonar_distance_setting);
+	lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.water_level_setting);
 	lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.tds_quality_setting);
 	//lcdDrawBufferImage(50, 20, 50, 50, TEST);
 	if(Mode == Auto_Mode)
@@ -516,7 +547,7 @@ void SettingUpdate(void)
 	lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+26,5+112, white, "LTE");
+	lcdPrintf(2+26,5+112, white, "Vv");
 
 	lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
@@ -558,7 +589,7 @@ void SettingUpdate(void)
 				lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*3)+1, 60, 15, 5, red);
 			}
 			lcdSetFont(LCD_FONT_HAN);
-			lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.sonar_distance_setting);
+			lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.water_level_setting);
 		}
 		if (sensor.setting_index == Water_Quality)
 		{
