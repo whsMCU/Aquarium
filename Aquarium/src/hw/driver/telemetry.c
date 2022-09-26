@@ -13,8 +13,10 @@
 #include "sonar.h"
 #include "tds.h"
 #include "reset.h"
+#include "ap.h"
 
 int8_t Relay[4];
+extern sensor_t sensor;
 
 
 char Buf[128];
@@ -228,11 +230,23 @@ void evaluateCommand(void)
 				float water_temp;
 				uint32_t water_level;
 				float water_tds;
+				float water_temp_setting;
+				float water_temp_deadband;
+				uint32_t water_level_setting;
+				uint32_t water_level_deadband;
+				float water_quality_setting;
+				float water_quality_deadband;
 			} data;
-			data.water_temp = (float)ds18b20[0].Temperature;
-			data.water_level = (uint32_t)sonar_tbl[0].filter_distance_cm/10;
-			data.water_tds = (float)tds_tbl[0].filter_tdsValue;
-			s_struct((uint8_t*)&data,12);
+			data.water_temp = sensor.ds18b20_temp;
+			data.water_level = sensor.water_level;
+			data.water_tds = sensor.water_quality;
+			data.water_temp_setting = sensor.ds18b20_temp_setting;
+			data.water_temp_deadband = sensor.water_temp_deadband;
+			data.water_level_setting = sensor.water_level_setting;
+			data.water_level_deadband = sensor.water_level_deadband;
+			data.water_quality_setting = sensor.water_quality_setting;
+			data.water_quality_deadband = sensor.water_quality_deadband;
+			s_struct((uint8_t*)&data,36);
 			break;
 		}
 		case MSP_SET_RELAY:

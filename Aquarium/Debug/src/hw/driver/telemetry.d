@@ -44,7 +44,25 @@ src/hw/driver/telemetry.o: ../src/hw/driver/telemetry.c \
  D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/onewire.h \
  D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/sonar.h \
  D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/tds.h \
- D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/reset.h
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/reset.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/ap/ap.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/hw/hw.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/hw/hw_def.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/spi.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/lcd.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/rtc.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/flash.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/cli.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/button.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/gpio.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/clcd.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/core/user_delay.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/onewire.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/sd.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/fatfs.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/files.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/hw/driver/image/image.h \
+ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/ui_common.h
 D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/telemetry.h:
 D:/STM32CubeIDE/Aquarium/Aquarium/src/hw/hw_def.h:
 D:/STM32CubeIDE/Aquarium/Aquarium/src/common/def.h:
@@ -91,3 +109,21 @@ D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/onewire.h:
 D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/sonar.h:
 D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/tds.h:
 D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/reset.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/ap/ap.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/hw/hw.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/hw/hw_def.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/spi.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/lcd.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/rtc.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/flash.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/cli.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/button.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/gpio.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/clcd.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/core/user_delay.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/onewire.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/sd.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/fatfs.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/files.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/hw/driver/image/image.h:
+D:/STM32CubeIDE/Aquarium/Aquarium/src/common/hw/include/ui_common.h:
