@@ -147,6 +147,37 @@ void menuUpdate(void)
 	  }
   }
 
+	if(menu.menu_run == true)
+	{
+	  if (buttonObjGetEvent(&menu.btn_left) & BUTTON_EVT_CLICKED)
+	  {
+		if (menu.menu_index > 0)
+		{
+		  menu.menu_index--;
+		}
+		else
+		{
+		  menu.menu_index = menu.menu_cnt - 1;
+		}
+		menu.pre_time = millis();
+	  }
+	  if (buttonObjGetEvent(&menu.btn_right) & BUTTON_EVT_CLICKED)
+	  {
+		menu.menu_index++;
+		menu.menu_index %= menu.menu_cnt;
+
+		menu.pre_time = millis();
+	  }
+	  if (buttonObjGetEvent(&menu.btn_enter) & BUTTON_EVT_CLICKED)
+	  {
+		menuRunApp(menu.menu_index);
+	  }
+	  if (buttonObjGetEvent(&menu.btn_exit) & BUTTON_EVT_CLICKED)
+	  {
+		menu.menu_run = false;
+	  }
+	}
+
   static bool blink = 0;
 
   if (lcdDrawAvailable() == true)
@@ -216,35 +247,6 @@ void menuUpdate(void)
 	lcdSetFont(LCD_FONT_07x10);
 	lcdPrintf(2+130,5+110, white, "SET");
 
-	if(menu.menu_run == true)
-	{
-	  if (buttonObjGetEvent(&menu.btn_left) & BUTTON_EVT_CLICKED)
-	  {
-		if (menu.menu_index > 0)
-		{
-		  menu.menu_index--;
-		}
-		else
-		{
-		  menu.menu_index = menu.menu_cnt - 1;
-		}
-		menu.pre_time = millis();
-	  }
-	  if (buttonObjGetEvent(&menu.btn_right) & BUTTON_EVT_CLICKED)
-	  {
-		menu.menu_index++;
-		menu.menu_index %= menu.menu_cnt;
-
-		menu.pre_time = millis();
-	  }
-	  if (buttonObjGetEvent(&menu.btn_enter) & BUTTON_EVT_CLICKED)
-	  {
-		menuRunApp(menu.menu_index);
-	  }
-	  if (buttonObjGetEvent(&menu.btn_exit) & BUTTON_EVT_CLICKED)
-	  {
-		menu.menu_run = false;
-	  }
 	for (int i=0; i<menu.menu_cnt; i++)
 	{
 		if (menu.menu_index == Auto)
@@ -285,9 +287,9 @@ void menuUpdate(void)
 		}
 	}
 
-	}
 	lcdRequestDraw();
 	}
+
 }
 
 void menuRunApp(uint8_t index)
