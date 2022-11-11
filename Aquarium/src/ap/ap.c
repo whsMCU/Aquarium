@@ -320,11 +320,9 @@ void menuRunApp(uint8_t index)
       break;
     case Setting:
     	Mode = Menual_Mode;
-    	menu.menu_run = false;
     	sensor.setting_mode = true;
     	//gpioPinToggle(BUZZER);
     	SettingMain();
-    	menu.menu_run = true;
       break;
 
     default:
@@ -365,8 +363,6 @@ void AutoMain(void)
 
 	}
 	sensorMain();
-	menuUpdate();
-
 
 	if(sensor.ds18b20_temp < sensor.ds18b20_temp_setting - sensor.water_temp_deadband)
 	{
@@ -393,7 +389,6 @@ void AutoMain(void)
 	{
 		gpioPinWrite(Relay3, true); // PUMP ON
 	}
-
 
 	SerialCom();
   }
