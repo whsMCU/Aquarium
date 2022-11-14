@@ -54,6 +54,7 @@ void menuRunApp(uint8_t index);
 void sensorMain(void);
 
 void AutoMain(void);
+void AutoUpdate(void);
 void SettingMain(void);
 void SettingUpdate(void);
 
@@ -211,7 +212,7 @@ void menuUpdate(void)
 		lcdPrintf(40, 16*5, white, "MODE : AUTO");
     }else
     {
-    	lcdPrintf(40, 16*5, white, "MODE : Menual");
+    	lcdPrintf(40, 16*5, white, "MODE : Manual");
     }
 
     blink = get_blink();
@@ -389,10 +390,89 @@ void AutoMain(void)
 	{
 		gpioPinWrite(Relay3, true); // PUMP ON
 	}
-
+	AutoUpdate();
 	SerialCom();
   }
+  gpioPinWrite(Relay1, false);
+  gpioPinWrite(Relay2, false);
+  gpioPinWrite(Relay3, false);
+  gpioPinWrite(Relay4, false);
 
+}
+
+void AutoUpdate(void)
+{
+  static bool blink = 0;
+
+  if (lcdDrawAvailable() == true)
+  {
+	lcdClearBuffer(black);
+
+	lcdDrawVLine((lcdGetWidth()/2)+20, 16, (lcdGetHeight()/2), pink);
+	lcdDrawHLine(0, 16*1, lcdGetWidth(), pink);
+	lcdDrawHLine(0, 16*2, lcdGetWidth(), pink);
+	lcdDrawHLine(0, 16*3, lcdGetWidth(), pink);
+	lcdDrawHLine(0, 16*4, lcdGetWidth(), pink);
+	lcdDrawHLine(0, 16*5, lcdGetWidth(), pink);
+
+	lcdSetFont(LCD_FONT_HAN);
+	lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움!]");
+
+	lcdSetFont(LCD_FONT_HAN);
+	lcdPrintf(0,16*1, white, "   현재값    세팅값");
+
+	lcdSetFont(LCD_FONT_HAN);
+	lcdPrintf(0,16*2, white, "온도: %3.1f도" , sensor.ds18b20_temp);
+	lcdPrintf(0,16*3, white, "높이:%3dcm" , sensor.water_level);
+	lcdPrintf(0,16*4, white, "TDS: %4.1fppm" , sensor.water_quality);
+
+	lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
+	lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.water_level_setting);
+	lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.water_quality_setting);
+	//lcdDrawBufferImage(50, 20, 50, 50, TEST);
+	if(Mode == Auto_Mode)
+	{
+		lcdPrintf(40, 16*5, white, "MODE : AUTO");
+	}else
+	{
+		lcdPrintf(40, 16*5, white, "MODE : Manual");
+	}
+
+	blink = get_blink();
+	draw_fan_status(0, 16*5, blink);
+
+	lcdDrawRoundRect(0, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, blue);
+	lcdSetFont(LCD_FONT_07x10);
+	lcdPrintf(2,5+112, white, "ATO");
+
+	lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
+	lcdSetFont(LCD_FONT_07x10);
+	lcdPrintf(2+26,5+112, white, "Vv");
+
+	lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
+	lcdSetFont(LCD_FONT_07x10);
+	lcdPrintf(2+52,5+112, white, "FAN");
+
+	lcdDrawRoundRect(0+78, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, red);
+	lcdSetFont(LCD_FONT_07x10);
+	lcdPrintf(5+78,5+112, white, "PP");
+
+	lcdDrawRoundRect(0+104, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, red);
+	lcdSetFont(LCD_FONT_07x10);
+	lcdPrintf(2+104,5+110, white, "HTR");
+
+	lcdDrawRoundRect(0+130, 0+112,  25, 16, 5, white);
+	lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, red);
+	lcdSetFont(LCD_FONT_07x10);
+	lcdPrintf(2+130,5+110, white, "SET");
+
+	lcdRequestDraw();
+	}
 }
 
 void SettingMain(void)
