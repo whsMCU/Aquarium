@@ -27,9 +27,9 @@ typedef struct
 enum Menu_List
 {
   Auto,
-  Valve,
-  Fan,
-  Pump,
+  Supply_Valve,
+  Discharge_Valve,
+  Discharge_Pump,
   Heater,
   Setting
 };
@@ -37,7 +37,7 @@ enum Menu_List
 enum Mode
 {
   Auto_Mode,
-  Menual_Mode
+  Manual_Mode
 };
 
 enum Setting_List
@@ -72,7 +72,7 @@ void apInit(void)
 	//menuSetCallBack(lcdMain);
 	cliAdd("boot", cliBoot);
 	menuInit();
-	Mode = Menual_Mode;
+	Mode = Manual_Mode;
 	sensor.setting_cnt = 3;
 	sensor.setting_index = 0;
 	sensor.setting = false;
@@ -199,7 +199,7 @@ void menuUpdate(void)
 		lcdPrintf(40, 16*5, white, "MODE : AUTO");
     }else
     {
-    	lcdPrintf(40, 16*5, white, "MODE : Manual");
+    	lcdPrintf(40, 16*5, white, "MODE : MANUAL");
     }
 
     blink = get_blink();
@@ -213,12 +213,12 @@ void menuUpdate(void)
     lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+26,5+112, white, "Vv");
+	lcdPrintf(2+26,5+112, white, "S_V");
 
 	lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+52,5+112, white, "FAN");
+	lcdPrintf(2+52,5+112, white, "D_V");
 
 	lcdDrawRoundRect(0+78, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, red);
@@ -243,19 +243,19 @@ void menuUpdate(void)
 			lcdSetFont(LCD_FONT_07x10);
 			lcdPrintf(2,5+112, white, "ATO");
 		}
-		if (menu.menu_index == Valve)
+		if (menu.menu_index == Supply_Valve)
 		{
 			lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, blue);
 			lcdSetFont(LCD_FONT_07x10);
-			lcdPrintf(2+26,5+112, white, "Vv");
+			lcdPrintf(2+26,5+112, white, "S_V");
 		}
-		if (menu.menu_index == Fan)
+		if (menu.menu_index == Discharge_Valve)
 		{
 			lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, blue);
 			lcdSetFont(LCD_FONT_07x10);
-			lcdPrintf(2+52,5+112, white, "FAN");
+			lcdPrintf(2+52,5+112, white, "D_V");
 		}
-		if (menu.menu_index == Pump)
+		if (menu.menu_index == Discharge_Pump)
 		{
 			lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, blue);
 			lcdSetFont(LCD_FONT_07x10);
@@ -289,32 +289,33 @@ void menuRunApp(uint8_t index)
   	case Auto:
   		Mode = Auto_Mode;
   	    AutoMain();
+  	    Mode = Manual_Mode;
   	  break;
-    case Valve:
-    	Mode = Menual_Mode;
+    case Supply_Valve:
+    	Mode = Manual_Mode;
     	gpioPinToggle(Relay1);
       break;
-    case Fan:
-    	Mode = Menual_Mode;
+    case Discharge_Valve:
+    	Mode = Manual_Mode;
     	gpioPinToggle(Relay2);
       break;
-    case Pump:
-    	Mode = Menual_Mode;
+    case Discharge_Pump:
+    	Mode = Manual_Mode;
     	gpioPinToggle(Relay3);
       break;
     case Heater:
-    	Mode = Menual_Mode;
+    	Mode = Manual_Mode;
     	gpioPinToggle(Relay4);
       break;
     case Setting:
-    	Mode = Menual_Mode;
+    	Mode = Manual_Mode;
     	sensor.setting_mode = true;
     	//gpioPinToggle(BUZZER);
     	SettingMain();
       break;
 
     default:
-    	Mode = Menual_Mode;
+    	Mode = Manual_Mode;
     	is_run = false;
       break;
   }
@@ -355,27 +356,27 @@ void AutoMain(void)
 	if(sensor.ds18b20_temp < sensor.ds18b20_temp_setting - sensor.water_temp_deadband)
 	{
 		gpioPinWrite(Relay4, true); // HTR ON
-		gpioPinWrite(Relay2, false);  // FAN OFF
 	}else if(sensor.ds18b20_temp > sensor.ds18b20_temp_setting)
 	{
 		gpioPinWrite(Relay4, false);  // HTR OFF
-		gpioPinWrite(Relay2, true); // FAN ON
 	}
 
 	if(sensor.water_level < sensor.water_level_setting - sensor.water_level_deadband)
 	{
-		gpioPinWrite(Relay1, true); // VALVE Open
+		gpioPinWrite(Relay1, true); // Supply_VALVE Open
 	}else if(sensor.water_level > sensor.water_level_setting)
 	{
-		gpioPinWrite(Relay1, false);  // VALVE Close
+		gpioPinWrite(Relay1, false);  // Supply_VALVE Close
 	}
 
 	if(sensor.water_quality < sensor.water_quality_setting - sensor.water_quality_deadband)
 	{
 		gpioPinWrite(Relay3, false);  // PUMP OFF
+		gpioPinWrite(Relay2, false);  // Discharge_VALVE Close
 	}else if(sensor.water_quality > sensor.water_quality_setting)
 	{
 		gpioPinWrite(Relay3, true); // PUMP ON
+		gpioPinWrite(Relay2, true);  // Discharge_VALVE Open
 	}
 	AutoUpdate();
 	SerialCom();
@@ -436,12 +437,12 @@ void AutoUpdate(void)
 	lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+26,5+112, white, "Vv");
+	lcdPrintf(2+26,5+112, white, "S_V");
 
 	lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+52,5+112, white, "FAN");
+	lcdPrintf(2+52,5+112, white, "D_V");
 
 	lcdDrawRoundRect(0+78, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, red);
@@ -598,12 +599,12 @@ void SettingUpdate(void)
 	lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+26,5+112, white, "Vv");
+	lcdPrintf(2+26,5+112, white, "S_V");
 
 	lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+52,5+112, white, "FAN");
+	lcdPrintf(2+52,5+112, white, "D_V");
 
 	lcdDrawRoundRect(0+78, 0+112,  25, 16, 5, white);
 	lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, red);
