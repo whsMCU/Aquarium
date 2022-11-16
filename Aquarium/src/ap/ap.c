@@ -121,7 +121,6 @@ void menuInit(void)
 {
   menu.menu_cnt = 6;
   menu.menu_index = 0;
-  menu.menu_run = false;
   buttonObjCreate(&menu.btn_user,  0, 50, 1000, 100);
   buttonObjCreate(&menu.btn_left,   1, 50, 1000, 100);
   buttonObjCreate(&menu.btn_right,  2, 50, 1000, 100);
@@ -140,44 +139,32 @@ void menuUpdate(void)
   buttonObjClearAndUpdate(&menu.btn_enter);
   buttonObjClearAndUpdate(&menu.btn_exit);
 
-  if(menu.menu_run == false)
+  if (buttonObjGetEvent(&menu.btn_left) & BUTTON_EVT_CLICKED)
   {
-	  if (buttonObjGetEvent(&menu.btn_enter) & BUTTON_EVT_CLICKED)
-	  {
-		menu.menu_run = true;
-	  }
-  }
-
-	if(menu.menu_run == true)
+	if (menu.menu_index > 0)
 	{
-	  if (buttonObjGetEvent(&menu.btn_left) & BUTTON_EVT_CLICKED)
-	  {
-		if (menu.menu_index > 0)
-		{
-		  menu.menu_index--;
-		}
-		else
-		{
-		  menu.menu_index = menu.menu_cnt - 1;
-		}
-		menu.pre_time = millis();
-	  }
-	  if (buttonObjGetEvent(&menu.btn_right) & BUTTON_EVT_CLICKED)
-	  {
-		menu.menu_index++;
-		menu.menu_index %= menu.menu_cnt;
-
-		menu.pre_time = millis();
-	  }
-	  if (buttonObjGetEvent(&menu.btn_enter) & BUTTON_EVT_CLICKED)
-	  {
-		menuRunApp(menu.menu_index);
-	  }
-	  if (buttonObjGetEvent(&menu.btn_exit) & BUTTON_EVT_CLICKED)
-	  {
-		menu.menu_run = false;
-	  }
+	  menu.menu_index--;
 	}
+	else
+	{
+	  menu.menu_index = menu.menu_cnt - 1;
+	}
+	menu.pre_time = millis();
+  }
+  if (buttonObjGetEvent(&menu.btn_right) & BUTTON_EVT_CLICKED)
+  {
+	menu.menu_index++;
+	menu.menu_index %= menu.menu_cnt;
+		menu.pre_time = millis();
+  }
+  if (buttonObjGetEvent(&menu.btn_enter) & BUTTON_EVT_CLICKED)
+  {
+	menuRunApp(menu.menu_index);
+  }
+  if (buttonObjGetEvent(&menu.btn_exit) & BUTTON_EVT_CLICKED)
+  {
+
+  }
 
   static bool blink = 0;
 
@@ -435,14 +422,14 @@ void AutoUpdate(void)
 		lcdPrintf(40, 16*5, white, "MODE : AUTO");
 	}else
 	{
-		lcdPrintf(40, 16*5, white, "MODE : Manual");
+		lcdPrintf(40, 16*5, white, "MODE : MANUAL");
 	}
 
 	blink = get_blink();
 	draw_fan_status(0, 16*5, blink);
 
 	lcdDrawRoundRect(0, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, blue);
+	lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, red);
 	lcdSetFont(LCD_FONT_07x10);
 	lcdPrintf(2,5+112, white, "ATO");
 

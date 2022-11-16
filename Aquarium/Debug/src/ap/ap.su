@@ -2,10 +2,10 @@
 ../src/ap/ap.c:89:6:apMain	16	static
 ../src/ap/ap.c:109:6:sensorMain	8	static
 ../src/ap/ap.c:120:6:menuInit	16	static
-../src/ap/ap.c:135:6:menuUpdate	32	static
-../src/ap/ap.c:296:6:menuRunApp	24	static
-../src/ap/ap.c:345:6:AutoMain	48	static
-../src/ap/ap.c:403:6:AutoUpdate	24	static
-../src/ap/ap.c:478:6:SettingMain	16	static
-../src/ap/ap.c:500:6:SettingUpdate	32	static
-../src/ap/ap.c:674:6:cliBoot	24	static
+../src/ap/ap.c:134:6:menuUpdate	32	static
+../src/ap/ap.c:283:6:menuRunApp	24	static
+../src/ap/ap.c:332:6:AutoMain	48	static
+../src/ap/ap.c:390:6:AutoUpdate	24	static
+../src/ap/ap.c:465:6:SettingMain	16	static
+../src/ap/ap.c:487:6:SettingUpdate	32	static
+../src/ap/ap.c:661:6:cliBoot	24	static

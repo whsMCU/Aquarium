@@ -1,0 +1,27 @@
+Drill report for Aquarium.kicad_pcb
+Created on 2022-11-08 오후 4:17:23
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  B.Cu                      back
+
+
+Drill file 'Aquarium-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.600mm  0.0236"  (13 holes)
+    T2  0.700mm  0.0276"  (13 holes)
+    T3  1.000mm  0.0394"  (124 holes)
+    T4  1.300mm  0.0512"  (18 holes)
+
+    Total plated holes count 168
+
+
+Drill file 'Aquarium-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+    T1  2.700mm  0.1063"  (4 holes)
+    T2  3.200mm  0.1260"  (16 holes)
+
+    Total unplated holes count 20
