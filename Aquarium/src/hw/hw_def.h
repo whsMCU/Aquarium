@@ -29,7 +29,7 @@
 #define      HW_BUTTON_OBJ_USE      1
 
 #define _USE_HW_GPIO
-#define      HW_GPIO_MAX_CH         13
+#define      HW_GPIO_MAX_CH         11
 
 #define _USE_HW_UART
 #define      HW_UART_MAX_CH         1

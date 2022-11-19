@@ -48,6 +48,7 @@ bool buttonInit(void)
 
 
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
 
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;

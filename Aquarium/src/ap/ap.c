@@ -112,8 +112,11 @@ void sensorMain(void)
     Sonar_measure();
     tds_measure();
     sensor.ds18b20_temp = ds18b20[0].Temperature;
+
 	sensor.sonar_distance = sonar_tbl[0].filter_distance_cm/10;
+	if(sensor.sonar_distance >= 50) sensor.sonar_distance = 50;
 	sensor.water_level = sensor.water_tank_height - sensor.sonar_distance;
+
 	sensor.water_quality = tds_tbl[0].filter_tdsValue;
 }
 
