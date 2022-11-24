@@ -221,49 +221,47 @@ void mainUi(void)
 
 		if(menu.menu_index == Auto)
 		{
-			lcdPrintf(40, 16*6, white, "시간 : %2d분 %2d초", minutes, seconds);
+			lcdSetFont(LCD_FONT_HAN);
+			lcdPrintf(40, 16*6, white, "시간:%2d분 %2d초", minutes, seconds);
 		}
 
-		if( menu.menu_index != Auto)
+		for (int i=0; i<menu.menu_cnt; i++)
 		{
-			for (int i=0; i<menu.menu_cnt; i++)
+			if (menu.menu_index == Auto)
 			{
-				if (menu.menu_index == Auto)
-				{
-					lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, blue);
-					lcdSetFont(LCD_FONT_07x10);
-					lcdPrintf(2,5+112, white, "ATO");
-				}
-				if (menu.menu_index == Supply_Valve)
-				{
-					lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, blue);
-					lcdSetFont(LCD_FONT_07x10);
-					lcdPrintf(2+26,5+112, white, "S_V");
-				}
-				if (menu.menu_index == Discharge_Valve)
-				{
-					lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, blue);
-					lcdSetFont(LCD_FONT_07x10);
-					lcdPrintf(2+52,5+112, white, "D_V");
-				}
-				if (menu.menu_index == Discharge_Pump)
-				{
-					lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, blue);
-					lcdSetFont(LCD_FONT_07x10);
-					lcdPrintf(5+78,5+112, white, "PP");
-				}
-				if (menu.menu_index == Heater)
-				{
-					lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, blue);
-					lcdSetFont(LCD_FONT_07x10);
-					lcdPrintf(2+104,5+110, white, "HTR");
-				}
-				if (menu.menu_index == Setting)
-				{
-					lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, blue);
-					lcdSetFont(LCD_FONT_07x10);
-					lcdPrintf(2+130,5+110, white, "SET");
-				}
+				lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2,5+112, white, "ATO");
+			}
+			if (menu.menu_index == Supply_Valve)
+			{
+				lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2+26,5+112, white, "S_V");
+			}
+			if (menu.menu_index == Discharge_Valve)
+			{
+				lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2+52,5+112, white, "D_V");
+			}
+			if (menu.menu_index == Discharge_Pump)
+			{
+				lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(5+78,5+112, white, "PP");
+			}
+			if (menu.menu_index == Heater)
+			{
+				lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2+104,5+110, white, "HTR");
+			}
+			if (menu.menu_index == Setting)
+			{
+				lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, blue);
+				lcdSetFont(LCD_FONT_07x10);
+				lcdPrintf(2+130,5+110, white, "SET");
 			}
 		}
 
@@ -406,6 +404,9 @@ void AutoMain(void)
   currentTime = millis();
   while(1)
   {
+	cycleTime = millis() - currentTime;
+	minutes = cycleTime / 60000;
+	seconds = (cycleTime - (minutes * 60000)) / 1000;
 	buttonObjClearAndUpdate(&btn_exit);
 
     if (buttonObjGetEvent(&btn_exit) & BUTTON_EVT_CLICKED)
@@ -414,9 +415,7 @@ void AutoMain(void)
     }
 
 
-    cycleTime = currentTime - millis();
-    minutes = cycleTime % 3600000 / 60000;
-    seconds = cycleTime % 3600000 % 60000;
+
 
 	sensorMain();
 	if(Biological_Filtration() == true) break;

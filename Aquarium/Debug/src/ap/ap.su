@@ -3,10 +3,10 @@
 ../src/ap/ap.c:123:6:sensorMain	8	static
 ../src/ap/ap.c:137:6:menuInit	16	static
 ../src/ap/ap.c:151:6:mainUi	32	static
-../src/ap/ap.c:311:6:menuUpdate	8	static
-../src/ap/ap.c:348:6:menuRunApp	24	static
-../src/ap/ap.c:398:6:AutoMain	48	static
-../src/ap/ap.c:461:6:SettingMain	16	static
-../src/ap/ap.c:483:6:SettingUpdate	8	static
-../src/ap/ap.c:553:6:Biological_Filtration	16	static
-../src/ap/ap.c:597:6:cliBoot	24	static
+../src/ap/ap.c:309:6:menuUpdate	8	static
+../src/ap/ap.c:346:6:menuRunApp	24	static
+../src/ap/ap.c:396:6:AutoMain	40	static
+../src/ap/ap.c:460:6:SettingMain	16	static
+../src/ap/ap.c:482:6:SettingUpdate	8	static
+../src/ap/ap.c:552:6:Biological_Filtration	16	static
+../src/ap/ap.c:596:6:cliBoot	24	static
