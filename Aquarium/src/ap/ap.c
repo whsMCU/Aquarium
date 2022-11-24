@@ -47,6 +47,16 @@ enum Setting_List
   Water_Quality
 };
 
+enum BF_seq
+{
+	BF_start,
+	Discharge_water,
+	Filling_water,
+	BF_finish,
+};
+
+void mainUi(void);
+
 void menuInit(void);
 void menuUpdate(void);
 void menuRunApp(uint8_t index);
@@ -54,13 +64,17 @@ void menuRunApp(uint8_t index);
 void sensorMain(void);
 
 void AutoMain(void);
-void AutoUpdate(void);
 void SettingMain(void);
 void SettingUpdate(void);
+
+bool Biological_Filtration(void);
 
 void cliBoot(cli_args_t *args);
 
 bool Mode;
+
+uint8_t minutes = 0, seconds = 0;
+volatile uint32_t currentTime = 0, cycleTime = 0, previousTime = 0;
 
 menu_t menu;
 sensor_t sensor;
@@ -134,6 +148,166 @@ void menuInit(void)
   //menuLoadInfo();
 }
 
+void mainUi(void)
+{
+	static bool blink = 0;
+
+	  if (lcdDrawAvailable() == true)
+	  {
+	    lcdClearBuffer(black);
+
+	    lcdDrawVLine((lcdGetWidth()/2)+20, 16, (lcdGetHeight()/2), pink);
+	    lcdDrawHLine(0, 16*1, lcdGetWidth(), pink);
+	    lcdDrawHLine(0, 16*2, lcdGetWidth(), pink);
+	    lcdDrawHLine(0, 16*3, lcdGetWidth(), pink);
+	    lcdDrawHLine(0, 16*4, lcdGetWidth(), pink);
+	    lcdDrawHLine(0, 16*5, lcdGetWidth(), pink);
+
+	    lcdSetFont(LCD_FONT_HAN);
+	    lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움!]");
+
+	    lcdSetFont(LCD_FONT_HAN);
+	    lcdPrintf(0,16*1, white, "   현재값    세팅값");
+
+	    lcdSetFont(LCD_FONT_HAN);
+	    lcdPrintf(0,16*2, white, "온도: %3.1f도" , sensor.ds18b20_temp);
+	    lcdPrintf(0,16*3, white, "높이:%3dcm" , sensor.water_level);
+	    lcdPrintf(0,16*4, white, "TDS: %4.1fppm" , sensor.water_quality);
+
+	    lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
+	    lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.water_level_setting);
+	    lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.water_quality_setting);
+	    //lcdDrawBufferImage(50, 20, 50, 50, TEST);
+	    if(Mode == Auto_Mode)
+	    {
+			lcdPrintf(40, 16*5, white, "MODE : AUTO");
+	    }else
+	    {
+	    	lcdPrintf(40, 16*5, white, "MODE : MANUAL");
+	    }
+
+	    blink = get_blink();
+	    draw_fan_status(0, 16*5, blink);
+
+	    lcdDrawRoundRect(0, 0+112,  25, 16, 5, white);
+		lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, red);
+		lcdSetFont(LCD_FONT_07x10);
+		lcdPrintf(2,5+112, white, "ATO");
+
+	    lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
+		lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
+		lcdSetFont(LCD_FONT_07x10);
+		lcdPrintf(2+26,5+112, white, "S_V");
+
+		lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
+		lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
+		lcdSetFont(LCD_FONT_07x10);
+		lcdPrintf(2+52,5+112, white, "D_V");
+
+		lcdDrawRoundRect(0+78, 0+112,  25, 16, 5, white);
+		lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, red);
+		lcdSetFont(LCD_FONT_07x10);
+		lcdPrintf(5+78,5+112, white, "PP");
+
+		lcdDrawRoundRect(0+104, 0+112,  25, 16, 5, white);
+		lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, red);
+		lcdSetFont(LCD_FONT_07x10);
+		lcdPrintf(2+104,5+110, white, "HTR");
+
+		lcdDrawRoundRect(0+130, 0+112,  25, 16, 5, white);
+		lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, red);
+		lcdSetFont(LCD_FONT_07x10);
+		lcdPrintf(2+130,5+110, white, "SET");
+
+		if(menu.menu_index == Auto)
+		{
+			lcdPrintf(40, 16*6, white, "시간 : %2d분 %2d초", minutes, seconds);
+		}
+
+		if( menu.menu_index != Auto)
+		{
+			for (int i=0; i<menu.menu_cnt; i++)
+			{
+				if (menu.menu_index == Auto)
+				{
+					lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, blue);
+					lcdSetFont(LCD_FONT_07x10);
+					lcdPrintf(2,5+112, white, "ATO");
+				}
+				if (menu.menu_index == Supply_Valve)
+				{
+					lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, blue);
+					lcdSetFont(LCD_FONT_07x10);
+					lcdPrintf(2+26,5+112, white, "S_V");
+				}
+				if (menu.menu_index == Discharge_Valve)
+				{
+					lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, blue);
+					lcdSetFont(LCD_FONT_07x10);
+					lcdPrintf(2+52,5+112, white, "D_V");
+				}
+				if (menu.menu_index == Discharge_Pump)
+				{
+					lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, blue);
+					lcdSetFont(LCD_FONT_07x10);
+					lcdPrintf(5+78,5+112, white, "PP");
+				}
+				if (menu.menu_index == Heater)
+				{
+					lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, blue);
+					lcdSetFont(LCD_FONT_07x10);
+					lcdPrintf(2+104,5+110, white, "HTR");
+				}
+				if (menu.menu_index == Setting)
+				{
+					lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, blue);
+					lcdSetFont(LCD_FONT_07x10);
+					lcdPrintf(2+130,5+110, white, "SET");
+				}
+			}
+		}
+
+		if( menu.menu_index == Setting)
+		{
+			for (int i=0; i<sensor.setting_cnt; i++)
+			{
+				if (sensor.setting_index == Water_Temp)
+				{
+					lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*2)+1, 60, 15, 5, blue);
+					if(sensor.setting == true)
+					{
+						lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*2)+1, 60, 15, 5, red);
+					}
+					lcdSetFont(LCD_FONT_HAN);
+					lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
+				}
+				if (sensor.setting_index == Water_Level)
+				{
+					lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*3)+1, 60, 15, 5, blue);
+					if(sensor.setting == true)
+					{
+						lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*3)+1, 60, 15, 5, red);
+					}
+					lcdSetFont(LCD_FONT_HAN);
+					lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.water_level_setting);
+				}
+				if (sensor.setting_index == Water_Quality)
+				{
+					lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*4)+1, 60, 15, 5, blue);
+					if(sensor.setting == true)
+					{
+						lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*4)+1, 60, 15, 5, red);
+					}
+					lcdSetFont(LCD_FONT_HAN);
+					lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.water_quality_setting);
+				}
+			}
+		}
+
+		lcdRequestDraw();
+		}
+}
+
 void menuUpdate(void)
 {
   buttonObjClearAndUpdate(&menu.btn_user);
@@ -168,119 +342,7 @@ void menuUpdate(void)
   {
 
   }
-
-  static bool blink = 0;
-
-  if (lcdDrawAvailable() == true)
-  {
-    lcdClearBuffer(black);
-
-    lcdDrawVLine((lcdGetWidth()/2)+20, 16, (lcdGetHeight()/2), pink);
-    lcdDrawHLine(0, 16*1, lcdGetWidth(), pink);
-    lcdDrawHLine(0, 16*2, lcdGetWidth(), pink);
-    lcdDrawHLine(0, 16*3, lcdGetWidth(), pink);
-    lcdDrawHLine(0, 16*4, lcdGetWidth(), pink);
-    lcdDrawHLine(0, 16*5, lcdGetWidth(), pink);
-
-    lcdSetFont(LCD_FONT_HAN);
-    lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움!]");
-
-    lcdSetFont(LCD_FONT_HAN);
-    lcdPrintf(0,16*1, white, "   현재값    세팅값");
-
-    lcdSetFont(LCD_FONT_HAN);
-    lcdPrintf(0,16*2, white, "온도: %3.1f도" , sensor.ds18b20_temp);
-    lcdPrintf(0,16*3, white, "높이:%3dcm" , sensor.water_level);
-    lcdPrintf(0,16*4, white, "TDS: %4.1fppm" , sensor.water_quality);
-
-    lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
-    lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.water_level_setting);
-    lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.water_quality_setting);
-    //lcdDrawBufferImage(50, 20, 50, 50, TEST);
-    if(Mode == Auto_Mode)
-    {
-		lcdPrintf(40, 16*5, white, "MODE : AUTO");
-    }else
-    {
-    	lcdPrintf(40, 16*5, white, "MODE : MANUAL");
-    }
-
-    blink = get_blink();
-    draw_fan_status(0, 16*5, blink);
-
-    lcdDrawRoundRect(0, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2,5+112, white, "ATO");
-
-    lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+26,5+112, white, "S_V");
-
-	lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+52,5+112, white, "D_V");
-
-	lcdDrawRoundRect(0+78, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(5+78,5+112, white, "PP");
-
-	lcdDrawRoundRect(0+104, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+104,5+110, white, "HTR");
-
-	lcdDrawRoundRect(0+130, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+130,5+110, white, "SET");
-
-	for (int i=0; i<menu.menu_cnt; i++)
-	{
-		if (menu.menu_index == Auto)
-		{
-			lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, blue);
-			lcdSetFont(LCD_FONT_07x10);
-			lcdPrintf(2,5+112, white, "ATO");
-		}
-		if (menu.menu_index == Supply_Valve)
-		{
-			lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, blue);
-			lcdSetFont(LCD_FONT_07x10);
-			lcdPrintf(2+26,5+112, white, "S_V");
-		}
-		if (menu.menu_index == Discharge_Valve)
-		{
-			lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, blue);
-			lcdSetFont(LCD_FONT_07x10);
-			lcdPrintf(2+52,5+112, white, "D_V");
-		}
-		if (menu.menu_index == Discharge_Pump)
-		{
-			lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, blue);
-			lcdSetFont(LCD_FONT_07x10);
-			lcdPrintf(5+78,5+112, white, "PP");
-		}
-		if (menu.menu_index == Heater)
-		{
-			lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, blue);
-			lcdSetFont(LCD_FONT_07x10);
-			lcdPrintf(2+104,5+110, white, "HTR");
-		}
-		if (menu.menu_index == Setting)
-		{
-			lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, blue);
-			lcdSetFont(LCD_FONT_07x10);
-			lcdPrintf(2+130,5+110, white, "SET");
-		}
-	}
-
-	lcdRequestDraw();
-	}
-
+  mainUi();
 }
 
 void menuRunApp(uint8_t index)
@@ -296,19 +358,19 @@ void menuRunApp(uint8_t index)
   	  break;
     case Supply_Valve:
     	Mode = Manual_Mode;
-    	gpioPinToggle(Relay1);
+    	gpioPinToggle(S_V);
       break;
     case Discharge_Valve:
     	Mode = Manual_Mode;
-    	gpioPinToggle(Relay2);
+    	gpioPinToggle(D_V);
       break;
     case Discharge_Pump:
     	Mode = Manual_Mode;
-    	gpioPinToggle(Relay3);
+    	gpioPinToggle(Pp);
       break;
     case Heater:
     	Mode = Manual_Mode;
-    	gpioPinToggle(Relay4);
+    	gpioPinToggle(HTR);
       break;
     case Setting:
     	Mode = Manual_Mode;
@@ -335,12 +397,13 @@ void menuRunApp(uint8_t index)
 
 void AutoMain(void)
 {
-  uint32_t pre_time;
+
   button_obj_t btn_exit;
 
   buttonObjCreate(&btn_exit,  4, 50, 1000, 100);
 
-  pre_time = millis();
+
+  currentTime = millis();
   while(1)
   {
 	buttonObjClearAndUpdate(&btn_exit);
@@ -349,121 +412,50 @@ void AutoMain(void)
     {
       break;
     }
-	if (millis()-pre_time >= 1000)
-	{
-	  pre_time = millis();
 
-	}
+
+    cycleTime = currentTime - millis();
+    minutes = cycleTime % 3600000 / 60000;
+    seconds = cycleTime % 3600000 % 60000;
+
 	sensorMain();
+	if(Biological_Filtration() == true) break;
 
-	if(sensor.ds18b20_temp < sensor.ds18b20_temp_setting - sensor.water_temp_deadband)
-	{
-		gpioPinWrite(Relay4, true); // HTR ON
-	}else if(sensor.ds18b20_temp > sensor.ds18b20_temp_setting)
-	{
-		gpioPinWrite(Relay4, false);  // HTR OFF
-	}
+//	if(sensor.ds18b20_temp < sensor.ds18b20_temp_setting - sensor.water_temp_deadband)
+//	{
+//		gpioPinWrite(HTR, true); // HTR ON
+//	}else if(sensor.ds18b20_temp > sensor.ds18b20_temp_setting)
+//	{
+//		gpioPinWrite(HTR, false);  // HTR OFF
+//	}
+//
+//	if(sensor.water_level < sensor.water_level_setting - sensor.water_level_deadband)
+//	{
+//		gpioPinWrite(S_V, true); // Supply_VALVE Open
+//	}else if(sensor.water_level > sensor.water_level_setting)
+//	{
+//		gpioPinWrite(S_V, false);  // Supply_VALVE Close
+//	}
+//
+//	if(sensor.water_quality < sensor.water_quality_setting - sensor.water_quality_deadband)
+//	{
+//		gpioPinWrite(Pp, false);  // PUMP OFF
+//		gpioPinWrite(D_V, false);  // Discharge_VALVE Close
+//	}else if(sensor.water_quality > sensor.water_quality_setting)
+//	{
+//		gpioPinWrite(Pp, true); // PUMP ON
+//		gpioPinWrite(D_V, true);  // Discharge_VALVE Open
+//	}
 
-	if(sensor.water_level < sensor.water_level_setting - sensor.water_level_deadband)
-	{
-		gpioPinWrite(Relay1, true); // Supply_VALVE Open
-	}else if(sensor.water_level > sensor.water_level_setting)
-	{
-		gpioPinWrite(Relay1, false);  // Supply_VALVE Close
-	}
 
-	if(sensor.water_quality < sensor.water_quality_setting - sensor.water_quality_deadband)
-	{
-		gpioPinWrite(Relay3, false);  // PUMP OFF
-		gpioPinWrite(Relay2, false);  // Discharge_VALVE Close
-	}else if(sensor.water_quality > sensor.water_quality_setting)
-	{
-		gpioPinWrite(Relay3, true); // PUMP ON
-		gpioPinWrite(Relay2, true);  // Discharge_VALVE Open
-	}
-	AutoUpdate();
+	mainUi();
 	SerialCom();
   }
-  gpioPinWrite(Relay1, false);
-  gpioPinWrite(Relay2, false);
-  gpioPinWrite(Relay3, false);
-  gpioPinWrite(Relay4, false);
+  gpioPinWrite(S_V, false);
+  gpioPinWrite(D_V, false);
+  gpioPinWrite(Pp, false);
+  gpioPinWrite(HTR, false);
 
-}
-
-void AutoUpdate(void)
-{
-  static bool blink = 0;
-
-  if (lcdDrawAvailable() == true)
-  {
-	lcdClearBuffer(black);
-
-	lcdDrawVLine((lcdGetWidth()/2)+20, 16, (lcdGetHeight()/2), pink);
-	lcdDrawHLine(0, 16*1, lcdGetWidth(), pink);
-	lcdDrawHLine(0, 16*2, lcdGetWidth(), pink);
-	lcdDrawHLine(0, 16*3, lcdGetWidth(), pink);
-	lcdDrawHLine(0, 16*4, lcdGetWidth(), pink);
-	lcdDrawHLine(0, 16*5, lcdGetWidth(), pink);
-
-	lcdSetFont(LCD_FONT_HAN);
-	lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움!]");
-
-	lcdSetFont(LCD_FONT_HAN);
-	lcdPrintf(0,16*1, white, "   현재값    세팅값");
-
-	lcdSetFont(LCD_FONT_HAN);
-	lcdPrintf(0,16*2, white, "온도: %3.1f도" , sensor.ds18b20_temp);
-	lcdPrintf(0,16*3, white, "높이:%3dcm" , sensor.water_level);
-	lcdPrintf(0,16*4, white, "TDS: %4.1fppm" , sensor.water_quality);
-
-	lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
-	lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.water_level_setting);
-	lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.water_quality_setting);
-	//lcdDrawBufferImage(50, 20, 50, 50, TEST);
-	if(Mode == Auto_Mode)
-	{
-		lcdPrintf(40, 16*5, white, "MODE : AUTO");
-	}else
-	{
-		lcdPrintf(40, 16*5, white, "MODE : MANUAL");
-	}
-
-	blink = get_blink();
-	draw_fan_status(0, 16*5, blink);
-
-	lcdDrawRoundRect(0, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2,5+112, white, "ATO");
-
-	lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+26,5+112, white, "S_V");
-
-	lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+52,5+112, white, "D_V");
-
-	lcdDrawRoundRect(0+78, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(5+78,5+112, white, "PP");
-
-	lcdDrawRoundRect(0+104, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+104,5+110, white, "HTR");
-
-	lcdDrawRoundRect(0+130, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+130,5+110, white, "SET");
-
-	lcdRequestDraw();
-	}
 }
 
 void SettingMain(void)
@@ -555,111 +547,51 @@ void SettingUpdate(void)
   		sensor.setting_mode = false;
   	  }
 
-  static bool blink = 0;
+  	mainUi();
+}
 
-  if (lcdDrawAvailable() == true)
-  {
-	lcdClearBuffer(black);
-
-	lcdDrawVLine((lcdGetWidth()/2)+20, 16, (lcdGetHeight()/2), pink);
-	lcdDrawHLine(0, 16*1, lcdGetWidth(), pink);
-	lcdDrawHLine(0, 16*2, lcdGetWidth(), pink);
-	lcdDrawHLine(0, 16*3, lcdGetWidth(), pink);
-	lcdDrawHLine(0, 16*4, lcdGetWidth(), pink);
-	lcdDrawHLine(0, 16*5, lcdGetWidth(), pink);
-
-	lcdSetFont(LCD_FONT_HAN);
-	lcdPrintf(0,16*0, green, "[삼둥이 아쿠아리움!]");
-
-	lcdSetFont(LCD_FONT_HAN);
-	lcdPrintf(0,16*1, white, "   현재값    세팅값");
-
-	lcdSetFont(LCD_FONT_HAN);
-	lcdPrintf(0,16*2, white, "온도: %3.1f도" , sensor.ds18b20_temp);
-	lcdPrintf(0,16*3, white, "높이:%3dcm" , sensor.water_level);
-	lcdPrintf(0,16*4, white, "TDS: %4.1fppm" , sensor.water_quality);
-
-	lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
-	lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.water_level_setting);
-	lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.water_quality_setting);
-	//lcdDrawBufferImage(50, 20, 50, 50, TEST);
-	if(Mode == Auto_Mode)
+bool Biological_Filtration(void)
+{
+	bool ret = 0;
+	static uint8_t sequence = 0;
+	switch(sequence)
 	{
-		lcdPrintf(40, 16*5, white, "MODE : AUTO");
-	}else
-	{
-		lcdPrintf(40, 16*5, white, "MODE : Manual");
-	}
+		case BF_start:
+			sequence = Discharge_water;
+		  break;
 
-	blink = get_blink();
-	draw_fan_status(0, 16*5, blink);
+		case Discharge_water:
+			gpioPinWrite(D_V, true);
+	  		gpioPinWrite(Pp, true);
+	  		if(sensor.water_level < 10)
+	  		{
+		  		gpioPinWrite(D_V, false);
+		  		gpioPinWrite(Pp, false);
+		  		sequence = Filling_water;
+	  		}
+	  	  break;
 
-	lcdDrawRoundRect(0, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2,5+112, white, "ATO");
+	    case Filling_water:
+	  		gpioPinWrite(S_V, true);
+	  		if(sensor.water_level > sensor.water_level_setting)
+	  		{
+	  			gpioPinWrite(S_V, false);  // Supply_VALVE Close
+	  			sequence = BF_finish;
+	  		}
+	      break;
 
-	lcdDrawRoundRect(0+26, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+26, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+26,5+112, white, "S_V");
+		case BF_finish:
+			ret = 1;
+			sequence = BF_start;
+	  	  break;
 
-	lcdDrawRoundRect(0+52, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+52, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+52,5+112, white, "D_V");
+	    default:
+	    	ret = 0;
+			sequence = BF_start;
+	      break;
+	 }
 
-	lcdDrawRoundRect(0+78, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+78, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(5+78,5+112, white, "PP");
-
-	lcdDrawRoundRect(0+104, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+104, 1+112, 23, 14, 5, red);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+104,5+110, white, "HTR");
-
-	lcdDrawRoundRect(0+130, 0+112,  25, 16, 5, white);
-	lcdDrawFillRoundRect(1+130, 1+112, 23, 14, 5, blue);
-	lcdSetFont(LCD_FONT_07x10);
-	lcdPrintf(2+130,5+110, white, "SET");
-
-	for (int i=0; i<sensor.setting_cnt; i++)
-	{
-		if (sensor.setting_index == Water_Temp)
-		{
-			lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*2)+1, 60, 15, 5, blue);
-			if(sensor.setting == true)
-			{
-				lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*2)+1, 60, 15, 5, red);
-			}
-			lcdSetFont(LCD_FONT_HAN);
-			lcdPrintf((lcdGetWidth()/2)+20,16*2, white, " %3.1f도" , sensor.ds18b20_temp_setting);
-		}
-		if (sensor.setting_index == Water_Level)
-		{
-			lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*3)+1, 60, 15, 5, blue);
-			if(sensor.setting == true)
-			{
-				lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*3)+1, 60, 15, 5, red);
-			}
-			lcdSetFont(LCD_FONT_HAN);
-			lcdPrintf((lcdGetWidth()/2)+20,16*3, white, " %3dcm" , sensor.water_level_setting);
-		}
-		if (sensor.setting_index == Water_Quality)
-		{
-			lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*4)+1, 60, 15, 5, blue);
-			if(sensor.setting == true)
-			{
-				lcdDrawFillRoundRect((lcdGetWidth()/2)+20, (16*4)+1, 60, 15, 5, red);
-			}
-			lcdSetFont(LCD_FONT_HAN);
-			lcdPrintf((lcdGetWidth()/2)+20,16*4, white, "%4.1fppm" , sensor.water_quality_setting);
-		}
-	}
-
-	lcdRequestDraw();
-	}
+	return ret;
 }
 
 void cliBoot(cli_args_t *args)
