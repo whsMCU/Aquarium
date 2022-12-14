@@ -92,10 +92,10 @@ void apInit(void)
 	sensor.setting = false;
 	sensor.setting_mode = false;
 	sensor.ds18b20_temp_setting = 25.0;
-	sensor.water_level_setting = 30;
-	sensor.water_tank_height  = 50;
+	sensor.water_level_setting = 22;
+	sensor.water_tank_height  = 42;
 	sensor.water_temp_deadband = 2;
-	sensor.water_level_deadband = 5;
+	sensor.water_level_deadband = 2;
 	sensor.water_quality_setting = 10.0;
 	sensor.water_quality_deadband = 5;
 }

@@ -1382,21 +1382,21 @@ void apInit(void)
  8011700:	4b0e      	ldr	r3, [pc, #56]	; (801173c <apInit+0x74>)
  8011702:	4a0f      	ldr	r2, [pc, #60]	; (8011740 <apInit+0x78>)
  8011704:	619a      	str	r2, [r3, #24]
-	sensor.water_level_setting = 30;
+	sensor.water_level_setting = 22;
  8011706:	4b0d      	ldr	r3, [pc, #52]	; (801173c <apInit+0x74>)
- 8011708:	221e      	movs	r2, #30
+ 8011708:	2216      	movs	r2, #22
  801170a:	621a      	str	r2, [r3, #32]
-	sensor.water_tank_height  = 50;
+	sensor.water_tank_height  = 42;
  801170c:	4b0b      	ldr	r3, [pc, #44]	; (801173c <apInit+0x74>)
- 801170e:	2232      	movs	r2, #50	; 0x32
+ 801170e:	222a      	movs	r2, #42	; 0x2a
  8011710:	609a      	str	r2, [r3, #8]
 	sensor.water_temp_deadband = 2;
  8011712:	4b0a      	ldr	r3, [pc, #40]	; (801173c <apInit+0x74>)
  8011714:	f04f 4280 	mov.w	r2, #1073741824	; 0x40000000
  8011718:	61da      	str	r2, [r3, #28]
-	sensor.water_level_deadband = 5;
+	sensor.water_level_deadband = 2;
  801171a:	4b08      	ldr	r3, [pc, #32]	; (801173c <apInit+0x74>)
- 801171c:	2205      	movs	r2, #5
+ 801171c:	2202      	movs	r2, #2
  801171e:	625a      	str	r2, [r3, #36]	; 0x24
 	sensor.water_quality_setting = 10.0;
  8011720:	4b06      	ldr	r3, [pc, #24]	; (801173c <apInit+0x74>)
