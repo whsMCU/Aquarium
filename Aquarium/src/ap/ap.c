@@ -73,6 +73,7 @@ void cliBoot(cli_args_t *args);
 
 bool Mode;
 
+uint8_t auto_sequence = 0;
 uint8_t minutes = 0, seconds = 0;
 volatile uint32_t currentTime = 0, cycleTime = 0, previousTime = 0;
 
@@ -128,7 +129,7 @@ void sensorMain(void)
     sensor.ds18b20_temp = ds18b20[0].Temperature;
 
 	sensor.sonar_distance = sonar_tbl[0].filter_distance_cm/10;
-	if(sensor.sonar_distance >= 50) sensor.sonar_distance = 50;
+	if(sensor.sonar_distance >= 42) sensor.sonar_distance = 42;
 	sensor.water_level = sensor.water_tank_height - sensor.sonar_distance;
 
 	sensor.water_quality = tds_tbl[0].filter_tdsValue;
@@ -180,7 +181,11 @@ void mainUi(void)
 	    //lcdDrawBufferImage(50, 20, 50, 50, TEST);
 	    if(Mode == Auto_Mode)
 	    {
-			lcdPrintf(40, 16*5, white, "MODE : AUTO");
+			//lcdPrintf(40, 16*5, white, "MODE : AUTO");
+			if(auto_sequence == BF_start) lcdPrintf(40, 16*5, white, "환수시작");
+			if(auto_sequence == Discharge_water) lcdPrintf(40, 16*5, white, "물배수중..");
+			if(auto_sequence == Filling_water) lcdPrintf(40, 16*5, white, "물급수중..");
+			if(auto_sequence == BF_finish) lcdPrintf(40, 16*5, white, "환수완료");
 	    }else
 	    {
 	    	lcdPrintf(40, 16*5, white, "MODE : MANUAL");
@@ -414,9 +419,6 @@ void AutoMain(void)
       break;
     }
 
-
-
-
 	sensorMain();
 	if(Biological_Filtration() == true) break;
 
@@ -557,6 +559,7 @@ bool Biological_Filtration(void)
 	{
 		case BF_start:
 			sequence = Discharge_water;
+			auto_sequence = Discharge_water;
 		  break;
 
 		case Discharge_water:
@@ -567,6 +570,7 @@ bool Biological_Filtration(void)
 		  		gpioPinWrite(D_V, false);
 		  		gpioPinWrite(Pp, false);
 		  		sequence = Filling_water;
+		  		auto_sequence = Filling_water;
 	  		}
 	  	  break;
 
@@ -576,17 +580,20 @@ bool Biological_Filtration(void)
 	  		{
 	  			gpioPinWrite(S_V, false);  // Supply_VALVE Close
 	  			sequence = BF_finish;
+	  			auto_sequence = BF_finish;
 	  		}
 	      break;
 
 		case BF_finish:
 			ret = 1;
 			sequence = BF_start;
+			auto_sequence = BF_start;
 	  	  break;
 
 	    default:
 	    	ret = 0;
 			sequence = BF_start;
+			auto_sequence = BF_start;
 	      break;
 	 }
 

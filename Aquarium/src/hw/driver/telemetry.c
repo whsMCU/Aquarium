@@ -14,6 +14,7 @@
 #include "tds.h"
 #include "reset.h"
 #include "ap.h"
+#include "gpio.h"
 
 int8_t Relay[4];
 extern sensor_t sensor;

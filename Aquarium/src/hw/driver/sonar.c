@@ -71,7 +71,7 @@ bool Sonar_measure(void)
 	bool ret = false;
 	static uint32_t pre_time;
 
-	static int16_t sonarHistTab[11];
+	static int16_t sonarHistTab[101]; // 기존 11
 	static int sonarHistIdx = 0;
 	static uint32_t sonarDistanceSum = 0;
 
@@ -103,12 +103,12 @@ bool Sonar_measure(void)
 				sonar_tbl[0].distance_cm = (sonar_tbl[0].duty_time * 10) * 0.0172;
 
 				uint8_t indexplus1 = (sonarHistIdx + 1);
-				if (indexplus1 == 11) indexplus1 = 0;
+				if (indexplus1 == 101) indexplus1 = 0; // 기존 11
 				sonarHistTab[sonarHistIdx] = sonar_tbl[0].distance_cm;
 				sonarDistanceSum += sonarHistTab[sonarHistIdx];
 				sonarDistanceSum -= sonarHistTab[indexplus1];
 				sonarHistIdx = indexplus1;
-				sonar_tbl[0].filter_distance_cm = sonarDistanceSum / 10;
+				sonar_tbl[0].filter_distance_cm = sonarDistanceSum / 100; //기존 10
 
 				sonar_tbl[0].state = 0;
 				ret = true;
