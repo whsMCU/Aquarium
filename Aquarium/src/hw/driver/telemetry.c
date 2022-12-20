@@ -250,11 +250,11 @@ void evaluateCommand(void)
 			s_struct((uint8_t*)&data,36);
 			break;
 		}
-		case MSP_SET_RELAY:
-			Relay[0] = read8();
+		case MSP_CONTROL:
 			Relay[1] = read8();
 			Relay[2] = read8();
 			Relay[3] = read8();
+			Relay[4] = read8();
 			break;
 
 		case MSP_SET_BOOT:
