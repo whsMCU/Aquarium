@@ -16,7 +16,7 @@
 #include "ap.h"
 #include "gpio.h"
 
-int8_t Relay[4];
+int8_t Relay[5];
 extern sensor_t sensor;
 
 
@@ -251,10 +251,35 @@ void evaluateCommand(void)
 			break;
 		}
 		case MSP_CONTROL:
-			Relay[1] = read8();
-			Relay[2] = read8();
-			Relay[3] = read8();
-			Relay[4] = read8();
+			Relay[0] = read16();
+			Relay[1] = read16();
+			Relay[2] = read16();
+			Relay[3] = read16();
+			Relay[4] = read16();
+
+			if(Relay[1] == 1){
+				gpioPinWrite(S_V, true);
+			}else{
+				gpioPinWrite(S_V, false);
+			}
+
+			if(Relay[2] == 1){
+				gpioPinWrite(D_V, true);
+			}else{
+				gpioPinWrite(D_V, false);
+			}
+
+			if(Relay[3] == 1){
+				gpioPinWrite(Pp, true);
+			}else{
+				gpioPinWrite(Pp, false);
+			}
+
+			if(Relay[4] == 1){
+				gpioPinWrite(HTR, true);
+			}else{
+				gpioPinWrite(HTR, false);
+			}
 			break;
 
 		case MSP_SET_BOOT:
