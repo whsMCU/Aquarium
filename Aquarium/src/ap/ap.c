@@ -356,6 +356,10 @@ void menuRunApp(uint8_t index)
   {
   	case Auto:
   		Mode = Auto_Mode;
+  		gpioPinWrite(S_V, false);
+  		gpioPinWrite(D_V, false);
+  		gpioPinWrite(Pp, false);
+  		gpioPinWrite(HTR, false);
   	    AutoMain();
   	    Mode = Manual_Mode;
   	  break;

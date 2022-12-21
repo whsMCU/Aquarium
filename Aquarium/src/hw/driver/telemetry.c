@@ -251,11 +251,12 @@ void evaluateCommand(void)
 			break;
 		}
 		case MSP_CONTROL:
-			Relay[0] = read16();
-			Relay[1] = read16();
-			Relay[2] = read16();
-			Relay[3] = read16();
-			Relay[4] = read16();
+		{
+			Relay[0] = read8();
+			Relay[1] = read8();
+			Relay[2] = read8();
+			Relay[3] = read8();
+			Relay[4] = read8();
 
 			if(Relay[1] == 1){
 				gpioPinWrite(S_V, true);
@@ -281,6 +282,7 @@ void evaluateCommand(void)
 				gpioPinWrite(HTR, false);
 			}
 			break;
+		}
 
 		case MSP_SET_BOOT:
 			resetToBoot(0);
